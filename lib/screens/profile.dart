@@ -33,7 +33,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: Color.fromRGBO(241, 244, 248, 1),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),

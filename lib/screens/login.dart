@@ -1,24 +1,27 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LogInWidget extends StatefulWidget {
-  const LogInWidget({Key key}) : super(key: key);
+class LogIn extends StatefulWidget {
+  const LogIn({Key? key}) : super(key: key);
 
   @override
-  _LogInWidgetState createState() => _LogInWidgetState();
+  _LogInState createState() => _LogInState();
 }
 
-class _LogInWidgetState extends State<LogInWidget> {
-  TextEditingController textController1;
-  TextEditingController textController2;
-  bool passwordVisibility;
+class _LogInState extends State<LogIn> {
+  late TextEditingController textController1;
+  late TextEditingController textController2;
+  late bool passwordVisibility;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  // _LogInState() {
+  //   textController1 = TextEditingController();
+  //   textController2 = TextEditingController();
+  //   passwordVisibility = false;
+  // }
 
   @override
   void initState() {
@@ -32,7 +35,7 @@ class _LogInWidgetState extends State<LogInWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: Color.fromRGBO(241, 244, 248, 1),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -44,7 +47,7 @@ class _LogInWidgetState extends State<LogInWidget> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset(
-                  'assets/images/logo.png',
+                  'assets/img/logo.png',
                   width: 100,
                   height: 100,
                   fit: BoxFit.contain,
@@ -99,7 +102,9 @@ class _LogInWidgetState extends State<LogInWidget> {
                                     ),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                // style: TextStyle(
+
+                                // ),
                                 keyboardType: TextInputType.emailAddress,
                               ),
                               TextFormField(
@@ -147,90 +152,91 @@ class _LogInWidgetState extends State<LogInWidget> {
                                     ),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                // style: FlutterFlowTheme.of(context).bodyText1,
                                 keyboardType: TextInputType.visiblePassword,
                               ),
-                              FFButtonWidget(
+                              TextButton(
                                 onPressed: () {
                                   print('Button pressed ...');
                                 },
-                                text: 'Restablecer Contraseña',
-                                options: FFButtonOptions(
-                                  width: 180,
-                                  height: 40,
-                                  color: Color(0xFFEFEFEF),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF874C9E),
-                                        fontSize: 12,
-                                      ),
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1,
-                                  ),
-                                  borderRadius: 12,
-                                ),
+                                child: Text('Restablecer Contraseña'),
+                                // options: FFButtonOptions(
+                                //   width: 180,
+                                //   height: 40,
+                                //   color: Color(0xFFEFEFEF),
+                                //   textStyle: FlutterFlowTheme.of(context)
+                                //       .subtitle2
+                                //       .override(
+                                //         fontFamily: 'Poppins',
+                                //         color: Color(0xFF874C9E),
+                                //         fontSize: 12,
+                                //       ),
+                                //   borderSide: BorderSide(
+                                //     color: Colors.transparent,
+                                //     width: 1,
+                                //   ),
+                                //   borderRadius: 12,
+                                // ),
                               ),
                             ],
                           ),
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              FFButtonWidget(
+                              ElevatedButton(
                                 onPressed: () async {
-                                  await Navigator.push(
-                                    context,
-                                    PageTransition(
-                                      type: PageTransitionType.fade,
-                                      duration: Duration(milliseconds: 500),
-                                      reverseDuration:
-                                          Duration(milliseconds: 500),
-                                      child: NavBarPage(initialPage: 'Home'),
-                                    ),
-                                  );
+                                  // await Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(builder: (context) => Home())
+                                  //   // PageTransition(
+                                  //   //   type: PageTransitionType.fade,
+                                  //   //   duration: Duration(milliseconds: 500),
+                                  //   //   reverseDuration:
+                                  //   //       Duration(milliseconds: 500),
+                                  //   //   child: NavBarPage(initialPage: 'Home'),
+                                  //   // ),
+                                  // );
                                 },
-                                text: 'Iniciar Sesión',
-                                options: FFButtonOptions(
-                                  width: 130,
-                                  height: 40,
-                                  color: Color(0xFF874C9E),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.white,
-                                      ),
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1,
-                                  ),
-                                  borderRadius: 10,
-                                ),
+                                child: Text('Iniciar Sesión'),
+                                // options: FFButtonOptions(
+                                //   width: 130,
+                                //   height: 40,
+                                //   color: Color(0xFF874C9E),
+                                //   textStyle: FlutterFlowTheme.of(context)
+                                //       .subtitle2
+                                //       .override(
+                                //         fontFamily: 'Poppins',
+                                //         color: Colors.white,
+                                //       ),
+                                //   borderSide: BorderSide(
+                                //     color: Colors.transparent,
+                                //     width: 1,
+                                //   ),
+                                //   borderRadius: 10,
+                                // ),
                               ),
-                              FFButtonWidget(
+                              TextButton(
                                 onPressed: () {
                                   print('Button pressed ...');
                                 },
-                                text: 'Registrarse',
-                                options: FFButtonOptions(
-                                  width: 130,
-                                  height: 40,
-                                  color: Color(0xFFEFEFEF),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF874C9E),
-                                        fontSize: 12,
-                                      ),
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1,
-                                  ),
-                                  borderRadius: 12,
-                                ),
+                                child: Text('Registrarse'),
+                                // options: FFButtonOptions(
+                                //   width: 130,
+                                //   height: 40,
+                                //   color: Color(0xFFEFEFEF),
+                                //   textStyle: FlutterFlowTheme.of(context)
+                                //       .subtitle2
+                                //       .override(
+                                //         fontFamily: 'Poppins',
+                                //         color: Color(0xFF874C9E),
+                                //         fontSize: 12,
+                                //       ),
+                                //   borderSide: BorderSide(
+                                //     color: Colors.transparent,
+                                //     width: 1,
+                                //   ),
+                                //   borderRadius: 12,
+                                // ),
                               ),
                             ],
                           ),
