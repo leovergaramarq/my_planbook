@@ -74,7 +74,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                             ),
                           );
                         },
-                        text: 'Iniciar Sesión',
+                        text: 'Empezar',
                         options: FFButtonOptions(
                           width: 130,
                           height: 40,

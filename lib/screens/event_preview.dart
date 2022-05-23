@@ -1,19 +1,19 @@
+import '../event_confirm/event_confirm_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EventViewWidget extends StatefulWidget {
-  const EventViewWidget({Key key}) : super(key: key);
+class EventPreviewWidget extends StatefulWidget {
+  const EventPreviewWidget({Key key}) : super(key: key);
 
   @override
-  _EventViewWidgetState createState() => _EventViewWidgetState();
+  _EventPreviewWidgetState createState() => _EventPreviewWidgetState();
 }
 
-class _EventViewWidgetState extends State<EventViewWidget> {
+class _EventPreviewWidgetState extends State<EventPreviewWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -34,15 +34,7 @@ class _EventViewWidgetState extends State<EventViewWidget> {
             size: 30,
           ),
           onPressed: () async {
-            await Navigator.push(
-              context,
-              PageTransition(
-                type: PageTransitionType.leftToRight,
-                duration: Duration(milliseconds: 500),
-                reverseDuration: Duration(milliseconds: 500),
-                child: NavBarPage(initialPage: 'Home'),
-              ),
-            );
+            Navigator.pop(context);
           },
         ),
         title: Text(
@@ -451,12 +443,17 @@ class _EventViewWidgetState extends State<EventViewWidget> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => EventConfirmWidget(),
+                                ),
+                              );
                             },
-                            text: 'Ver Métodos de Pago',
+                            text: 'Siguiente',
                             options: FFButtonOptions(
-                              width: 190,
+                              width: 120,
                               height: 40,
                               color: Color(0xFF874C9E),
                               textStyle: FlutterFlowTheme.of(context)
