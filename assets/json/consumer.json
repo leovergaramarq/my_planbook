@@ -1,0 +1,75 @@
+[
+    {
+        "username": "vergaradl",
+        "firstname": "Leonardo",
+        "lastname": "Vergara",
+        "email": "vergaradl@uninorte.edu.co",
+        "idDoc": 123,
+        "paymentMethods": [
+            {
+                "id": "nequi",
+                "name": "Nequi",
+                "numAccount": 123,
+                "owner": {
+                    "firstname": "Leonardo",
+                    "lastname": "Vergara",
+                    "idDoc": 123
+                }
+            }
+        ]
+    },
+    {
+        "username": "breynnerh",
+        "firstname": "Breynner",
+        "lastname": "Hurtado",
+        "email": "breynnerh@uninorte.edu.co",
+        "idDoc": 1234,
+        "paymentMethods": [
+            {
+                "id": "nequi",
+                "name": "Nequi",
+                "numAccount": 1234,
+                "owner": {
+                    "firstname": "Not Breynner",
+                    "lastname": "Hurtado",
+                    "idDoc": 1234
+                }
+            }
+        ]
+    },
+    {
+        "username": "caleones",
+        "firstname": "Carlos",
+        "lastname": "Leones",
+        "email": "caleones@uninorte.edu.co",
+        "idDoc": 12345,
+        "paymentMethods": [
+            {
+                "id": "nequi",
+                "name": "Nequi",
+                "numAccount": 12345,
+                "owner": {
+                    "firstname": "Carlos",
+                    "lastname": "Leones",
+                    "idDoc": 12345
+                },
+                "details": []
+            },
+            {
+                "id": "bancolombia",
+                "name": "Bancolombia",
+                "numAccount": 12345,
+                "owner": {
+                    "firstname": "Carlos",
+                    "lastname": "Leones",
+                    "idDoc": 12345
+                },
+                "details": [
+                    {
+                        "type": "Ahorro"
+                    }
+                ]
+            }
+        ]
+    }
+]

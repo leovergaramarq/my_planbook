@@ -1,0 +1,114 @@
+[
+    {
+        "id": "e1",
+        "title": "Reserva de Habitación Hotel",
+        "organizer": "hotelejemplo",
+        "details": {
+            "date": "",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": "Cra. 12 # 67 - 33",
+                "place": "Hotel Ejemplo"
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "5 estrellas",
+                    "cost": "paid",
+                    "price": 800000,
+                    "description": "Mejor opción 5 estrellas. Beneficios de 4 estrellas más gimnasio incluido."
+                },
+                {
+                    "title": "4 estrellas",
+                    "cost": "paid",
+                    "price": 750000,
+                    "description": "Opción 4 estrellas. Tres comidas diarias."
+                },
+                {
+                    "title": "3 estrellas",
+                    "cost": "paid",
+                    "price": 650000,
+                    "description": "Opción 3 estrellas. Dos comidas diarias."
+                },
+                {
+                    "title": "2 estrellas",
+                    "cost": "paid",
+                    "price": 600000,
+                    "description": "Opción 2 estrellas. Una comida diaria."
+                },
+                {
+                    "title": "1 estrella",
+                    "cost": "paid",
+                    "price": 550000,
+                    "description": "Opción básica 1 estrella."
+                }
+            ],
+            "description": "Reserva de hotel de 1 a 5 estrellas con duración de hasta 5 noches y todos los servicios garantizados."
+        }
+    },
+    {
+        "id": "e2",
+        "title": "Boleto para Junior Bucaramanga Primera Clase",
+        "organizer": "juniorfc",
+        "details": {
+            "date": "",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": "Cra. 12 # 67 - 33",
+                "place": "Estadio Metropolitano Roberto Meléndez"
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "Ubicación Occidental Alta",
+                    "cost": "paid",
+                    "price": 100000,
+                    "description": "Ubicación en gradería occidental alta del estadio."
+                },
+                {
+                    "title": "Ubicación Oriental Baja",
+                    "cost": "paid",
+                    "price": 50000,
+                    "description": "Ubicación en gradería oriental baja del estadio."
+                },
+                {
+                    "title": "Ubicación Tribuna Sur",
+                    "cost": "paid",
+                    "price": 30000,
+                    "description": "Ubicación en tribuna sur del estadio."
+                }
+            ],
+            "description": "Entrada al encuentro Junior vs Bucaramanga en Estadio Metropolitano por el Torneo de Apertura."
+        }
+    }
+]

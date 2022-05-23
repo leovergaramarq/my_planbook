@@ -1,0 +1,41 @@
+[
+    {
+        "username": "vergaradl",
+        "password": "123",
+        "firstname": "Leonardo",
+        "lastname": "Vergara",
+        "role": "cons"
+    },
+    {
+        "username": "breynnerh",
+        "password": "123",
+        "firstname": "Breynner",
+        "lastname": "Hurtado",
+        "role": "cons"
+    },
+    {
+        "username": "caleones",
+        "password": "123",
+        "firstname": "Carlos",
+        "lastname": "Leones",
+        "role": "cons"
+    },
+    {
+        "username": "hotelejemplo",
+        "password": "321",
+        "name": "Hotel Ejemplo",
+        "role": "prov"
+    },
+    {
+        "username": "cineejemplo",
+        "password": "321",
+        "name": "Cine Cuevana",
+        "role": "prov"
+    },
+    {
+        "username": "juniorfc",
+        "password": "321",
+        "name": "Club Deportivo Popular Junior Fútbol Club S.A.",
+        "role": "prov"
+    }
+]

@@ -1,0 +1,15 @@
+[
+    {
+        "id": "nequi",
+        "title": "Nequi"
+    },
+    {
+        "id": "bancolombia",
+        "title": "Bancolombia",
+        "details": [
+            {
+                "type": ["Corriente", "Ahorro"]
+            }
+        ]
+    }
+]
