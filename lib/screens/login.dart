@@ -180,45 +180,14 @@ class _LogInState extends State<LogIn> {
                                 child: Text('Iniciar Sesión', style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w600,
                                 )),
-                                // options: FFButtonOptions(
-                                //   width: 130,
-                                //   height: 40,
-                                //   color: Color(0xFF874C9E),
-                                //   textStyle: FlutterFlowTheme.of(context)
-                                //       .subtitle2
-                                //       .override(
-                                //         fontFamily: 'Poppins',
-                                //         color: Colors.white,
-                                //       ),
-                                //   borderSide: BorderSide(
-                                //     color: Colors.transparent,
-                                //     width: 1,
-                                //   ),
-                                //   borderRadius: 10,
-                                // ),
                               ),
                               TextButton(
                                 onPressed: () {
                                   print('Button pressed ...');
                                 },
-                                child: Text('Registrarse'),
-                                // options: FFButtonOptions(
-                                //   width: 130,
-                                //   height: 40,
-                                //   color: Color(0xFFEFEFEF),
-                                //   textStyle: FlutterFlowTheme.of(context)
-                                //       .subtitle2
-                                //       .override(
-                                //         fontFamily: 'Poppins',
-                                //         color: Color(0xFF874C9E),
-                                //         fontSize: 12,
-                                //       ),
-                                //   borderSide: BorderSide(
-                                //     color: Colors.transparent,
-                                //     width: 1,
-                                //   ),
-                                //   borderRadius: 12,
-                                // ),
+                                child: Text('Registrarse', style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w600,
+                                )),
                               ),
                             ],
                           ),
