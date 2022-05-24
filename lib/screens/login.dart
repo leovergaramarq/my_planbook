@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_planbook/providers/json_provider.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class _LogInState extends State<LogIn> {
   late bool passwordVisibility;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  // Map<String, dynamic> user = {};
 
   @override
   void initState() {
@@ -150,12 +152,7 @@ class _LogInState extends State<LogIn> {
                                 keyboardType: TextInputType.visiblePassword,
                               ),
                               TextButton(
-                                onPressed: () {
-                                  print('**********************');
-                                  print(textController1.text);
-                                  print('**********************');
-                                  print(textController2.text);
-                                },
+                                onPressed: () {},
                                 child: Text('Restablecer Contraseña', style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w600,
                                 )),
@@ -166,8 +163,16 @@ class _LogInState extends State<LogIn> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               ElevatedButton(
-                                onPressed: () async {
-                                  await Navigator.push(
+                                onPressed: () {
+                                  JsonProvider.loadData(JsonProvider.USER, (data) async {
+                                    List<dynamic> users = data as List<dynamic>;
+                                    final user = users.firstWhere((u) => (
+                                      u['username'] == textController1.text &&
+                                      u['password'] == textController2.text
+                                    ), orElse: () => null);
+                                    
+                                    if(user == null) return;
+                                    await Navigator.push(
                                       context,
                                       // MaterialPageRoute(builder: (context) => Home1())
                                       PageTransition(
@@ -175,10 +180,11 @@ class _LogInState extends State<LogIn> {
                                         duration: Duration(milliseconds: 500),
                                         reverseDuration:
                                             Duration(milliseconds: 500),
-                                        child: Home(),
+                                        child: Home(null),
                                         // child: NavBarPage(initialPage: 'Home'),
                                       ),
-                                      );
+                                    );
+                                  });
                                 },
                                 child: Text('Iniciar Sesión', style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w600,

@@ -7,15 +7,19 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:my_planbook/providers/theme_provider.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  final dynamic user;
+  const Home(this.user, {Key? key}) : super(key: key);
 
   @override
-  _HomeWidgetState createState() => _HomeWidgetState();
+  _HomeWidgetState createState() => _HomeWidgetState(user);
 }
 
 class _HomeWidgetState extends State<Home> {
   late PageController pageViewController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final dynamic user;
+
+  _HomeWidgetState(this.user);
 
   @override
   Widget build(BuildContext context) {
