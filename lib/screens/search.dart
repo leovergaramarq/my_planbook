@@ -1,5 +1,6 @@
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:my_planbook/providers/json_provider.dart';
 import './event_preview.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,8 +20,18 @@ class _SearchState extends State<Search> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   dynamic consumer;
+  List events = [];
 
-  _SearchState(this.consumer); 
+  void FilterEvents(String f) {
+    JsonProvider.loadData(JsonProvider.EVENT, (data) {
+      List eventAPI = data as List;
+      events = eventAPI.where((e) => e["title"].toString().contains(f)) as List;
+    });
+  }
+
+  _SearchState(this.consumer) {
+    FilterEvents("");
+  }
 
   @override
   void initState() {
@@ -76,11 +87,16 @@ class _SearchState extends State<Search> {
                                       10, 0, 10, 0),
                                   child: TextFormField(
                                     controller: textController,
-                                    onChanged: (_) => EasyDebounce.debounce(
-                                      'textController',
-                                      Duration(milliseconds: 2000),
-                                      () => setState(() {}),
-                                    ),
+                                    onChanged: (_) {
+                                      FilterEvents(_);
+                                      return EasyDebounce.debounce(
+                                        'textController',
+                                        Duration(milliseconds: 2000),
+                                        () => setState(() {
+                                          //print("ajsjhs");
+                                        }),
+                                      );
+                                    },
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
