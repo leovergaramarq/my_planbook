@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_planbook/providers/theme_provider.dart';
 import './event_confirm.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,7 +18,7 @@ class _EventPreviewState extends State<EventPreview> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF874C9E),
+        backgroundColor: AppColors.purple,
         automaticallyImplyLeading: false,
         leading: IconButton(
           splashColor: Colors.transparent,
@@ -45,7 +46,7 @@ class _EventPreviewState extends State<EventPreview> {
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: Color.fromRGBO(241, 244, 248, 1),
+      // backgroundColor: Color.fromRGBO(241, 244, 248, 1),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),

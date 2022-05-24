@@ -70,9 +70,9 @@ class _WelcomeState extends State<Welcome> {
                             ),
                           );
                         },
-                        style: ElevatedButton.styleFrom(
-                          onPrimary: Colors.white,
-                        ),
+                        // style: ElevatedButton.styleFrom(
+                        //   onPrimary: Colors.white,
+                        // ),
                         child: Text('Empezar',
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w600,

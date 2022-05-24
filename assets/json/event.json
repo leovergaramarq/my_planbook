@@ -4,7 +4,7 @@
         "title": "Reserva de Habitación Hotel",
         "organizer": "hotelejemplo",
         "details": {
-            "date": "25/05/2022",
+            "date": "01/12/2022",
             "type": "priv",
             "location": {
                 "country": "Colombia",
@@ -63,10 +63,10 @@
     },
     {
         "id": "e2",
-        "title": "Partido Junior Bucaramanga Primera Clase",
+        "title": "Boleto para Junior Bucaramanga Primera Clase",
         "organizer": "juniorfc",
         "details": {
-            "date": "25/06/2022",
+            "date": "18/07/2022",
             "type": "priv",
             "location": {
                 "country": "Colombia",
@@ -113,17 +113,17 @@
     },
     {
         "id": "e3",
-        "title": "Concierto del Cuarteto",
-        "organizer": "Tu Boleta",
+        "title": "Boleto para Concierto del cuarteto",
+        "organizer": " tu boleta ",
         "details": {
-            "date": "27/05/2022",
+            "date": "08/09/2022",
             "type": "priv",
             "location": {
                 "country": "Colombia",
                 "region": "Atlántico",
                 "city": "Barranquilla",
-                "address": "Cl. 58 #54 - 59",
-                "place": "Teatro José Consuegra Higgins"
+                "address": " Cl. 58 #54-59 ",
+                "place": " Teatro José Consuegra Higgins "
             },
             "payment": {
                 "currency": "cop",
@@ -140,7 +140,519 @@
             },
             "options": [
                 {
-                    "title": "Palco privado",
+                    "title": "primera fila",
+                    "cost": "paid",
+                    "price": 100000,
+                    "description": "ubicación más próxima a la tarima."
+                },
+                {
+                    "title": " Sección principal del reciento ",
+                    "cost": "paid",
+                    "price": 50000,
+                    "description": "Parte ubicada entre las 5 primeras filas"
+                },
+                {
+                    "title": "Parte posterior",
+                    "cost": "paid",
+                    "price": 30000,
+                    "description": "Ubicación en las filas que van desde la 6 a la 9"
+                }
+            ],
+            "description": "Entrada Concierto del Cuarteto de nos en su gira por Colombia ."
+        }
+    },
+    {
+        "id": "e1",
+        "title": "Reserva de Habitación Hotel",
+        "organizer": "hotelejemplo",
+        "details": {
+            "date": "18/07/2022",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": "Cra. 12 # 67 - 33",
+                "place": "Hotel Ejemplo"
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "5 estrellas",
+                    "cost": "paid",
+                    "price": 800000,
+                    "description": "Mejor opción 5 estrellas. Beneficios de 4 estrellas más gimnasio incluido."
+                },
+                {
+                    "title": "4 estrellas",
+                    "cost": "paid",
+                    "price": 750000,
+                    "description": "Opción 4 estrellas. Tres comidas diarias."
+                },
+                {
+                    "title": "3 estrellas",
+                    "cost": "paid",
+                    "price": 650000,
+                    "description": "Opción 3 estrellas. Dos comidas diarias."
+                },
+                {
+                    "title": "2 estrellas",
+                    "cost": "paid",
+                    "price": 600000,
+                    "description": "Opción 2 estrellas. Una comida diaria."
+                },
+                {
+                    "title": "1 estrella",
+                    "cost": "paid",
+                    "price": 550000,
+                    "description": "Opción básica 1 estrella."
+                }
+            ],
+            "description": "Reserva de hotel de 1 a 5 estrellas con duración de hasta 5 noches y todos los servicios garantizados."
+        }
+    },
+    {
+        "id": "e2",
+        "title": "Boleto para Junior Bucaramanga Primera Clase",
+        "organizer": "juniorfc",
+        "details": {
+            "date": "22/11/2022",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": "Cra. 12 # 67 - 33",
+                "place": "Estadio Metropolitano Roberto Meléndez"
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "Ubicación Occidental Alta",
+                    "cost": "paid",
+                    "price": 100000,
+                    "description": "Ubicación en gradería occidental alta del estadio."
+                },
+                {
+                    "title": "Ubicación Oriental Baja",
+                    "cost": "paid",
+                    "price": 50000,
+                    "description": "Ubicación en gradería oriental baja del estadio."
+                },
+                {
+                    "title": "Ubicación Tribuna Sur",
+                    "cost": "paid",
+                    "price": 30000,
+                    "description": "Ubicación en tribuna sur del estadio."
+                }
+            ],
+            "description": "Entrada al encuentro Junior vs Bucaramanga en Estadio Metropolitano por el Torneo de Apertura."
+        }
+    },
+    {
+        "id": "e4",
+        "title": "Lectura Autor José Luis pinto",
+        "organizer": " tu boleta ",
+        "details": {
+            "date": "18/07/2022",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": " Cl. 67 #37-24 ",
+                "place": " Biblioteca de la santa Cruz "
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "Sala estándar",
+                    "cost": "paid",
+                    "price": 100000,
+                    "description": "Ubicación en gradería occidental alta del estadio."
+                },
+                {
+                    "title": "Ubicación Oriental Baja",
+                    "cost": "paid",
+                    "price": 50000,
+                    "description": "Ubicación en gradería oriental baja del estadio."
+                },
+                {
+                    "title": "Ubicación Tribuna Sur",
+                    "cost": "paid",
+                    "price": 30000,
+                    "description": "Ubicación en tribuna sur del estadio."
+                }
+            ],
+            "description": "Entrada al encuentro Junior vs Bucaramanga en Estadio Metropolitano por el Torneo de Apertura."
+        }
+    },
+    {
+        "id": "e5",
+        "title": "Conferencia con María Alvares",
+        "organizer": " Gobernación del atlantico ",
+        "details": {
+            "date": "01/01/2023",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": " Via 40 ",
+                "place": " Plaza de la Aduana "
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "Sala estándar",
+                    "cost": "paid",
+                    "price": 100000,
+                    "description": "Ubicación en gradería occidental alta del estadio."
+                },
+                {
+                    "title": "Ubicación Oriental Baja",
+                    "cost": "paid",
+                    "price": 50000,
+                    "description": "Ubicación en gradería oriental baja del estadio."
+                },
+                {
+                    "title": "Ubicación Tribuna Sur",
+                    "cost": "paid",
+                    "price": 30000,
+                    "description": "Ubicación en tribuna sur del estadio."
+                }
+            ],
+            "description": "Entrada al encuentro Junior vs Bucaramanga en Estadio Metropolitano por el Torneo de Apertura."
+        }
+    },
+    {
+        "id": "e6",
+        "title": "Clase de pintura",
+        "organizer": " tu boleta ",
+        "details": {
+            "date": "18/07/2022",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": " Cl. 78 #36-99 ",
+                "place": " Parque Carlos quinto "
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "Sala estándar",
+                    "cost": "paid",
+                    "price": 100000,
+                    "description": "Ubicación en gradería occidental alta del estadio."
+                },
+                {
+                    "title": "Ubicación Oriental Baja",
+                    "cost": "paid",
+                    "price": 50000,
+                    "description": "Ubicación en gradería oriental baja del estadio."
+                },
+                {
+                    "title": "Ubicación Tribuna Sur",
+                    "cost": "paid",
+                    "price": 30000,
+                    "description": "Ubicación en tribuna sur del estadio."
+                }
+            ],
+            "description": "Entrada al encuentro Junior vs Bucaramanga en Estadio Metropolitano por el Torneo de Apertura."
+        }
+    },
+    {
+        "id": "e7",
+        "title": "carrera contra el cancer ",
+        "organizer": " Gobernación del atlantico ",
+        "details": {
+            "date": "18/07/2022",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": " Cl. 50 con cordialidad",
+                "place": " Cl. 50 con cordialidad"
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "Sala estándar",
+                    "cost": "paid",
+                    "price": 100000,
+                    "description": "Ubicación en gradería occidental alta del estadio."
+                },
+                {
+                    "title": "Ubicación Oriental Baja",
+                    "cost": "paid",
+                    "price": 50000,
+                    "description": "Ubicación en gradería oriental baja del estadio."
+                },
+                {
+                    "title": "Ubicación Tribuna Sur",
+                    "cost": "paid",
+                    "price": 30000,
+                    "description": "Ubicación en tribuna sur del estadio."
+                }
+            ],
+            "description": "Entrada al encuentro Junior vs Bucaramanga en Estadio Metropolitano por el Torneo de Apertura."
+        }
+    },
+    {
+        "id": "e8",
+        "title": "Final departamental de béisbol",
+        "organizer": " Col deportes ",
+        "details": {
+            "date": "27/02/2023",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": " Cl. 67 #37-24 ",
+                "place": " Estadio Édgar Rentería "
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "Sala estándar",
+                    "cost": "paid",
+                    "price": 100000,
+                    "description": "Ubicación en gradería occidental alta del estadio."
+                },
+                {
+                    "title": "Ubicación Oriental Baja",
+                    "cost": "paid",
+                    "price": 50000,
+                    "description": "Ubicación en gradería oriental baja del estadio."
+                },
+                {
+                    "title": "Ubicación Tribuna Sur",
+                    "cost": "paid",
+                    "price": 30000,
+                    "description": "Ubicación en tribuna sur del estadio."
+                }
+            ],
+            "description": "Entrada al encuentro Junior vs Bucaramanga en Estadio Metropolitano por el Torneo de Apertura."
+        }
+    },
+    {
+        "id": "e9",
+        "title": "semifinal departamental de basquetbol ",
+        "organizer": " Col deportes ",
+        "details": {
+            "date": "21/07/2022",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": " Av. Olaya Herrera #70-2",
+                "place": " Arena Deportiva Elías Chegwin"
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "Sala estándar",
+                    "cost": "paid",
+                    "price": 100000,
+                    "description": "Ubicación en gradería occidental alta del estadio."
+                },
+                {
+                    "title": "Ubicación Oriental Baja",
+                    "cost": "paid",
+                    "price": 50000,
+                    "description": "Ubicación en gradería oriental baja del estadio."
+                },
+                {
+                    "title": "Ubicación Tribuna Sur",
+                    "cost": "paid",
+                    "price": 30000,
+                    "description": "Ubicación en tribuna sur del estadio."
+                }
+            ],
+            "description": "Entrada al encuentro Junior vs Bucaramanga en Estadio Metropolitano por el Torneo de Apertura."
+        }
+    },
+    {
+        "id": "e10",
+        "title": "Encuentro anual de escritores ",
+        "organizer": "Gobernación de Barranquilla ",
+        "details": {
+            "date": "05/09/2022",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": " Via 40 ",
+                "place": " Plaza de la Aduana"
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "Sala estándar",
+                    "cost": "paid",
+                    "price": 100000,
+                    "description": "Ubicación en gradería occidental alta del estadio."
+                },
+                {
+                    "title": "Ubicación Oriental Baja",
+                    "cost": "paid",
+                    "price": 50000,
+                    "description": "Ubicación en gradería oriental baja del estadio."
+                },
+                {
+                    "title": "Ubicación Tribuna Sur",
+                    "cost": "paid",
+                    "price": 30000,
+                    "description": "Ubicación en tribuna sur del estadio."
+                }
+            ],
+            "description": "Entrada al encuentro Junior vs Bucaramanga en Estadio Metropolitano por el Torneo de Apertura."
+        }
+    },
+    {
+        "id": "e11",
+        "title": "Concierto de JK ",
+        "organizer": " tu boleto ",
+        "details": {
+            "date": "02/06/2023",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": " Cl. 90 #58-64 ",
+                "place": " Plaza de eventos de barranquilla"
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "Sala estándar",
                     "cost": "paid",
                     "price": 100000,
                     "description": "Ubicación en gradería occidental alta del estadio."

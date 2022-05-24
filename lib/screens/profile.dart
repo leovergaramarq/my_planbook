@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_planbook/providers/theme_provider.dart';
+import 'package:my_planbook/widgets/drawer_custom.dart';
 
 class Profile extends StatefulWidget {
   final dynamic consumer;
@@ -27,7 +29,7 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF874C9E),
+        backgroundColor: AppColors.purple,
         automaticallyImplyLeading: false,
         title: Text(
           'Profile',
@@ -41,7 +43,7 @@ class _ProfileState extends State<Profile> {
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: Color.fromRGBO(241, 244, 248, 1),
+      drawer: DrawerCustom(consumer),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -109,7 +111,7 @@ class _ProfileState extends State<Profile> {
                           maxWidth: double.infinity,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          // color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Padding(
@@ -156,7 +158,7 @@ class _ProfileState extends State<Profile> {
                           maxWidth: double.infinity,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          // color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Padding(

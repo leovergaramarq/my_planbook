@@ -2,6 +2,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:my_planbook/providers/json_provider.dart';
 import 'package:my_planbook/providers/theme_provider.dart';
+import 'package:my_planbook/widgets/drawer_custom.dart';
 import './event_preview.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -57,7 +58,7 @@ class _SearchState extends State<Search> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF874C9E),
+        backgroundColor: AppColors.purple,
         automaticallyImplyLeading: false,
         title: Text(
           'Búsqueda de Eventos',
@@ -71,7 +72,7 @@ class _SearchState extends State<Search> {
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: Color.fromRGBO(241, 244, 248, 1),
+      drawer: DrawerCustom(consumer),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),

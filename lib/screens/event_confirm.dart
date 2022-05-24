@@ -1,3 +1,5 @@
+import 'package:my_planbook/providers/theme_provider.dart';
+
 import '../main.dart';
 import './search.dart';
 import 'package:page_transition/page_transition.dart';
@@ -20,7 +22,7 @@ class _EventConfirmState extends State<EventConfirm> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF874C9E),
+        backgroundColor: AppColors.purple,
         automaticallyImplyLeading: false,
         leading: IconButton(
           splashColor: Colors.transparent,
@@ -57,7 +59,7 @@ class _EventConfirmState extends State<EventConfirm> {
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: Color.fromRGBO(241, 244, 248, 1),
+      // backgroundColor: Color.fromRGBO(241, 244, 248, 1),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),

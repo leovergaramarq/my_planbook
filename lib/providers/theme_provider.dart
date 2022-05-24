@@ -14,7 +14,7 @@ class ThemeProvider extends ChangeNotifier {
 class AppThemes {
   static final darkTheme = ThemeData(
     colorScheme: const ColorScheme.dark(),
-    scaffoldBackgroundColor: Colors.grey.shade800,
+    scaffoldBackgroundColor: AppColors.black,
     textTheme: TextTheme(
       bodyText2: TextStyle(
         color: Colors.white,
@@ -29,6 +29,7 @@ class AppThemes {
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         primary: AppColors.purple,
+        onPrimary: AppColors.white
       ),
     )
   );
@@ -51,6 +52,7 @@ class AppThemes {
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         primary: AppColors.purple,
+        onPrimary: AppColors.white
       ),
     )
   );
@@ -62,5 +64,6 @@ class AppColors {
   static const purpleDark = Color(0xff763B8D);
   static final red = Colors.red.shade600;
   static final grey = Colors.grey.shade500;
-  static final greyDark = Colors.grey.shade900;
+  static const black = Color.fromARGB(255, 27, 27, 27);
+  static const white = Colors.white;
 }

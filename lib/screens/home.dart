@@ -3,10 +3,13 @@ import 'package:my_planbook/providers/json_provider.dart';
 import 'package:my_planbook/screens/event_preview.dart';
 import 'package:my_planbook/screens/login.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:my_planbook/widgets/change_theme_button.dart';
+import 'package:my_planbook/widgets/drawer_custom.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:my_planbook/providers/theme_provider.dart';
+import 'package:my_planbook/widgets/change_theme_button.dart';
 
 class Home extends StatefulWidget {
   final dynamic consumer;
@@ -20,15 +23,22 @@ class _HomeState extends State<Home> {
   late PageController pageViewController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   dynamic consumer;
+  late List<dynamic> recom;
 
-  _HomeState(this.consumer);
+  _HomeState(this.consumer) {
+    JsonProvider.loadData(JsonProvider.EVENT, (data) => (
+      setState(() => (
+        recom = data as List<dynamic>
+      ))
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF874C9E),
+        backgroundColor: AppColors.purple,
         automaticallyImplyLeading: false,
         title: Text(
           'Inicio',
@@ -40,66 +50,7 @@ class _HomeState extends State<Home> {
         centerTitle: false,
         elevation: 2,
       ),
-      drawer: Drawer(
-        elevation: 16,
-        child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(10, 60, 10, 30),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // ElevatedButton(onPressed: () => print(consumer), child: Text('asdas')),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(180, 0, 0, 0),
-                    child: Column(
-                      children: [
-                        Text('Hola,', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400),),
-                        Text(
-                          '${consumer['firstname']} ${consumer['lastname']}',
-                          style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  TextButton.icon(
-                    onPressed: () async {
-                      await Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.fade,
-                          duration: Duration(milliseconds: 500),
-                          reverseDuration: Duration(milliseconds: 500),
-                          child: LogIn(),
-                        ),
-                      );
-                    },
-                    label: Text('Cerrar Sesión',
-                        style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.red,
-                        )),
-                    icon: Icon(
-                      Icons.logout,
-                      color: AppColors.red,
-                      size: 15,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: DrawerCustom(consumer),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -117,12 +68,7 @@ class _HomeState extends State<Home> {
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Recomendaciones',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 18,
-                            ),
+                          Text('Recomendaciones', style: GoogleFonts.poppins(fontSize: 20),
                           ),
                         ],
                       ),
@@ -137,20 +83,16 @@ class _HomeState extends State<Home> {
                             child: Stack(
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 50),
+                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
                                   child: PageView(
-                                    controller: pageViewController =
-                                        PageController(initialPage: 0),
+                                    controller: pageViewController = PageController(initialPage: 0),
                                     scrollDirection: Axis.horizontal,
-                                    children: [
-                                      InkWell(
+                                    children: [...recom.sublist(0, 3).map((r) => InkWell(
                                         onTap: () async {
                                           await Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) =>
-                                                  EventPreview(),
+                                              builder: (context) => EventPreview(),
                                             ),
                                           );
                                         },
@@ -164,23 +106,25 @@ class _HomeState extends State<Home> {
                                               fit: BoxFit.fitWidth,
                                             ),
                                             Text(
-                                              'Nombre Evento',
+                                              r['title'],
                                               style: TextStyle(),
                                             ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                               children: [
-                                                Text(
-                                                  'Lugar',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
+                                                Flexible(
+                                                  child: ConstrainedBox(
+                                                    constraints: BoxConstraints(maxWidth: 160),
+                                                    child: Text(
+                                                      r['details']['location']['place'],
+                                                      style: GoogleFonts.poppins(color: Color(0xFF818181)),
+                                                      overflow: TextOverflow.ellipsis,
+                                                    ),
                                                   ),
                                                 ),
                                                 Text(
-                                                  'Fecha',
+                                                  r['details']['date'],
                                                   style: TextStyle(
                                                     fontFamily: 'Poppins',
                                                     color: Color(0xFF818181),
@@ -197,116 +141,172 @@ class _HomeState extends State<Home> {
                                             ),
                                           ],
                                         ),
-                                      ),
-                                      InkWell(
-                                        onTap: () async {
-                                          await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  EventPreview(),
-                                            ),
-                                          );
-                                        },
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Image.network(
-                                              'https://picsum.photos/seed/70/600',
-                                              width: double.infinity,
-                                              height: 100,
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                            Text(
-                                              'Nombre Evento',
-                                              style: TextStyle(),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Text(
-                                                  'Lugar',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  'Fecha',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '\$100.000',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      InkWell(
-                                        onTap: () async {
-                                          await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  EventPreview(),
-                                            ),
-                                          );
-                                        },
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Image.network(
-                                              'https://picsum.photos/seed/70/600',
-                                              width: double.infinity,
-                                              height: 100,
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                            Text(
-                                              'Nombre Evento',
-                                              style: TextStyle(),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Text(
-                                                  'Lugar',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  'Fecha',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '\$100.000',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
+                                      ))
+                                    ]
+                                    // [
+                                    //   InkWell(
+                                    //     onTap: () async {
+                                    //       await Navigator.push(
+                                    //         context,
+                                    //         MaterialPageRoute(
+                                    //           builder: (context) =>
+                                    //               EventPreview(),
+                                    //         ),
+                                    //       );
+                                    //     },
+                                    //     child: Column(
+                                    //       mainAxisSize: MainAxisSize.max,
+                                    //       children: [
+                                    //         Image.network(
+                                    //           'https://picsum.photos/seed/70/600',
+                                    //           width: double.infinity,
+                                    //           height: 100,
+                                    //           fit: BoxFit.fitWidth,
+                                    //         ),
+                                    //         Text(
+                                    //           'Nombre Evento',
+                                    //           style: TextStyle(),
+                                    //         ),
+                                    //         Row(
+                                    //           mainAxisSize: MainAxisSize.max,
+                                    //           mainAxisAlignment:
+                                    //               MainAxisAlignment.spaceEvenly,
+                                    //           children: [
+                                    //             Text(
+                                    //               'Lugar',
+                                    //               style: TextStyle(
+                                    //                 fontFamily: 'Poppins',
+                                    //                 color: Color(0xFF818181),
+                                    //               ),
+                                    //             ),
+                                    //             Text(
+                                    //               'Fecha',
+                                    //               style: TextStyle(
+                                    //                 fontFamily: 'Poppins',
+                                    //                 color: Color(0xFF818181),
+                                    //               ),
+                                    //             ),
+                                    //             Text(
+                                    //               '\$100.000',
+                                    //               style: TextStyle(
+                                    //                 fontFamily: 'Poppins',
+                                    //                 color: Color(0xFF818181),
+                                    //               ),
+                                    //             ),
+                                    //           ],
+                                    //         ),
+                                    //       ],
+                                    //     ),
+                                    //   ),
+                                    //   InkWell(
+                                    //     onTap: () async {
+                                    //       await Navigator.push(
+                                    //         context,
+                                    //         MaterialPageRoute(
+                                    //           builder: (context) =>
+                                    //               EventPreview(),
+                                    //         ),
+                                    //       );
+                                    //     },
+                                    //     child: Column(
+                                    //       mainAxisSize: MainAxisSize.max,
+                                    //       children: [
+                                    //         Image.network(
+                                    //           'https://picsum.photos/seed/70/600',
+                                    //           width: double.infinity,
+                                    //           height: 100,
+                                    //           fit: BoxFit.fitWidth,
+                                    //         ),
+                                    //         Text(
+                                    //           'Nombre Evento',
+                                    //           style: TextStyle(),
+                                    //         ),
+                                    //         Row(
+                                    //           mainAxisSize: MainAxisSize.max,
+                                    //           mainAxisAlignment:
+                                    //               MainAxisAlignment.spaceEvenly,
+                                    //           children: [
+                                    //             Text(
+                                    //               'Lugar',
+                                    //               style: TextStyle(
+                                    //                 fontFamily: 'Poppins',
+                                    //                 color: Color(0xFF818181),
+                                    //               ),
+                                    //             ),
+                                    //             Text(
+                                    //               'Fecha',
+                                    //               style: TextStyle(
+                                    //                 fontFamily: 'Poppins',
+                                    //                 color: Color(0xFF818181),
+                                    //               ),
+                                    //             ),
+                                    //             Text(
+                                    //               '\$100.000',
+                                    //               style: TextStyle(
+                                    //                 fontFamily: 'Poppins',
+                                    //                 color: Color(0xFF818181),
+                                    //               ),
+                                    //             ),
+                                    //           ],
+                                    //         ),
+                                    //       ],
+                                    //     ),
+                                    //   ),
+                                    //   InkWell(
+                                    //     onTap: () async {
+                                    //       await Navigator.push(
+                                    //         context,
+                                    //         MaterialPageRoute(
+                                    //           builder: (context) =>
+                                    //               EventPreview(),
+                                    //         ),
+                                    //       );
+                                    //     },
+                                    //     child: Column(
+                                    //       mainAxisSize: MainAxisSize.max,
+                                    //       children: [
+                                    //         Image.network(
+                                    //           'https://picsum.photos/seed/70/600',
+                                    //           width: double.infinity,
+                                    //           height: 100,
+                                    //           fit: BoxFit.fitWidth,
+                                    //         ),
+                                    //         Text(
+                                    //           'Nombre Evento',
+                                    //           style: TextStyle(),
+                                    //         ),
+                                    //         Row(
+                                    //           mainAxisSize: MainAxisSize.max,
+                                    //           mainAxisAlignment:
+                                    //               MainAxisAlignment.spaceEvenly,
+                                    //           children: [
+                                    //             Text(
+                                    //               'Lugar',
+                                    //               style: TextStyle(
+                                    //                 fontFamily: 'Poppins',
+                                    //                 color: Color(0xFF818181),
+                                    //               ),
+                                    //             ),
+                                    //             Text(
+                                    //               'Fecha',
+                                    //               style: TextStyle(
+                                    //                 fontFamily: 'Poppins',
+                                    //                 color: Color(0xFF818181),
+                                    //               ),
+                                    //             ),
+                                    //             Text(
+                                    //               '\$100.000',
+                                    //               style: TextStyle(
+                                    //                 fontFamily: 'Poppins',
+                                    //                 color: Color(0xFF818181),
+                                    //               ),
+                                    //             ),
+                                    //           ],
+                                    //         ),
+                                    //       ],
+                                    //     ),
+                                    //   ),
+                                    // ],
                                   ),
                                 ),
                                 Align(
@@ -355,13 +355,7 @@ class _HomeState extends State<Home> {
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'My Planbook',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 18,
-                            ),
-                          ),
+                          Text('My Planbook', style: GoogleFonts.poppins(fontSize: 20))
                         ],
                       ),
                       Container(
