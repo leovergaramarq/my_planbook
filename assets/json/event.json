@@ -4,7 +4,7 @@
         "title": "Reserva de Habitación Hotel",
         "organizer": "hotelejemplo",
         "details": {
-            "date": "",
+            "date": "25/05/2022",
             "type": "priv",
             "location": {
                 "country": "Colombia",
@@ -63,10 +63,10 @@
     },
     {
         "id": "e2",
-        "title": "Boleto para Junior Bucaramanga Primera Clase",
+        "title": "Partido Junior Bucaramanga Primera Clase",
         "organizer": "juniorfc",
         "details": {
-            "date": "",
+            "date": "25/06/2022",
             "type": "priv",
             "location": {
                 "country": "Colombia",
@@ -91,6 +91,56 @@
             "options": [
                 {
                     "title": "Ubicación Occidental Alta",
+                    "cost": "paid",
+                    "price": 100000,
+                    "description": "Ubicación en gradería occidental alta del estadio."
+                },
+                {
+                    "title": "Ubicación Oriental Baja",
+                    "cost": "paid",
+                    "price": 50000,
+                    "description": "Ubicación en gradería oriental baja del estadio."
+                },
+                {
+                    "title": "Ubicación Tribuna Sur",
+                    "cost": "paid",
+                    "price": 30000,
+                    "description": "Ubicación en tribuna sur del estadio."
+                }
+            ],
+            "description": "Entrada al encuentro Junior vs Bucaramanga en Estadio Metropolitano por el Torneo de Apertura."
+        }
+    },
+    {
+        "id": "e3",
+        "title": "Concierto del Cuarteto",
+        "organizer": "Tu Boleta",
+        "details": {
+            "date": "27/05/2022",
+            "type": "priv",
+            "location": {
+                "country": "Colombia",
+                "region": "Atlántico",
+                "city": "Barranquilla",
+                "address": "Cl. 58 #54 - 59",
+                "place": "Teatro José Consuegra Higgins"
+            },
+            "payment": {
+                "currency": "cop",
+                "methods": [
+                    {
+                        "id": "nequi",
+                        "title": "Nequi"
+                    },
+                    {
+                        "id": "bancolombia",
+                        "title": "Bancolombia"
+                    }
+                ]
+            },
+            "options": [
+                {
+                    "title": "Palco privado",
                     "cost": "paid",
                     "price": 100000,
                     "description": "Ubicación en gradería occidental alta del estadio."

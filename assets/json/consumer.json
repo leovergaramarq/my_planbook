@@ -15,6 +15,16 @@
                     "lastname": "Vergara",
                     "idDoc": 123
                 }
+            },
+            {
+                "id": "daviplata",
+                "name": "Daviplata",
+                "numAccount": 123,
+                "owner": {
+                    "firstname": "Leonardo",
+                    "lastname": "Vergara",
+                    "idDoc": 123
+                }
             }
         ]
     },
@@ -30,7 +40,27 @@
                 "name": "Nequi",
                 "numAccount": 1234,
                 "owner": {
-                    "firstname": "Not Breynner",
+                    "firstname": "Breynner",
+                    "lastname": "Hurtado",
+                    "idDoc": 1234
+                }
+            },
+            {
+                "id": "banco_bogota",
+                "name": "Banco de Bogotá",
+                "numAccount": 1234,
+                "owner": {
+                    "firstname": "Breynner",
+                    "lastname": "Hurtado",
+                    "idDoc": 1234
+                }
+            },
+            {
+                "id": "bancolombia",
+                "name": "Bancolombia",
+                "numAccount": 1234,
+                "owner": {
+                    "firstname": "Breynner",
                     "lastname": "Hurtado",
                     "idDoc": 1234
                 }

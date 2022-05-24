@@ -12,6 +12,13 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   dynamic consumer;
+  final fields = const [
+    ['Nombre', 'firstname'],
+    ['Apellidos', 'lastname'],
+    ['Email', 'email'],
+    ['Doc. Identidad', 'idDoc'],
+    ['Username', 'username'],
+  ];
   
   _ProfileState(this.consumer);
 
@@ -111,60 +118,18 @@ class _ProfileState extends State<Profile> {
                             padding: EdgeInsets.zero,
                             scrollDirection: Axis.vertical,
                             children: [
-                              Padding(
+                              ...fields.map((f) => Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      'Nombre',
-                                      style: GoogleFonts.poppins(fontSize: 16),
-                                    ),
-                                    Text(
-                                      consumer['firstname'],
-                                      style: GoogleFonts.poppins(fontSize: 16),
-                                    ),
+                                    Text(f[0], style: GoogleFonts.poppins(fontSize: 16)),
+                                    Text(consumer[f[1]].toString(), style: GoogleFonts.poppins(fontSize: 16)),
                                   ],
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Apellidos',
-                                      style: GoogleFonts.poppins(fontSize: 16),
-                                    ),
-                                    Text(
-                                      consumer['lastname'],
-                                      style: GoogleFonts.poppins(fontSize: 16),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Hello World',
-                                      style: GoogleFonts.poppins(fontSize: 16),
-                                    ),
-                                    Text(
-                                      'Hello World',
-                                      style: GoogleFonts.poppins(fontSize: 16),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              ),)
                             ],
                           ),
                         ),
@@ -199,50 +164,24 @@ class _ProfileState extends State<Profile> {
                           child: ListView(
                             padding: EdgeInsets.zero,
                             scrollDirection: Axis.vertical,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 10, 0, 10),
+                            children: [...consumer['paymentMethods'].map((m) => Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      'Nequi',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 20,
-                                      ),
-                                    ),
+                                    Text(m['name'], style: GoogleFonts.poppins(fontSize: 16)),
                                     TextButton(
                                       onPressed: () {
                                         print('Button pressed ...');
                                       },
                                       child: Text('Editar'),
-                                      // options: FFButtonOptions(
-                                      //   width: 130,
-                                      //   height: 40,
-                                      //   color: Color(0xFF874C9E),
-                                      //   textStyle: FlutterFlowTheme.of(context)
-                                      //       .subtitle2
-                                      //       .override(
-                                      //         fontFamily: 'Poppins',
-                                      //         color: Colors.white,
-                                      //       ),
-                                      //   borderSide: BorderSide(
-                                      //     color: Colors.transparent,
-                                      //     width: 1,
-                                      //   ),
-                                      //   borderRadius: 10,
-                                      // ),
                                     ),
                                   ],
                                 ),
-                              ),
+                              )),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 10, 0, 10),
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.end,
@@ -252,22 +191,6 @@ class _ProfileState extends State<Profile> {
                                         print('Button pressed ...');
                                       },
                                       child: Text('Añadir'),
-                                      // options: FFButtonOptions(
-                                      //   width: 130,
-                                      //   height: 40,
-                                      //   color: Color(0xFF874C9E),
-                                      //   textStyle: FlutterFlowTheme.of(context)
-                                      //       .subtitle2
-                                      //       .override(
-                                      //         fontFamily: 'Poppins',
-                                      //         color: Colors.white,
-                                      //       ),
-                                      //   borderSide: BorderSide(
-                                      //     color: Colors.transparent,
-                                      //     width: 1,
-                                      //   ),
-                                      //   borderRadius: 10,
-                                      // ),
                                     ),
                                   ],
                                 ),

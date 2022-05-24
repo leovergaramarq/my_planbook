@@ -1,6 +1,7 @@
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:my_planbook/providers/json_provider.dart';
+import 'package:my_planbook/providers/theme_provider.dart';
 import './event_preview.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,17 +21,29 @@ class _SearchState extends State<Search> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   dynamic consumer;
-  List events = [];
+  List<dynamic> events = [];
+  List<dynamic> eventsFilt = [];
 
-  void FilterEvents(String f) {
-    JsonProvider.loadData(JsonProvider.EVENT, (data) {
-      List eventAPI = data as List;
-      events = eventAPI.where((e) => e["title"].toString().contains(f)) as List;
+  void filterEvents(String f) {
+    // print('*****************************************************');
+    // print(f);
+    setState(() {
+      eventsFilt = events.where((e) {
+        // print(e['title']);
+        // print('*****************************************************');
+        
+        return e["title"].toString().toLowerCase().trim().contains(f.toLowerCase());
+      }).toList();
     });
   }
 
   _SearchState(this.consumer) {
-    FilterEvents("");
+    JsonProvider.loadData(JsonProvider.EVENT, (data) {
+      events = data as List<dynamic>;
+      setState(() {
+        eventsFilt = [...events];
+      });
+    });
   }
 
   @override
@@ -88,7 +101,7 @@ class _SearchState extends State<Search> {
                                   child: TextFormField(
                                     controller: textController,
                                     onChanged: (_) {
-                                      FilterEvents(_);
+                                      filterEvents(_);
                                       return EasyDebounce.debounce(
                                         'textController',
                                         Duration(milliseconds: 2000),
@@ -288,8 +301,7 @@ class _SearchState extends State<Search> {
                     child: ListView(
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.vertical,
-                      children: [
-                        Padding(
+                      children: [...eventsFilt.map((e) => Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                           child: InkWell(
                             onTap: () async {
@@ -303,392 +315,51 @@ class _SearchState extends State<Search> {
                                 ),
                               );
                             },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(4),
-                                  child: Image.network(
-                                    'https://picsum.photos/seed/799/600',
-                                    width: 140,
-                                    height: 100,
-                                    fit: BoxFit.cover,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(4),
+                                    child: Image.network(
+                                      'https://picsum.photos/seed/799/600',
+                                      width: 140,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 0, 0, 0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Nombre Evento',
-                                        style: TextStyle(),
-                                      ),
-                                      Text(
-                                        'Fecha',
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFF818181),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(e['title'], style: GoogleFonts.poppins(color: AppColors.grey)),
+                                        Text(
+                                          e['details']['date'],
+                                          style: GoogleFonts.poppins(color: AppColors.grey)
                                         ),
-                                      ),
-                                      Text(
-                                        'Lugar',
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFF818181),
+                                        Text(
+                                          e['details']['location']['place'],
+                                          style: GoogleFonts.poppins(color: AppColors.grey)
                                         ),
-                                      ),
-                                      Text(
-                                        '\$100.000 - \$50.000',
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFF818181),
-                                        ),
-                                      ),
-                                    ],
+                                        // Text(
+                                        //   (e['details']['options'] as List).where(),
+                                        //   style: GoogleFonts.poppins(color: AppColors.grey)
+                                        // ),
+                                        Text('\$50.000 - \$100.000'),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                          child: InkWell(
-                            onTap: () async {
-                              await Navigator.push(
-                                context,
-                                PageTransition(
-                                  type: PageTransitionType.rightToLeft,
-                                  duration: Duration(milliseconds: 500),
-                                  reverseDuration: Duration(milliseconds: 500),
-                                  child: EventPreview(),
-                                ),
-                              );
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(4),
-                                  child: Image.network(
-                                    'https://picsum.photos/seed/799/600',
-                                    width: 140,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 0, 0, 0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Nombre Evento',
-                                        style: TextStyle(),
-                                      ),
-                                      Text(
-                                        'Fecha',
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFF818181),
-                                        ),
-                                      ),
-                                      Text(
-                                        'Lugar',
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFF818181),
-                                        ),
-                                      ),
-                                      Text(
-                                        '\$100.000 - \$50.000',
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFF818181),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(4),
-                                child: Image.network(
-                                  'https://picsum.photos/seed/799/600',
-                                  width: 140,
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Nombre Evento',
-                                      style: TextStyle(),
-                                    ),
-                                    Text(
-                                      'Fecha',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                    Text(
-                                      'Lugar',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                    Text(
-                                      '\$100.000 - \$50.000',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(4),
-                                child: Image.network(
-                                  'https://picsum.photos/seed/799/600',
-                                  width: 140,
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Nombre Evento',
-                                      style: TextStyle(),
-                                    ),
-                                    Text(
-                                      'Fecha',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                    Text(
-                                      'Lugar',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                    Text(
-                                      '\$100.000 - \$50.000',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(4),
-                                child: Image.network(
-                                  'https://picsum.photos/seed/799/600',
-                                  width: 140,
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Nombre Evento',
-                                      style: TextStyle(),
-                                    ),
-                                    Text(
-                                      'Fecha',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                    Text(
-                                      'Lugar',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                    Text(
-                                      '\$100.000 - \$50.000',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(4),
-                                child: Image.network(
-                                  'https://picsum.photos/seed/799/600',
-                                  width: 140,
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Nombre Evento',
-                                      style: TextStyle(),
-                                    ),
-                                    Text(
-                                      'Fecha',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                    Text(
-                                      'Lugar',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                    Text(
-                                      '\$100.000 - \$50.000',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(4),
-                                child: Image.network(
-                                  'https://picsum.photos/seed/799/600',
-                                  width: 140,
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Nombre Evento',
-                                      style: TextStyle(),
-                                    ),
-                                    Text(
-                                      'Fecha',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                    Text(
-                                      'Lugar',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                    Text(
-                                      '\$100.000 - \$50.000',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                        ))
+                      ]
                     ),
                   ),
                 ),

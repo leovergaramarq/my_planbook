@@ -61,5 +61,6 @@ class AppColors {
   static const purpleLight = Color(0xffAD7AB5);
   static const purpleDark = Color(0xff763B8D);
   static final red = Colors.red.shade600;
-  static final grayDark = Colors.grey.shade900;
+  static final grey = Colors.grey.shade500;
+  static final greyDark = Colors.grey.shade900;
 }
