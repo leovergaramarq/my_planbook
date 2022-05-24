@@ -48,19 +48,21 @@ class _HomeState extends State<Home> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              // ElevatedButton(onPressed: () => print(consumer), child: Text('asdas')),
               Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(200, 0, 0, 0),
-                    child: Text(
-                      // 'Hola, ${consumer['firstname']} ${consumer['lastname']}',
-                      'asd',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 18,
-                      ),
+                    padding: EdgeInsetsDirectional.fromSTEB(180, 0, 0, 0),
+                    child: Column(
+                      children: [
+                        Text('Hola,', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400),),
+                        Text(
+                          '${consumer['firstname']} ${consumer['lastname']}',
+                          style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w500),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -82,6 +84,7 @@ class _HomeState extends State<Home> {
                     },
                     label: Text('Cerrar Sesión',
                         style: GoogleFonts.poppins(
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: AppColors.red,
                         )),

@@ -34,10 +34,10 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text("Pagina 0"),
-        elevation: 0,
-      ),
+      // appBar: AppBar(
+      //   title: Text("Pagina 0"),
+      //   elevation: 0,
+      // ),
       key: scaffoldKey,
       body: screens[ind],
       bottomNavigationBar: Theme(

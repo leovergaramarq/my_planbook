@@ -40,7 +40,7 @@ class _EventConfirmState extends State<EventConfirm> {
               //   duration: Duration(milliseconds: 500),
               //   reverseDuration: Duration(milliseconds: 500),
               //   //child: NavBarPage(initialPage: 'Search'),
-              //   child: Search(),
+              //   child: Search(null),
               // ),
             );
           },

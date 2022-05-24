@@ -64,23 +64,17 @@ class _ProfileState extends State<Profile> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(14, 0, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(18, 0, 0, 0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                'Hello World',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 24,
-                                ),
+                                consumer['firstname'],
+                                style: GoogleFonts.poppins(fontSize: 22,),
                               ),
                               Text(
-                                'Hello World',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 24,
-                                ),
+                                consumer['lastname'],
+                                style: GoogleFonts.poppins(fontSize: 22,),
                               ),
                             ],
                           ),
@@ -90,15 +84,15 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 40, 10, 20),
+                  padding: EdgeInsetsDirectional.fromSTEB(10, 16, 10, 16),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(
-                        'Información General',
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 16,
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+                        child: Text(
+                          'Información General',
+                          style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Container(
@@ -118,58 +112,43 @@ class _ProfileState extends State<Profile> {
                             scrollDirection: Axis.vertical,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 10, 0, 10),
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Hello World',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 18,
-                                      ),
+                                      'Nombre',
+                                      style: GoogleFonts.poppins(fontSize: 16),
                                     ),
                                     Text(
-                                      'Hello World',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 18,
-                                      ),
+                                      consumer['firstname'],
+                                      style: GoogleFonts.poppins(fontSize: 16),
                                     ),
                                   ],
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 10, 0, 10),
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Hello World',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 18,
-                                      ),
+                                      'Apellidos',
+                                      style: GoogleFonts.poppins(fontSize: 16),
                                     ),
                                     Text(
-                                      'Hello World',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 18,
-                                      ),
+                                      consumer['lastname'],
+                                      style: GoogleFonts.poppins(fontSize: 16),
                                     ),
                                   ],
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 10, 0, 10),
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -177,17 +156,11 @@ class _ProfileState extends State<Profile> {
                                   children: [
                                     Text(
                                       'Hello World',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 18,
-                                      ),
+                                      style: GoogleFonts.poppins(fontSize: 16),
                                     ),
                                     Text(
                                       'Hello World',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 18,
-                                      ),
+                                      style: GoogleFonts.poppins(fontSize: 16),
                                     ),
                                   ],
                                 ),
@@ -200,15 +173,15 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 20),
+                  padding: EdgeInsetsDirectional.fromSTEB(10, 16, 10, 16),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(
-                        'Métodos de Pago',
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 16,
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+                        child: Text(
+                          'Métodos de Pago',
+                          style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Container(
