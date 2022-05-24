@@ -1,4 +1,5 @@
 import '../main.dart';
+import './home.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -152,7 +153,7 @@ class _LogInState extends State<LogIn> {
                                     ),
                                   ),
                                 ),
-                                // style: FlutterFlowTheme.of(context).bodyText1,
+                                // style: TextStyle,
                                 keyboardType: TextInputType.visiblePassword,
                               ),
                               TextButton(
@@ -185,17 +186,18 @@ class _LogInState extends State<LogIn> {
                             children: [
                               ElevatedButton(
                                 onPressed: () async {
-                                  // await Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(builder: (context) => Home())
-                                  //   // PageTransition(
-                                  //   //   type: PageTransitionType.fade,
-                                  //   //   duration: Duration(milliseconds: 500),
-                                  //   //   reverseDuration:
-                                  //   //       Duration(milliseconds: 500),
-                                  //   //   child: NavBarPage(initialPage: 'Home'),
-                                  //   // ),
-                                  // );
+                                  await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Home1())
+                                      // PageTransition(
+                                      //   type: PageTransitionType.fade,
+                                      //   duration: Duration(milliseconds: 500),
+                                      //   reverseDuration:
+                                      //       Duration(milliseconds: 500),
+                                      //   child: NavBarPage(initialPage: 'Home'),
+                                      // ),
+                                      );
                                 },
                                 child: Text('Iniciar Sesión'),
                                 // options: FFButtonOptions(

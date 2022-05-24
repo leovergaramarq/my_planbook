@@ -1,23 +1,20 @@
-import '../event_preview/event_preview_widget.dart';
-import '../flutter_flow/flutter_flow_drop_down.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import './event_preview.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SearchWidget extends StatefulWidget {
-  const SearchWidget({Key key}) : super(key: key);
+class Search extends StatefulWidget {
+  const Search({Key? key}) : super(key: key);
 
   @override
   _SearchWidgetState createState() => _SearchWidgetState();
 }
 
-class _SearchWidgetState extends State<SearchWidget> {
-  String dropDownValue1;
-  String dropDownValue2;
-  TextEditingController textController;
+class _SearchWidgetState extends State<Search> {
+  late String dropDownValue1;
+  late String dropDownValue2;
+  late TextEditingController textController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -36,11 +33,11 @@ class _SearchWidgetState extends State<SearchWidget> {
         automaticallyImplyLeading: false,
         title: Text(
           'Búsqueda de Eventos',
-          style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Poppins',
-                color: Colors.white,
-                fontSize: 22,
-              ),
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            color: Colors.white,
+            fontSize: 22,
+          ),
         ),
         actions: [],
         centerTitle: false,
@@ -110,7 +107,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                                       suffixIcon: textController.text.isNotEmpty
                                           ? InkWell(
                                               onTap: () => setState(
-                                                () => textController?.clear(),
+                                                () => textController.clear(),
+                                                // () {},
                                               ),
                                               child: Icon(
                                                 Icons.clear,
@@ -120,17 +118,16 @@ class _SearchWidgetState extends State<SearchWidget> {
                                             )
                                           : null,
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                    style: TextStyle(),
                                   ),
                                 ),
                               ),
-                              FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 30,
-                                borderWidth: 1,
-                                buttonSize: 40,
-                                fillColor: Color(0xFF874C9E),
+                              IconButton(
+                                splashColor: Colors.transparent,
+                                splashRadius: 30,
+                                //borderWidth: 1,//aqui hay una vaina rara con los iconos revisar*********************************************************************************
+                                iconSize: 40,
+                                //fillColor: Color(0xFF874C9E),
                                 icon: Icon(
                                   Icons.search,
                                   color: Color(0xFFEFEFEF),
@@ -157,32 +154,29 @@ class _SearchWidgetState extends State<SearchWidget> {
                                         0, 0, 10, 0),
                                     child: Text(
                                       'Lugar:',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                      style: TextStyle(),
                                     ),
                                   ),
-                                  FlutterFlowDropDown(
-                                    options: ['Option 1'].toList(),
-                                    onChanged: (val) =>
-                                        setState(() => dropDownValue1 = val),
-                                    width: 110,
-                                    height: 50,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Colors.black,
-                                        ),
-                                    hintText: 'Please select...',
-                                    fillColor: Colors.white,
-                                    elevation: 2,
-                                    borderColor: Colors.transparent,
-                                    borderWidth: 0,
-                                    borderRadius: 0,
-                                    margin: EdgeInsetsDirectional.fromSTEB(
-                                        12, 4, 12, 4),
-                                    hidesUnderline: true,
-                                  ),
+                                  // FlutterFlowDropDown(
+                                  //   options: ['Option 1'].toList(),
+                                  //   onChanged: (val) =>
+                                  //       setState(() => dropDownValue1 = val),
+                                  //   width: 110,
+                                  //   height: 50,
+                                  //   textStyle: TextStyle(
+                                  //     fontFamily: 'Poppins',
+                                  //     color: Colors.black,
+                                  //   ),
+                                  //   hintText: 'Please select...',
+                                  //   fillColor: Colors.white,
+                                  //   elevation: 2,
+                                  //   borderColor: Colors.transparent,
+                                  //   borderWidth: 0,
+                                  //   borderRadius: 0,
+                                  //   margin: EdgeInsetsDirectional.fromSTEB(
+                                  //       12, 4, 12, 4),
+                                  //   hidesUnderline: true,
+                                  // ),
                                 ],
                               ),
                               Row(
@@ -193,32 +187,29 @@ class _SearchWidgetState extends State<SearchWidget> {
                                         0, 0, 10, 0),
                                     child: Text(
                                       'Fecha:',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                      style: TextStyle(),
                                     ),
                                   ),
-                                  FlutterFlowDropDown(
-                                    options: ['Option 1'].toList(),
-                                    onChanged: (val) =>
-                                        setState(() => dropDownValue2 = val),
-                                    width: 110,
-                                    height: 50,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Colors.black,
-                                        ),
-                                    hintText: 'Please select...',
-                                    fillColor: Colors.white,
-                                    elevation: 2,
-                                    borderColor: Colors.transparent,
-                                    borderWidth: 0,
-                                    borderRadius: 0,
-                                    margin: EdgeInsetsDirectional.fromSTEB(
-                                        12, 4, 12, 4),
-                                    hidesUnderline: true,
-                                  ),
+                                  // FlutterFlowDropDown(
+                                  //   options: ['Option 1'].toList(),
+                                  //   onChanged: (val) =>
+                                  //       setState(() => dropDownValue2 = val),
+                                  //   width: 110,
+                                  //   height: 50,
+                                  //   textStyle: TextStyle(
+                                  //     fontFamily: 'Poppins',
+                                  //     color: Colors.black,
+                                  //   ),
+                                  //   hintText: 'Please select...',
+                                  //   fillColor: Colors.white,
+                                  //   elevation: 2,
+                                  //   borderColor: Colors.transparent,
+                                  //   borderWidth: 0,
+                                  //   borderRadius: 0,
+                                  //   margin: EdgeInsetsDirectional.fromSTEB(
+                                  //       12, 4, 12, 4),
+                                  //   hidesUnderline: true,
+                                  // ),
                                 ],
                               ),
                             ],
@@ -238,14 +229,12 @@ class _SearchWidgetState extends State<SearchWidget> {
                                         0, 0, 10, 0),
                                     child: Text(
                                       'Precio Min.:',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                      style: TextStyle(),
                                     ),
                                   ),
                                   Text(
                                     '\$100.000',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                    style: TextStyle(),
                                   ),
                                 ],
                               ),
@@ -257,14 +246,12 @@ class _SearchWidgetState extends State<SearchWidget> {
                                         0, 0, 10, 0),
                                     child: Text(
                                       'Precio Máx.:',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                      style: TextStyle(),
                                     ),
                                   ),
                                   Text(
                                     '\$100.000',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                    style: TextStyle(),
                                   ),
                                 ],
                               ),
@@ -292,7 +279,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                   type: PageTransitionType.rightToLeft,
                                   duration: Duration(milliseconds: 500),
                                   reverseDuration: Duration(milliseconds: 500),
-                                  child: EventPreviewWidget(),
+                                  child: EventPreview(),
                                 ),
                               );
                             },
@@ -319,35 +306,28 @@ class _SearchWidgetState extends State<SearchWidget> {
                                     children: [
                                       Text(
                                         'Nombre Evento',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
+                                        style: TextStyle(),
                                       ),
                                       Text(
                                         'Fecha',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF818181),
-                                            ),
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF818181),
+                                        ),
                                       ),
                                       Text(
                                         'Lugar',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF818181),
-                                            ),
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF818181),
+                                        ),
                                       ),
                                       Text(
                                         '\$100.000 - \$50.000',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF818181),
-                                            ),
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF818181),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -366,7 +346,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                   type: PageTransitionType.rightToLeft,
                                   duration: Duration(milliseconds: 500),
                                   reverseDuration: Duration(milliseconds: 500),
-                                  child: EventPreviewWidget(),
+                                  child: EventPreview(),
                                 ),
                               );
                             },
@@ -393,35 +373,28 @@ class _SearchWidgetState extends State<SearchWidget> {
                                     children: [
                                       Text(
                                         'Nombre Evento',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
+                                        style: TextStyle(),
                                       ),
                                       Text(
                                         'Fecha',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF818181),
-                                            ),
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF818181),
+                                        ),
                                       ),
                                       Text(
                                         'Lugar',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF818181),
-                                            ),
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF818181),
+                                        ),
                                       ),
                                       Text(
                                         '\$100.000 - \$50.000',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF818181),
-                                            ),
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF818181),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -454,35 +427,28 @@ class _SearchWidgetState extends State<SearchWidget> {
                                   children: [
                                     Text(
                                       'Nombre Evento',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                      style: TextStyle(),
                                     ),
                                     Text(
                                       'Fecha',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                     Text(
                                       'Lugar',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                     Text(
                                       '\$100.000 - \$50.000',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -514,35 +480,28 @@ class _SearchWidgetState extends State<SearchWidget> {
                                   children: [
                                     Text(
                                       'Nombre Evento',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                      style: TextStyle(),
                                     ),
                                     Text(
                                       'Fecha',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                     Text(
                                       'Lugar',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                     Text(
                                       '\$100.000 - \$50.000',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -574,35 +533,28 @@ class _SearchWidgetState extends State<SearchWidget> {
                                   children: [
                                     Text(
                                       'Nombre Evento',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                      style: TextStyle(),
                                     ),
                                     Text(
                                       'Fecha',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                     Text(
                                       'Lugar',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                     Text(
                                       '\$100.000 - \$50.000',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -634,35 +586,28 @@ class _SearchWidgetState extends State<SearchWidget> {
                                   children: [
                                     Text(
                                       'Nombre Evento',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                      style: TextStyle(),
                                     ),
                                     Text(
                                       'Fecha',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                     Text(
                                       'Lugar',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                     Text(
                                       '\$100.000 - \$50.000',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -694,35 +639,28 @@ class _SearchWidgetState extends State<SearchWidget> {
                                   children: [
                                     Text(
                                       'Nombre Evento',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                      style: TextStyle(),
                                     ),
                                     Text(
                                       'Fecha',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                     Text(
                                       'Lugar',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                     Text(
                                       '\$100.000 - \$50.000',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF818181),
-                                          ),
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF818181),
+                                      ),
                                     ),
                                   ],
                                 ),
