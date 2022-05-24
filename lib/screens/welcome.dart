@@ -20,9 +20,8 @@ class _WelcomeState extends State<Welcome> {
 
   @override
   Widget build(BuildContext context) {
-
     final themeProvider = Provider.of<ThemeProvider>(context);
-    
+
     return Scaffold(
       key: scaffoldKey,
       body: SafeArea(
@@ -74,22 +73,24 @@ class _WelcomeState extends State<Welcome> {
                         style: ElevatedButton.styleFrom(
                           onPrimary: Colors.white,
                         ),
-                        child: Text('Empezar', style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w600,
-                        )),
+                        child: Text('Empezar',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w600,
+                            )),
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextButton.icon(
-                            onPressed: () {
-                              
-                            },
-                            icon: Icon(FontAwesomeIcons.google,),
-                            label: Text('Continuar con Google', style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w600,
-                            )),
+                            onPressed: () {},
+                            icon: Icon(
+                              FontAwesomeIcons.google,
+                            ),
+                            label: Text('Continuar con Google',
+                                style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w600,
+                                )),
                           ),
                         ],
                       ),

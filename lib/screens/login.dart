@@ -1,5 +1,4 @@
-import '../main.dart';
-import './home.dart';
+import 'package:my_planbook/screens/main_screen.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +20,6 @@ class _LogInState extends State<LogIn> {
   late bool passwordVisibility;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  // Map<String, dynamic> user = {};
 
   @override
   void initState() {
@@ -98,9 +96,7 @@ class _LogInState extends State<LogIn> {
                                     ),
                                   ),
                                 ),
-                                style: TextStyle(
-
-                                ),
+                                style: TextStyle(),
                                 keyboardType: TextInputType.emailAddress,
                               ),
                               TextFormField(
@@ -152,10 +148,12 @@ class _LogInState extends State<LogIn> {
                                 keyboardType: TextInputType.visiblePassword,
                               ),
                               TextButton(
-                                onPressed: () {},
-                                child: Text('Restablecer Contraseña', style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w600,
-                                )),
+                                onPressed: () {
+                                },
+                                child: Text('Restablecer Contraseña',
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w600,
+                                    )),
                               ),
                             ],
                           ),
@@ -184,22 +182,22 @@ class _LogInState extends State<LogIn> {
                                             duration: Duration(milliseconds: 500),
                                             reverseDuration:
                                                 Duration(milliseconds: 500),
-                                            child: Home(user),
+                                            child: MainScreen(cons),
                                             // child: NavBarPage(initialPage: 'Home'),
                                           ),
                                         );
                                     });
                                   });
                                 },
-                                child: Text('Iniciar Sesión', style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w600,
-                                )),
+                                child: Text('Iniciar Sesión',
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w600,
+                                    )),
                               ),
                               TextButton(
-                                onPressed: () {
-                                  
-                                },
-                                child: Text('Registrarse', style: GoogleFonts.poppins(
+                                onPressed: () {},
+                                child: Text('Registrarse',
+                                style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w600,
                                 )),
                               ),

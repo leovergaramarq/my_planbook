@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+  final dynamic consumer;
+  const Profile(this.consumer, {Key? key}) : super(key: key);
 
   @override
-  _ProfileState createState() => _ProfileState();
+  _ProfileState createState() => _ProfileState(consumer);
 }
 
 class _ProfileState extends State<Profile> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  dynamic consumer;
+  
+  _ProfileState(this.consumer);
 
   @override
   Widget build(BuildContext context) {

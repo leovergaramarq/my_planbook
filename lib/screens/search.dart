@@ -5,18 +5,22 @@ import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Search extends StatefulWidget {
-  const Search({Key? key}) : super(key: key);
+  final dynamic consumer;
+  const Search(this.consumer, {Key? key}) : super(key: key);
 
   @override
-  _SearchWidgetState createState() => _SearchWidgetState();
+  _SearchState createState() => _SearchState(consumer);
 }
 
-class _SearchWidgetState extends State<Search> {
+class _SearchState extends State<Search> {
   late String dropDownValue1;
   late String dropDownValue2;
   late TextEditingController textController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  dynamic consumer;
+
+  _SearchState(this.consumer); 
 
   @override
   void initState() {
