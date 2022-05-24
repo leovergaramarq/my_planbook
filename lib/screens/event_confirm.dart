@@ -1,21 +1,18 @@
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_radio_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
+import './search.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EventConfirmWidget extends StatefulWidget {
-  const EventConfirmWidget({Key key}) : super(key: key);
+  const EventConfirmWidget({Key? key}) : super(key: key);
 
   @override
   _EventConfirmWidgetState createState() => _EventConfirmWidgetState();
 }
 
 class _EventConfirmWidgetState extends State<EventConfirmWidget> {
-  String radioButtonValue;
+  late String radioButtonValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -25,11 +22,11 @@ class _EventConfirmWidgetState extends State<EventConfirmWidget> {
       appBar: AppBar(
         backgroundColor: Color(0xFF874C9E),
         automaticallyImplyLeading: false,
-        leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30,
-          borderWidth: 1,
-          buttonSize: 60,
+        leading: IconButton(
+          splashColor: Colors.transparent,
+          splashRadius: 30,
+          //borderWidth: 1,//aqui hay una vaina rara con los iconos revisar*********************************************************************************
+          iconSize: 60,
           icon: Icon(
             Icons.arrow_back,
             color: Color(0xFFEFEFEF),
@@ -42,18 +39,19 @@ class _EventConfirmWidgetState extends State<EventConfirmWidget> {
                 type: PageTransitionType.leftToRight,
                 duration: Duration(milliseconds: 500),
                 reverseDuration: Duration(milliseconds: 500),
-                child: NavBarPage(initialPage: 'Search'),
+                //child: NavBarPage(initialPage: 'Search'),
+                child: Search(),
               ),
             );
           },
         ),
         title: Text(
           'Evento',
-          style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Poppins',
-                color: Colors.white,
-                fontSize: 22,
-              ),
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            color: Colors.white,
+            fontSize: 22,
+          ),
         ),
         actions: [],
         centerTitle: false,
@@ -85,11 +83,10 @@ class _EventConfirmWidgetState extends State<EventConfirmWidget> {
                         children: [
                           Text(
                             'Event Name',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 24,
-                                    ),
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 24,
+                            ),
                           ),
                         ],
                       ),
@@ -110,18 +107,15 @@ class _EventConfirmWidgetState extends State<EventConfirmWidget> {
                                       0, 0, 10, 0),
                                   child: Text(
                                     'Organizador:',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                    style: TextStyle(),
                                   ),
                                 ),
                                 Text(
                                   'Hello World',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFF818181),
+                                  ),
                                 ),
                               ],
                             ),
@@ -137,18 +131,15 @@ class _EventConfirmWidgetState extends State<EventConfirmWidget> {
                                       0, 0, 10, 0),
                                   child: Text(
                                     'Lugar:',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                    style: TextStyle(),
                                   ),
                                 ),
                                 Text(
                                   'Hello World',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF818181),
-                                      ),
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFF818181),
+                                  ),
                                 ),
                               ],
                             ),
@@ -164,19 +155,17 @@ class _EventConfirmWidgetState extends State<EventConfirmWidget> {
                         children: [
                           Text(
                             'Opción 1',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18,
-                                    ),
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 18,
+                            ),
                           ),
                           Text(
                             'Nombre Opción',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xFF818181),
-                                    ),
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              color: Color(0xFF818181),
+                            ),
                           ),
                           Row(
                             mainAxisSize: MainAxisSize.max,
@@ -186,17 +175,15 @@ class _EventConfirmWidgetState extends State<EventConfirmWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
                                 child: Text(
                                   'Precio:',
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style: TextStyle(),
                                 ),
                               ),
                               Text(
                                 '\$10000',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xFF818181),
-                                    ),
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Color(0xFF818181),
+                                ),
                               ),
                             ],
                           ),
@@ -211,32 +198,31 @@ class _EventConfirmWidgetState extends State<EventConfirmWidget> {
                         children: [
                           Text(
                             'Métodos de Pago',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18,
-                                    ),
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 18,
+                            ),
                           ),
-                          FlutterFlowRadioButton(
-                            options:
+                          Radio(
+                            groupValue:
                                 ['Nequi', 'Bancolombia', 'Daviplata'].toList(),
-                            initialValue: 'Nequi',
+                            value: 'Nequi',
                             onChanged: (value) {
-                              setState(() => radioButtonValue = value);
+                              setState(
+                                  () => radioButtonValue = value.toString());
                             },
-                            optionHeight: 25,
-                            textStyle:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.black,
-                                    ),
-                            buttonPosition: RadioButtonPosition.left,
-                            direction: Axis.vertical,
-                            radioButtonColor: Colors.blue,
-                            inactiveRadioButtonColor: Color(0x8A000000),
+                            splashRadius: 25,
+                            // textStyle: TextStyle(
+                            //   fontFamily: 'Poppins',//NO se que chingados con los radio button******************************************************************************************************
+                            //   color: Colors.black,
+                            // ),
+                            //buttonPosition: RadioButtonPosition.left,
+                            //direction: Axis.vertical,
+                            hoverColor: Colors.blue,
+                            focusColor: Color(0x8A000000),
                             toggleable: false,
-                            horizontalAlignment: WrapAlignment.start,
-                            verticalAlignment: WrapCrossAlignment.start,
+                            //horizontalAlignment: WrapAlignment.start,
+                            //verticalAlignment: WrapCrossAlignment.start,
                           ),
                         ],
                       ),
@@ -247,54 +233,54 @@ class _EventConfirmWidgetState extends State<EventConfirmWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          FFButtonWidget(
+                          ElevatedButton.icon(
                             onPressed: () async {
                               Navigator.pop(context);
                             },
-                            text: 'Regresar',
+                            label: Text('Regresar'),
                             icon: Icon(
                               Icons.chevron_left,
                               size: 18,
                             ),
-                            options: FFButtonOptions(
-                              width: 120,
-                              height: 30,
-                              color: Color(0xFF874C9E),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                  ),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
-                              ),
-                              borderRadius: 10,
-                            ),
+                            // options: FFButtonOptions(
+                            //   width: 120,
+                            //   height: 30,
+                            //   color: Color(0xFF874C9E),
+                            //   textStyle: FlutterFlowTheme.of(context)
+                            //       .subtitle2
+                            //       .override(
+                            //         fontFamily: 'Poppins',
+                            //         color: Colors.white,
+                            //         fontSize: 14,
+                            //       ),
+                            //   borderSide: BorderSide(
+                            //     color: Colors.transparent,
+                            //     width: 1,
+                            //   ),
+                            //   borderRadius: 10,
+                            // ),
                           ),
-                          FFButtonWidget(
+                          ElevatedButton(
                             onPressed: () {
                               print('Button pressed ...');
                             },
-                            text: 'Confirmar Pago',
-                            options: FFButtonOptions(
-                              width: 180,
-                              height: 40,
-                              color: Color(0xFF874C9E),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                  ),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
-                              ),
-                              borderRadius: 10,
-                            ),
+                            child: Text('Confirmar Pago'),
+                            // options: FFButtonOptions(
+                            //   width: 180,
+                            //   height: 40,
+                            //   color: Color(0xFF874C9E),
+                            //   textStyle: FlutterFlowTheme.of(context)
+                            //       .subtitle2
+                            //       .override(
+                            //         fontFamily: 'Poppins',
+                            //         color: Colors.white,
+                            //       ),
+                            //   borderSide: BorderSide(
+                            //     color: Colors.transparent,
+                            //     width: 1,
+                            //   ),
+                            //   borderRadius: 10,
+                            // ),
                           ),
                         ],
                       ),
