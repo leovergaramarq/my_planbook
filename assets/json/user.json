@@ -19,23 +19,5 @@
         "firstname": "Carlos",
         "lastname": "Leones",
         "role": "cons"
-    },
-    {
-        "username": "hotelejemplo",
-        "password": "321",
-        "name": "Hotel Ejemplo",
-        "role": "prov"
-    },
-    {
-        "username": "cineejemplo",
-        "password": "321",
-        "name": "Cine Cuevana",
-        "role": "prov"
-    },
-    {
-        "username": "juniorfc",
-        "password": "321",
-        "name": "Club Deportivo Popular Junior Fútbol Club S.A.",
-        "role": "prov"
     }
 ]

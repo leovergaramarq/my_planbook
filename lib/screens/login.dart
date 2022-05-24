@@ -38,10 +38,10 @@ class _LogInState extends State<LogIn> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 40),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+            child: ListView(
+              // mainAxisSize: MainAxisSize.max,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset(
                   'assets/img/logo.png',
@@ -151,7 +151,10 @@ class _LogInState extends State<LogIn> {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  print('Button pressed ...');
+                                  print('**********************');
+                                  print(textController1.text);
+                                  print('**********************');
+                                  print(textController2.text);
                                 },
                                 child: Text('Restablecer Contraseña', style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w600,
@@ -183,7 +186,7 @@ class _LogInState extends State<LogIn> {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  print('Button pressed ...');
+                                  
                                 },
                                 child: Text('Registrarse', style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w600,
@@ -199,9 +202,6 @@ class _LogInState extends State<LogIn> {
                 Container(
                   width: 100,
                   height: 100,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFEEEEEE),
-                  ),
                 ),
               ],
             ),

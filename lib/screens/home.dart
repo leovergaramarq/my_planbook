@@ -4,6 +4,7 @@ import './login.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:my_planbook/providers/theme_provider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -27,16 +28,12 @@ class _HomeWidgetState extends State<Home> {
           'Inicio',
           style: TextStyle(
             fontFamily: 'Poppins',
-            color: Colors
-                .amber, //AQUI hay uno **************************************************************************************************
           ),
         ),
         actions: [],
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: Colors
-          .cyan, //AQUI hay uno **************************************************************************************************
       drawer: Drawer(
         elevation: 16,
         child: Padding(
@@ -64,7 +61,7 @@ class _HomeWidgetState extends State<Home> {
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  ElevatedButton.icon(
+                  TextButton.icon(
                     onPressed: () async {
                       await Navigator.push(
                         context,
@@ -76,26 +73,15 @@ class _HomeWidgetState extends State<Home> {
                         ),
                       );
                     },
-                    label: Text('Cerrar Sesión'),
+                    label: Text('Cerrar Sesión', style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.red,
+                    )),
                     icon: Icon(
                       Icons.logout,
+                      color: AppColors.red,
                       size: 15,
                     ),
-                    // options: FFButtonOptions(
-                    //   width: 170,
-                    //   height: 40,
-                    //   color: Color(0xFFEFEFEF),
-                    //   textStyle:
-                    //       FlutterFlowTheme.of(context).subtitle2.override(
-                    //             fontFamily: 'Poppins',
-                    //             color: Colors.teal,//AQUI hay uno **************************************************************************************************
-                    //           ),
-                    //   borderSide: BorderSide(
-                    //     color: Colors.transparent,
-                    //     width: 1,
-                    //   ),
-                    //   borderRadius: 12,
-                    // ),
                   ),
                 ],
               ),
@@ -369,9 +355,6 @@ class _HomeWidgetState extends State<Home> {
                       Container(
                         width: double.infinity,
                         height: 200,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFEEEEEE),
-                        ),
                         child: ListView(
                           padding: EdgeInsets.zero,
                           scrollDirection: Axis.vertical,

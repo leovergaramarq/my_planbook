@@ -22,12 +22,12 @@ class AppThemes {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        // primary: Colors.white,
         primary: AppColors.purpleLight,
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         primary: AppColors.purple,
       ),
     )
@@ -49,6 +49,7 @@ class AppThemes {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         primary: AppColors.purple,
       ),
     )
@@ -59,6 +60,6 @@ class AppColors {
   static const purple = Color.fromARGB(255, 157, 88, 184);
   static const purpleLight = Color(0xffAD7AB5);
   static const purpleDark = Color(0xff763B8D);
-
+  static final red = Colors.red.shade600;
   static final grayDark = Colors.grey.shade900;
 }
