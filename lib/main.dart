@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_planbook/screens/welcome.dart';
+import 'package:my_planbook/providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   return runApp(MyWidget());
@@ -9,12 +11,24 @@ class MyWidget extends StatelessWidget {
   const MyWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'App',
-      home: Welcome()
-    );
-  }
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+    create: (context) => ThemeProvider(),
+    builder: (context, _) {
+      final themeProvider = Provider.of<ThemeProvider>(context);
+
+      return MaterialApp(
+        title: 'App',
+        themeMode: themeProvider.themeMode,
+        theme: AppThemes.lightTheme,
+        darkTheme: AppThemes.darkTheme,
+        // home: Container(
+        //   width: 200,
+        //   height: 300,
+        // ),
+        home: Welcome(),
+      );
+    }
+  );
 }
 
 // class FirstView extends StatelessWidget {

@@ -1,7 +1,11 @@
+import 'package:my_planbook/widgets/change_theme_button.dart';
+
 import './login.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_planbook/providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -15,9 +19,12 @@ class _WelcomeState extends State<Welcome> {
 
   @override
   Widget build(BuildContext context) {
+
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color.fromRGBO(241, 244, 248, 1),
+      // backgroundColor: Color.fromRGBO(241, 244, 248, 1),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -31,16 +38,17 @@ class _WelcomeState extends State<Welcome> {
                 Container(
                   width: 100,
                   height: 100,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(241, 244, 248, 1),
-                  ),
+                  child: ChangeThemeButton(),
+                  // decoration: BoxDecoration(
+                  //   color: Color.fromRGBO(241, 244, 248, 1),
+                  // ),
                 ),
                 Container(
                   width: 100,
                   height: 100,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(241, 244, 248, 1),
-                  ),
+                  // decoration: BoxDecoration(
+                  //   color: Color.fromRGBO(241, 244, 248, 1),
+                  // ),
                   child: Image.asset(
                     'assets/img/logo.png',
                     width: 100,
@@ -51,9 +59,9 @@ class _WelcomeState extends State<Welcome> {
                 Container(
                   width: 100,
                   height: 100,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(241, 244, 248, 1),
-                  ),
+                  // decoration: BoxDecoration(
+                  //   color: Color.fromRGBO(241, 244, 248, 1),
+                  // ),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -72,52 +80,30 @@ class _WelcomeState extends State<Welcome> {
                             // ),
                           );
                         },
-                        child: Text('Empezar'),
-                        // options: FFButtonOptions(
-                        //   width: 130,
-                        //   height: 40,
-                        //   color: Color(0xFF874C9E),
-                        //   textStyle:
-                        //       FlutterFlowTheme.of(context).subtitle2.override(
-                        //             fontFamily: 'Poppins',
-                        //             color: Colors.white,
-                        //           ),
-                        //   borderSide: BorderSide(
-                        //     color: Colors.transparent,
-                        //     width: 1,
-                        //   ),
-                        //   borderRadius: 10,
-                        // ),
+                        style: ElevatedButton.styleFrom(
+                          primary: AppColors.purple,
+                          onPrimary: Colors.white,
+                        ),
+                        child: Text('Empezar', style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w600,
+                        )),
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          TextButton(
+                          TextButton.icon(
                             onPressed: () {
-                              print('Button pressed ...');
+                              
                             },
-                            child: Text('Continuar con Google',)
-                            // icon: FaIcon(
-                            //   FontAwesomeIcons.google,
-                            // ),
-                            // options: FFButtonOptions(
-                            //   width: 240,
-                            //   height: 40,
-                            //   color:
-                            //       FlutterFlowTheme.of(context).primaryBtnText,
-                            //   textStyle: FlutterFlowTheme.of(context)
-                            //       .subtitle2
-                            //       .override(
-                            //         fontFamily: 'Poppins',
-                            //         color: Color(0xFF30362F),
-                            //       ),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.transparent,
-                            //     width: 1,
-                            //   ),
-                            //   borderRadius: 12,
-                            // ),
+                            icon: Icon(
+                              FontAwesomeIcons.google,
+                              color: AppColors.grayDark,
+                            ),
+                            label: Text('Continuar con Google', style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w600,
+                            )),
+                            style: TextButton.styleFrom(primary: AppColors.grayDark),
                           ),
                         ],
                       ),

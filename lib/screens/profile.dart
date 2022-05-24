@@ -1,11 +1,8 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileWidget extends StatefulWidget {
-  const ProfileWidget({Key key}) : super(key: key);
+  const ProfileWidget({Key? key}) : super(key: key);
 
   @override
   _ProfileWidgetState createState() => _ProfileWidgetState();
@@ -23,11 +20,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         automaticallyImplyLeading: false,
         title: Text(
           'Perfil',
-          style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Poppins',
-                color: Colors.white,
-                fontSize: 22,
-              ),
+          // style: FlutterFlowTheme.of(context).title2.override(
+          //   fontFamily: 'Poppins',
+          //   color: Colors.white,
+          //   fontSize: 22,
+          // ),
         ),
         actions: [],
         centerTitle: false,
