@@ -1,6 +1,9 @@
+import './Profile.dart';
+import './Search.dart';
 import 'package:flutter/material.dart';
 import './event_preview.dart';
 import './login.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -15,12 +18,10 @@ class Home extends StatefulWidget {
 
 class _HomeWidgetState extends State<Home> {
   late PageController pageViewController;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: Color(0xFF874C9E),
         automaticallyImplyLeading: false,
@@ -73,10 +74,11 @@ class _HomeWidgetState extends State<Home> {
                         ),
                       );
                     },
-                    label: Text('Cerrar Sesión', style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.red,
-                    )),
+                    label: Text('Cerrar Sesión',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.red,
+                        )),
                     icon: Icon(
                       Icons.logout,
                       color: AppColors.red,
@@ -129,8 +131,8 @@ class _HomeWidgetState extends State<Home> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 50),
                                   child: PageView(
-                                    controller: pageViewController = PageController(initialPage: 0),
-
+                                    controller: pageViewController =
+                                        PageController(initialPage: 0),
                                     scrollDirection: Axis.horizontal,
                                     children: [
                                       InkWell(
@@ -304,7 +306,8 @@ class _HomeWidgetState extends State<Home> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 0, 10),
                                     child: SmoothPageIndicator(
-                                      controller: pageViewController = PageController(initialPage: 0),
+                                      controller: pageViewController =
+                                          PageController(initialPage: 0),
                                       count: 3,
                                       axisDirection: Axis.horizontal,
                                       onDotClicked: (i) {

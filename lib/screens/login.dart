@@ -1,5 +1,6 @@
 import '../main.dart';
 import './home.dart';
+import './main_screen.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -96,9 +97,7 @@ class _LogInState extends State<LogIn> {
                                     ),
                                   ),
                                 ),
-                                style: TextStyle(
-
-                                ),
+                                style: TextStyle(),
                                 keyboardType: TextInputType.emailAddress,
                               ),
                               TextFormField(
@@ -156,9 +155,10 @@ class _LogInState extends State<LogIn> {
                                   print('**********************');
                                   print(textController2.text);
                                 },
-                                child: Text('Restablecer Contraseña', style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w600,
-                                )),
+                                child: Text('Restablecer Contraseña',
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w600,
+                                    )),
                               ),
                             ],
                           ),
@@ -168,29 +168,29 @@ class _LogInState extends State<LogIn> {
                               ElevatedButton(
                                 onPressed: () async {
                                   await Navigator.push(
-                                      context,
-                                      // MaterialPageRoute(builder: (context) => Home1())
-                                      PageTransition(
-                                        type: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 500),
-                                        reverseDuration:
-                                            Duration(milliseconds: 500),
-                                        child: Home(),
-                                        // child: NavBarPage(initialPage: 'Home'),
-                                      ),
-                                      );
+                                    context,
+                                    // MaterialPageRoute(builder: (context) => Home1())
+                                    PageTransition(
+                                      type: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 500),
+                                      reverseDuration:
+                                          Duration(milliseconds: 500),
+                                      child: main_screen(),
+                                      // child: NavBarPage(initialPage: 'Home'),
+                                    ),
+                                  );
                                 },
-                                child: Text('Iniciar Sesión', style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w600,
-                                )),
+                                child: Text('Iniciar Sesión',
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w600,
+                                    )),
                               ),
                               TextButton(
-                                onPressed: () {
-                                  
-                                },
-                                child: Text('Registrarse', style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w600,
-                                )),
+                                onPressed: () {},
+                                child: Text('Registrarse',
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w600,
+                                    )),
                               ),
                             ],
                           ),
