@@ -33,15 +33,15 @@ class _EventConfirmState extends State<EventConfirm> {
             size: 30,
           ),
           onPressed: () async {
-            await Navigator.push(
+            Navigator.pop(
               context,
-              PageTransition(
-                type: PageTransitionType.leftToRight,
-                duration: Duration(milliseconds: 500),
-                reverseDuration: Duration(milliseconds: 500),
-                //child: NavBarPage(initialPage: 'Search'),
-                child: Search(),
-              ),
+              // PageTransition(
+              //   type: PageTransitionType.leftToRight,
+              //   duration: Duration(milliseconds: 500),
+              //   reverseDuration: Duration(milliseconds: 500),
+              //   //child: NavBarPage(initialPage: 'Search'),
+              //   child: Search(),
+              // ),
             );
           },
         ),
