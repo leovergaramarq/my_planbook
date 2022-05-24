@@ -98,12 +98,12 @@ class _WelcomeState extends State<Welcome> {
                             },
                             icon: Icon(
                               FontAwesomeIcons.google,
-                              color: AppColors.grayDark,
+                              // color: Theme.of(context).text,
                             ),
                             label: Text('Continuar con Google', style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w600,
                             )),
-                            style: TextButton.styleFrom(primary: AppColors.grayDark),
+                            // style: TextButton.styleFrom(primary: AppColors.grayDark),
                           ),
                         ],
                       ),

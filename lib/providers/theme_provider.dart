@@ -18,22 +18,28 @@ class AppThemes {
     textTheme: TextTheme(
       bodyText2: TextStyle(
         color: Colors.white,
-      ), 
+      ),
     ),
-
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        primary: Colors.white,
+      ),
+    )
   );
 
   static final lightTheme = ThemeData(
     colorScheme: const ColorScheme.light(),
     scaffoldBackgroundColor: const Color(0xffF1F4F8),
-    // primaryColor: const Color(0xff874C9E),
-    // primaryColorLight: const Color(0xffAD7AB5),
-    // primaryColorDark: const Color(0xff763B8D),
     textTheme: TextTheme(
       bodyText2: TextStyle(
         color: Colors.grey.shade900,
       ),
     ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        primary: AppColors.grayDark,
+      ),
+    )
   );
 }
 
