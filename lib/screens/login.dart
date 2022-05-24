@@ -148,8 +148,7 @@ class _LogInState extends State<LogIn> {
                                 keyboardType: TextInputType.visiblePassword,
                               ),
                               TextButton(
-                                onPressed: () {
-                                },
+                                onPressed: () {},
                                 child: Text('Restablecer Contraseña',
                                     style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w600,
@@ -162,30 +161,34 @@ class _LogInState extends State<LogIn> {
                             children: [
                               ElevatedButton(
                                 onPressed: () {
-                                  JsonProvider.loadData(JsonProvider.USER, (data) async {
+                                  JsonProvider.loadData(JsonProvider.USER,
+                                      (data) async {
                                     List<dynamic> users = data as List<dynamic>;
-                                    final user = users.firstWhere((u) => (
-                                      u['username'] == textController1.text &&
-                                      u['password'] == textController2.text
-                                    ), orElse: () => null);
-                                    
-                                    if(user == null) return;
-                                    JsonProvider.loadData(JsonProvider.CONSUMER, (data) async {
-                                        List<dynamic> consumers = data as List<dynamic>;
-                                        final cons = consumers.firstWhere((c) => (
-                                          c['username'] == user['username']
-                                        ));
-                                        await Navigator.push(
-                                          context,
-                                          PageTransition(
-                                            type: PageTransitionType.fade,
-                                            duration: Duration(milliseconds: 500),
-                                            reverseDuration:
-                                                Duration(milliseconds: 500),
-                                            child: MainScreen(cons),
-                                            // child: NavBarPage(initialPage: 'Home'),
-                                          ),
-                                        );
+                                    final user = users.firstWhere(
+                                        (u) => (u['username'] ==
+                                                textController1.text &&
+                                            u['password'] ==
+                                                textController2.text),
+                                        orElse: () => null);
+
+                                    if (user == null) return;
+                                    JsonProvider.loadData(JsonProvider.CONSUMER,
+                                        (data) async {
+                                      List<dynamic> consumers =
+                                          data as List<dynamic>;
+                                      final cons = consumers.firstWhere((c) =>
+                                          (c['username'] == user['username']));
+                                      await Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          type: PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 500),
+                                          reverseDuration:
+                                              Duration(milliseconds: 500),
+                                          child: MainScreen(cons),
+                                          // child: NavBarPage(initialPage: 'Home'),
+                                        ),
+                                      );
                                     });
                                   });
                                 },
@@ -197,9 +200,9 @@ class _LogInState extends State<LogIn> {
                               TextButton(
                                 onPressed: () {},
                                 child: Text('Registrarse',
-                                style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w600,
-                                )),
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w600,
+                                    )),
                               ),
                             ],
                           ),
