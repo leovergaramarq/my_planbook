@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_planbook/providers/json_provider.dart';
 import './event_preview.dart';
 import './login.dart';
 import 'package:page_transition/page_transition.dart';
@@ -7,22 +8,23 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:my_planbook/providers/theme_provider.dart';
 
 class Home extends StatefulWidget {
-  final dynamic user;
-  const Home(this.user, {Key? key}) : super(key: key);
+  final dynamic consumer;
+  const Home(this.consumer, {Key? key}) : super(key: key);
 
   @override
-  _HomeWidgetState createState() => _HomeWidgetState(user);
+  _HomeWidgetState createState() => _HomeWidgetState(consumer);
 }
 
 class _HomeWidgetState extends State<Home> {
   late PageController pageViewController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final dynamic user;
+  dynamic consumer = {};
 
-  _HomeWidgetState(this.user);
+  _HomeWidgetState(this.consumer);
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -41,7 +43,7 @@ class _HomeWidgetState extends State<Home> {
       drawer: Drawer(
         elevation: 16,
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(10, 30, 10, 30),
+          padding: EdgeInsetsDirectional.fromSTEB(10, 60, 10, 30),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,7 +55,8 @@ class _HomeWidgetState extends State<Home> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(200, 0, 0, 0),
                     child: Text(
-                      'Hola, Nombre Usuario',
+                      // 'Hola, ${consumer['firstname']} ${consumer['lastname']}',
+                      'asd',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 18,
@@ -98,9 +101,9 @@ class _HomeWidgetState extends State<Home> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(20, 40, 20, 20),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+            child: ListView(
+              // mainAxisSize: MainAxisSize.max,
+              // crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),

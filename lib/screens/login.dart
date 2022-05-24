@@ -172,18 +172,23 @@ class _LogInState extends State<LogIn> {
                                     ), orElse: () => null);
                                     
                                     if(user == null) return;
-                                    await Navigator.push(
-                                      context,
-                                      // MaterialPageRoute(builder: (context) => Home1())
-                                      PageTransition(
-                                        type: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 500),
-                                        reverseDuration:
-                                            Duration(milliseconds: 500),
-                                        child: Home(null),
-                                        // child: NavBarPage(initialPage: 'Home'),
-                                      ),
-                                    );
+                                    JsonProvider.loadData(JsonProvider.CONSUMER, (data) async {
+                                        List<dynamic> consumers = data as List<dynamic>;
+                                        final cons = consumers.firstWhere((c) => (
+                                          c['username'] == user['username']
+                                        ));
+                                        await Navigator.push(
+                                          context,
+                                          PageTransition(
+                                            type: PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 500),
+                                            reverseDuration:
+                                                Duration(milliseconds: 500),
+                                            child: Home(user),
+                                            // child: NavBarPage(initialPage: 'Home'),
+                                          ),
+                                        );
+                                    });
                                   });
                                 },
                                 child: Text('Iniciar Sesión', style: GoogleFonts.poppins(
