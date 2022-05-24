@@ -3,6 +3,9 @@ import './home.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({Key? key}) : super(key: key);
@@ -18,12 +21,6 @@ class _LogInState extends State<LogIn> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  // _LogInState() {
-  //   textController1 = TextEditingController();
-  //   textController2 = TextEditingController();
-  //   passwordVisibility = false;
-  // }
-
   @override
   void initState() {
     super.initState();
@@ -36,7 +33,6 @@ class _LogInState extends State<LogIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color.fromRGBO(241, 244, 248, 1),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -61,9 +57,6 @@ class _LogInState extends State<LogIn> {
                     child: Container(
                       width: 100,
                       height: 270,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFEEEEEE),
-                      ),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,9 +96,9 @@ class _LogInState extends State<LogIn> {
                                     ),
                                   ),
                                 ),
-                                // style: TextStyle(
+                                style: TextStyle(
 
-                                // ),
+                                ),
                                 keyboardType: TextInputType.emailAddress,
                               ),
                               TextFormField(
@@ -153,31 +146,16 @@ class _LogInState extends State<LogIn> {
                                     ),
                                   ),
                                 ),
-                                // style: TextStyle,
+                                style: TextStyle(),
                                 keyboardType: TextInputType.visiblePassword,
                               ),
                               TextButton(
                                 onPressed: () {
                                   print('Button pressed ...');
                                 },
-                                child: Text('Restablecer Contraseña'),
-                                // options: FFButtonOptions(
-                                //   width: 180,
-                                //   height: 40,
-                                //   color: Color(0xFFEFEFEF),
-                                //   textStyle: FlutterFlowTheme.of(context)
-                                //       .subtitle2
-                                //       .override(
-                                //         fontFamily: 'Poppins',
-                                //         color: Color(0xFF874C9E),
-                                //         fontSize: 12,
-                                //       ),
-                                //   borderSide: BorderSide(
-                                //     color: Colors.transparent,
-                                //     width: 1,
-                                //   ),
-                                //   borderRadius: 12,
-                                // ),
+                                child: Text('Restablecer Contraseña', style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w600,
+                                )),
                               ),
                             ],
                           ),
@@ -188,18 +166,20 @@ class _LogInState extends State<LogIn> {
                                 onPressed: () async {
                                   await Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Home1())
-                                      // PageTransition(
-                                      //   type: PageTransitionType.fade,
-                                      //   duration: Duration(milliseconds: 500),
-                                      //   reverseDuration:
-                                      //       Duration(milliseconds: 500),
-                                      //   child: NavBarPage(initialPage: 'Home'),
-                                      // ),
+                                      // MaterialPageRoute(builder: (context) => Home1())
+                                      PageTransition(
+                                        type: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 500),
+                                        reverseDuration:
+                                            Duration(milliseconds: 500),
+                                        child: Home(),
+                                        // child: NavBarPage(initialPage: 'Home'),
+                                      ),
                                       );
                                 },
-                                child: Text('Iniciar Sesión'),
+                                child: Text('Iniciar Sesión', style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w600,
+                                )),
                                 // options: FFButtonOptions(
                                 //   width: 130,
                                 //   height: 40,

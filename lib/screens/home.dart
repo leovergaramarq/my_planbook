@@ -5,14 +5,14 @@ import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class Home1 extends StatefulWidget {
-  const Home1({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
   _HomeWidgetState createState() => _HomeWidgetState();
 }
 
-class _HomeWidgetState extends State<Home1> {
+class _HomeWidgetState extends State<Home> {
   late PageController pageViewController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 

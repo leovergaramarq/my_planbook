@@ -22,7 +22,13 @@ class AppThemes {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        primary: Colors.white,
+        // primary: Colors.white,
+        primary: AppColors.purpleLight,
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        primary: AppColors.purple,
       ),
     )
   );
@@ -37,7 +43,13 @@ class AppThemes {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        primary: AppColors.grayDark,
+        // primary: AppColors.grayDark,
+        primary: AppColors.purpleLight,
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        primary: AppColors.purple,
       ),
     )
   );
