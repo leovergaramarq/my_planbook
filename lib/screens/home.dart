@@ -23,12 +23,12 @@ class _HomeState extends State<Home> {
   late PageController pageViewController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   dynamic consumer;
-  late List<dynamic> recom;
+  late List<dynamic> recom = [];
 
   _HomeState(this.consumer) {
     JsonProvider.loadData(JsonProvider.EVENT, (data) => (
       setState(() => (
-        recom = data as List<dynamic>
+        recom = [...(data as List<dynamic>)].sublist(0, 3)
       ))
     ));
   }
@@ -87,12 +87,15 @@ class _HomeState extends State<Home> {
                                   child: PageView(
                                     controller: pageViewController = PageController(initialPage: 0),
                                     scrollDirection: Axis.horizontal,
-                                    children: [...recom.sublist(0, 3).map((r) => InkWell(
+                                    children: [...recom.map((r) => InkWell(
                                         onTap: () async {
                                           await Navigator.push(
                                             context,
-                                            MaterialPageRoute(
-                                              builder: (context) => EventPreview(),
+                                            PageTransition(
+                                              type: PageTransitionType.rightToLeft,
+                                              duration: Duration(milliseconds: 500),
+                                              reverseDuration: Duration(milliseconds: 500),
+                                              child: EventPreview(r),
                                             ),
                                           );
                                         },
@@ -370,16 +373,16 @@ class _HomeState extends State<Home> {
                                   EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                               child: InkWell(
                                 onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    PageTransition(
-                                      type: PageTransitionType.rightToLeft,
-                                      duration: Duration(milliseconds: 500),
-                                      reverseDuration:
-                                          Duration(milliseconds: 500),
-                                      child: EventPreview(),
-                                    ),
-                                  );
+                                  // await Navigator.push(
+                                  //   context,
+                                  //   PageTransition(
+                                  //     type: PageTransitionType.rightToLeft,
+                                  //     duration: Duration(milliseconds: 500),
+                                  //     reverseDuration:
+                                  //         Duration(milliseconds: 500),
+                                  //     child: EventPreview(),
+                                  //   ),
+                                  // );
                                 },
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -432,16 +435,16 @@ class _HomeState extends State<Home> {
                                   EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                               child: InkWell(
                                 onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    PageTransition(
-                                      type: PageTransitionType.rightToLeft,
-                                      duration: Duration(milliseconds: 500),
-                                      reverseDuration:
-                                          Duration(milliseconds: 500),
-                                      child: EventPreview(),
-                                    ),
-                                  );
+                                  // await Navigator.push(
+                                  //   context,
+                                  //   PageTransition(
+                                  //     type: PageTransitionType.rightToLeft,
+                                  //     duration: Duration(milliseconds: 500),
+                                  //     reverseDuration:
+                                  //         Duration(milliseconds: 500),
+                                  //     child: EventPreview(),
+                                  //   ),
+                                  // );
                                 },
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -494,16 +497,16 @@ class _HomeState extends State<Home> {
                                   EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                               child: InkWell(
                                 onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    PageTransition(
-                                      type: PageTransitionType.rightToLeft,
-                                      duration: Duration(milliseconds: 500),
-                                      reverseDuration:
-                                          Duration(milliseconds: 500),
-                                      child: EventPreview(),
-                                    ),
-                                  );
+                                  // await Navigator.push(
+                                  //   context,
+                                  //   PageTransition(
+                                  //     type: PageTransitionType.rightToLeft,
+                                  //     duration: Duration(milliseconds: 500),
+                                  //     reverseDuration:
+                                  //         Duration(milliseconds: 500),
+                                  //     child: EventPreview(),
+                                  //   ),
+                                  // );
                                 },
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,

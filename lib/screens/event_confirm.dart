@@ -7,15 +7,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EventConfirm extends StatefulWidget {
-  const EventConfirm({Key? key}) : super(key: key);
+
+  dynamic event;
+  EventConfirm(this.event, {Key? key}) : super(key: key);
 
   @override
-  _EventConfirmState createState() => _EventConfirmState();
+  _EventConfirmState createState() => _EventConfirmState(event);
 }
 
 class _EventConfirmState extends State<EventConfirm> {
   late String radioButtonValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  dynamic event;
+
+  _EventConfirmState(this.event);
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +89,7 @@ class _EventConfirmState extends State<EventConfirm> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            'Event Name',
+                            event['title'],
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 24,
@@ -113,7 +118,7 @@ class _EventConfirmState extends State<EventConfirm> {
                                   ),
                                 ),
                                 Text(
-                                  'Hello World',
+                                  event['organizer'],
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     color: Color(0xFF818181),
@@ -137,7 +142,7 @@ class _EventConfirmState extends State<EventConfirm> {
                                   ),
                                 ),
                                 Text(
-                                  'Hello World',
+                                  event['details']['location']['place'],
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     color: Color(0xFF818181),
@@ -192,43 +197,43 @@ class _EventConfirmState extends State<EventConfirm> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text(
-                            'Métodos de Pago',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 18,
-                            ),
-                          ),
-                          Radio(
-                            groupValue:
-                                ['Nequi', 'Bancolombia', 'Daviplata'].toList(),
-                            value: 'Nequi',
-                            onChanged: (value) {
-                              setState(
-                                  () => radioButtonValue = value.toString());
-                            },
-                            splashRadius: 25,
-                            // textStyle: TextStyle(
-                            //   fontFamily: 'Poppins',//NO se que chingados con los radio button******************************************************************************************************
-                            //   color: Colors.black,
-                            // ),
-                            //buttonPosition: RadioButtonPosition.left,
-                            //direction: Axis.vertical,
-                            hoverColor: Colors.blue,
-                            focusColor: Color(0x8A000000),
-                            toggleable: false,
-                            //horizontalAlignment: WrapAlignment.start,
-                            //verticalAlignment: WrapCrossAlignment.start,
-                          ),
-                        ],
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                    //   child: Column(
+                    //     mainAxisSize: MainAxisSize.max,
+                    //     crossAxisAlignment: CrossAxisAlignment.stretch,
+                    //     children: [
+                    //       Text(
+                    //         'Métodos de Pago',
+                    //         style: TextStyle(
+                    //           fontFamily: 'Poppins',
+                    //           fontSize: 18,
+                    //         ),
+                    //       ),
+                    //       Radio(
+                    //         groupValue:
+                    //             ['Nequi', 'Bancolombia', 'Daviplata'].toList(),
+                    //         value: 'Nequi',
+                    //         onChanged: (value) {
+                    //           setState(
+                    //               () => radioButtonValue = value.toString());
+                    //         },
+                    //         splashRadius: 25,
+                    //         // textStyle: TextStyle(
+                    //         //   fontFamily: 'Poppins',//NO se que chingados con los radio button******************************************************************************************************
+                    //         //   color: Colors.black,
+                    //         // ),
+                    //         //buttonPosition: RadioButtonPosition.left,
+                    //         //direction: Axis.vertical,
+                    //         hoverColor: Colors.blue,
+                    //         focusColor: Color(0x8A000000),
+                    //         toggleable: false,
+                    //         //horizontalAlignment: WrapAlignment.start,
+                    //         //verticalAlignment: WrapCrossAlignment.start,
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                       child: Row(

@@ -174,124 +174,124 @@ class _SearchState extends State<Search> {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 10, 0),
-                                    child: Text(
-                                      'Lugar:',
-                                      style: TextStyle(),
-                                    ),
-                                  ),
-                                  // FlutterFlowDropDown(
-                                  //   options: ['Option 1'].toList(),
-                                  //   onChanged: (val) =>
-                                  //       setState(() => dropDownValue1 = val),
-                                  //   width: 110,
-                                  //   height: 50,
-                                  //   textStyle: TextStyle(
-                                  //     fontFamily: 'Poppins',
-                                  //     color: Colors.black,
-                                  //   ),
-                                  //   hintText: 'Please select...',
-                                  //   fillColor: Colors.white,
-                                  //   elevation: 2,
-                                  //   borderColor: Colors.transparent,
-                                  //   borderWidth: 0,
-                                  //   borderRadius: 0,
-                                  //   margin: EdgeInsetsDirectional.fromSTEB(
-                                  //       12, 4, 12, 4),
-                                  //   hidesUnderline: true,
-                                  // ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 10, 0),
-                                    child: Text(
-                                      'Fecha:',
-                                      style: TextStyle(),
-                                    ),
-                                  ),
-                                  // FlutterFlowDropDown(
-                                  //   options: ['Option 1'].toList(),
-                                  //   onChanged: (val) =>
-                                  //       setState(() => dropDownValue2 = val),
-                                  //   width: 110,
-                                  //   height: 50,
-                                  //   textStyle: TextStyle(
-                                  //     fontFamily: 'Poppins',
-                                  //     color: Colors.black,
-                                  //   ),
-                                  //   hintText: 'Please select...',
-                                  //   fillColor: Colors.white,
-                                  //   elevation: 2,
-                                  //   borderColor: Colors.transparent,
-                                  //   borderWidth: 0,
-                                  //   borderRadius: 0,
-                                  //   margin: EdgeInsetsDirectional.fromSTEB(
-                                  //       12, 4, 12, 4),
-                                  //   hidesUnderline: true,
-                                  // ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 10, 0),
-                                    child: Text(
-                                      'Precio Min.:',
-                                      style: TextStyle(),
-                                    ),
-                                  ),
-                                  Text(
-                                    '\$100.000',
-                                    style: TextStyle(),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 10, 0),
-                                    child: Text(
-                                      'Precio Máx.:',
-                                      style: TextStyle(),
-                                    ),
-                                  ),
-                                  Text(
-                                    '\$100.000',
-                                    style: TextStyle(),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
+                        //   child: Row(
+                        //     mainAxisSize: MainAxisSize.max,
+                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //     children: [
+                        //       Row(
+                        //         mainAxisSize: MainAxisSize.max,
+                        //         children: [
+                        //           Padding(
+                        //             padding: EdgeInsetsDirectional.fromSTEB(
+                        //                 0, 0, 10, 0),
+                        //             child: Text(
+                        //               'Lugar:',
+                        //               style: TextStyle(),
+                        //             ),
+                        //           ),
+                        //           // FlutterFlowDropDown(
+                        //           //   options: ['Option 1'].toList(),
+                        //           //   onChanged: (val) =>
+                        //           //       setState(() => dropDownValue1 = val),
+                        //           //   width: 110,
+                        //           //   height: 50,
+                        //           //   textStyle: TextStyle(
+                        //           //     fontFamily: 'Poppins',
+                        //           //     color: Colors.black,
+                        //           //   ),
+                        //           //   hintText: 'Please select...',
+                        //           //   fillColor: Colors.white,
+                        //           //   elevation: 2,
+                        //           //   borderColor: Colors.transparent,
+                        //           //   borderWidth: 0,
+                        //           //   borderRadius: 0,
+                        //           //   margin: EdgeInsetsDirectional.fromSTEB(
+                        //           //       12, 4, 12, 4),
+                        //           //   hidesUnderline: true,
+                        //           // ),
+                        //         ],
+                        //       ),
+                        //       Row(
+                        //         mainAxisSize: MainAxisSize.max,
+                        //         children: [
+                        //           Padding(
+                        //             padding: EdgeInsetsDirectional.fromSTEB(
+                        //                 0, 0, 10, 0),
+                        //             child: Text(
+                        //               'Fecha:',
+                        //               style: TextStyle(),
+                        //             ),
+                        //           ),
+                        //           // FlutterFlowDropDown(
+                        //           //   options: ['Option 1'].toList(),
+                        //           //   onChanged: (val) =>
+                        //           //       setState(() => dropDownValue2 = val),
+                        //           //   width: 110,
+                        //           //   height: 50,
+                        //           //   textStyle: TextStyle(
+                        //           //     fontFamily: 'Poppins',
+                        //           //     color: Colors.black,
+                        //           //   ),
+                        //           //   hintText: 'Please select...',
+                        //           //   fillColor: Colors.white,
+                        //           //   elevation: 2,
+                        //           //   borderColor: Colors.transparent,
+                        //           //   borderWidth: 0,
+                        //           //   borderRadius: 0,
+                        //           //   margin: EdgeInsetsDirectional.fromSTEB(
+                        //           //       12, 4, 12, 4),
+                        //           //   hidesUnderline: true,
+                        //           // ),
+                        //         ],
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
+                        // Padding(
+                        //   padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
+                        //   child: Row(
+                        //     mainAxisSize: MainAxisSize.max,
+                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //     children: [
+                        //       Row(
+                        //         mainAxisSize: MainAxisSize.max,
+                        //         children: [
+                        //           Padding(
+                        //             padding: EdgeInsetsDirectional.fromSTEB(
+                        //                 0, 0, 10, 0),
+                        //             child: Text(
+                        //               'Precio Min.:',
+                        //               style: TextStyle(),
+                        //             ),
+                        //           ),
+                        //           Text(
+                        //             '\$100.000',
+                        //             style: TextStyle(),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //       Row(
+                        //         mainAxisSize: MainAxisSize.max,
+                        //         children: [
+                        //           Padding(
+                        //             padding: EdgeInsetsDirectional.fromSTEB(
+                        //                 0, 0, 10, 0),
+                        //             child: Text(
+                        //               'Precio Máx.:',
+                        //               style: TextStyle(),
+                        //             ),
+                        //           ),
+                        //           Text(
+                        //             '\$100.000',
+                        //             style: TextStyle(),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -312,7 +312,7 @@ class _SearchState extends State<Search> {
                                   type: PageTransitionType.rightToLeft,
                                   duration: Duration(milliseconds: 500),
                                   reverseDuration: Duration(milliseconds: 500),
-                                  child: EventPreview(),
+                                  child: EventPreview(e),
                                 ),
                               );
                             },
