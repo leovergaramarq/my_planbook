@@ -3,19 +3,19 @@ import 'package:my_planbook/providers/theme_provider.dart';
 import './event_confirm.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EventPreview extends StatefulWidget {
+class EventView extends StatefulWidget {
   dynamic event;
-  EventPreview(this.event, {Key? key}) : super(key: key);
+  EventView(this.event, {Key? key}) : super(key: key);
 
   @override
-  _EventPreviewState createState() => _EventPreviewState(event);
+  _EventViewState createState() => _EventViewState(event);
 }
 
-class _EventPreviewState extends State<EventPreview> {
+class _EventViewState extends State<EventView> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   dynamic event;
 
-  _EventPreviewState(this.event);
+  _EventViewState(this.event);
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class _EventPreviewState extends State<EventPreview> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            event['title'],
+                            event['name'],
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 24,
@@ -99,7 +99,7 @@ class _EventPreviewState extends State<EventPreview> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 10, 0),
                                   child: Text(
-                                    event['organizer'],
+                                    event['provider']['name'],
                                     style: TextStyle(),
                                   ),
                                 ),
@@ -128,7 +128,7 @@ class _EventPreviewState extends State<EventPreview> {
                                       style: TextStyle(),
                                     ),
                                     Text(
-                                      '${event['details']['location']['country']}, ${event['details']['location']['region']}, ${event['details']['location']['city']}',
+                                      '${event['details']['location']['country']}, ${event['details']['location']['city']}',
                                       style: TextStyle(
                                         fontFamily: 'Poppins',
                                         color: Color(0xFF818181),
@@ -386,12 +386,15 @@ class _EventPreviewState extends State<EventPreview> {
                         children: [
                           ElevatedButton(
                             onPressed: () async {
-                              await Navigator.push(
+                              dynamic confirm = await Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => EventConfirm(event),
                                 ),
                               );
+                              print("VIEW****************************************");
+                              print(confirm == 'confirmed');
+                              print(confirm.toString() == 'confirmed');
                             },
                             child: Text('Siguiente'),
                             // options: FFButtonOptions(

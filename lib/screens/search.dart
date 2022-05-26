@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:my_planbook/providers/json_provider.dart';
 import 'package:my_planbook/providers/theme_provider.dart';
 import 'package:my_planbook/widgets/drawer_custom.dart';
-import './event_preview.dart';
+import 'package:my_planbook/widgets/event_preview.dart';
+import 'event_view.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,15 +27,9 @@ class _SearchState extends State<Search> {
   List<dynamic> eventsFilt = [];
 
   void filterEvents(String f) {
-    // print('*****************************************************');
-    // print(f);
     setState(() {
-      eventsFilt = events.where((e) {
-        // print(e['title']);
-        // print('*****************************************************');
-        
-        return e["title"].toString().toLowerCase().trim().contains(f.toLowerCase());
-      }).toList();
+      eventsFilt = events.where((e) => e['name'].toLowerCase().trim().contains(f.toLowerCase()))
+        .toList();
     });
   }
 
@@ -159,9 +154,7 @@ class _SearchState extends State<Search> {
                               IconButton(
                                 splashColor: Colors.transparent,
                                 splashRadius: 30,
-                                //borderWidth: 1,//aqui hay una vaina rara con los iconos revisar*********************************************************************************
                                 iconSize: 40,
-                                //fillColor: Color(0xFF874C9E),
                                 icon: Icon(
                                   Icons.search,
                                   color: Color(0xFFEFEFEF),
@@ -174,124 +167,6 @@ class _SearchState extends State<Search> {
                             ],
                           ),
                         ),
-                        // Padding(
-                        //   padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
-                        //   child: Row(
-                        //     mainAxisSize: MainAxisSize.max,
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: [
-                        //       Row(
-                        //         mainAxisSize: MainAxisSize.max,
-                        //         children: [
-                        //           Padding(
-                        //             padding: EdgeInsetsDirectional.fromSTEB(
-                        //                 0, 0, 10, 0),
-                        //             child: Text(
-                        //               'Lugar:',
-                        //               style: TextStyle(),
-                        //             ),
-                        //           ),
-                        //           // FlutterFlowDropDown(
-                        //           //   options: ['Option 1'].toList(),
-                        //           //   onChanged: (val) =>
-                        //           //       setState(() => dropDownValue1 = val),
-                        //           //   width: 110,
-                        //           //   height: 50,
-                        //           //   textStyle: TextStyle(
-                        //           //     fontFamily: 'Poppins',
-                        //           //     color: Colors.black,
-                        //           //   ),
-                        //           //   hintText: 'Please select...',
-                        //           //   fillColor: Colors.white,
-                        //           //   elevation: 2,
-                        //           //   borderColor: Colors.transparent,
-                        //           //   borderWidth: 0,
-                        //           //   borderRadius: 0,
-                        //           //   margin: EdgeInsetsDirectional.fromSTEB(
-                        //           //       12, 4, 12, 4),
-                        //           //   hidesUnderline: true,
-                        //           // ),
-                        //         ],
-                        //       ),
-                        //       Row(
-                        //         mainAxisSize: MainAxisSize.max,
-                        //         children: [
-                        //           Padding(
-                        //             padding: EdgeInsetsDirectional.fromSTEB(
-                        //                 0, 0, 10, 0),
-                        //             child: Text(
-                        //               'Fecha:',
-                        //               style: TextStyle(),
-                        //             ),
-                        //           ),
-                        //           // FlutterFlowDropDown(
-                        //           //   options: ['Option 1'].toList(),
-                        //           //   onChanged: (val) =>
-                        //           //       setState(() => dropDownValue2 = val),
-                        //           //   width: 110,
-                        //           //   height: 50,
-                        //           //   textStyle: TextStyle(
-                        //           //     fontFamily: 'Poppins',
-                        //           //     color: Colors.black,
-                        //           //   ),
-                        //           //   hintText: 'Please select...',
-                        //           //   fillColor: Colors.white,
-                        //           //   elevation: 2,
-                        //           //   borderColor: Colors.transparent,
-                        //           //   borderWidth: 0,
-                        //           //   borderRadius: 0,
-                        //           //   margin: EdgeInsetsDirectional.fromSTEB(
-                        //           //       12, 4, 12, 4),
-                        //           //   hidesUnderline: true,
-                        //           // ),
-                        //         ],
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Padding(
-                        //   padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
-                        //   child: Row(
-                        //     mainAxisSize: MainAxisSize.max,
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: [
-                        //       Row(
-                        //         mainAxisSize: MainAxisSize.max,
-                        //         children: [
-                        //           Padding(
-                        //             padding: EdgeInsetsDirectional.fromSTEB(
-                        //                 0, 0, 10, 0),
-                        //             child: Text(
-                        //               'Precio Min.:',
-                        //               style: TextStyle(),
-                        //             ),
-                        //           ),
-                        //           Text(
-                        //             '\$100.000',
-                        //             style: TextStyle(),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       Row(
-                        //         mainAxisSize: MainAxisSize.max,
-                        //         children: [
-                        //           Padding(
-                        //             padding: EdgeInsetsDirectional.fromSTEB(
-                        //                 0, 0, 10, 0),
-                        //             child: Text(
-                        //               'Precio Máx.:',
-                        //               style: TextStyle(),
-                        //             ),
-                        //           ),
-                        //           Text(
-                        //             '\$100.000',
-                        //             style: TextStyle(),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -304,61 +179,7 @@ class _SearchState extends State<Search> {
                       scrollDirection: Axis.vertical,
                       children: [...eventsFilt.map((e) => Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                          child: InkWell(
-                            onTap: () async {
-                              await Navigator.push(
-                                context,
-                                PageTransition(
-                                  type: PageTransitionType.rightToLeft,
-                                  duration: Duration(milliseconds: 500),
-                                  reverseDuration: Duration(milliseconds: 500),
-                                  child: EventPreview(e),
-                                ),
-                              );
-                            },
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(4),
-                                    child: Image.network(
-                                      'https://picsum.photos/seed/799/600',
-                                      width: 140,
-                                      height: 100,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(e['title'], style: GoogleFonts.poppins(color: AppColors.grey)),
-                                        Text(
-                                          e['details']['date'],
-                                          style: GoogleFonts.poppins(color: AppColors.grey)
-                                        ),
-                                        Text(
-                                          e['details']['location']['place'],
-                                          style: GoogleFonts.poppins(color: AppColors.grey)
-                                        ),
-                                        // Text(
-                                        //   (e['details']['options'] as List).where(),
-                                        //   style: GoogleFonts.poppins(color: AppColors.grey)
-                                        // ),
-                                        Text('\$50.000 - \$100.000'),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                          child: EventPreview(e),
                         ))
                       ]
                     ),

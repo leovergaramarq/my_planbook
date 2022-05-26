@@ -29,20 +29,24 @@ class DrawerCustom extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ChangeThemeButton(),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Hola,', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400),),
+                          Text('Hola,', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w400),),
                           Text(
-                            '${consumer['firstname']} ${consumer['lastname']}',
-                            style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w500),
+                            consumer['firstname'],
+                            style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
                     ),
+                    Row(
+                      children: [
+                        Icon(Icons.dark_mode_rounded), ChangeThemeButton(),
+                      ],
+                    )
                   ],
                 ),
               ],

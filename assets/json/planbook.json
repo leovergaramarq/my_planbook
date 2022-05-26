@@ -1,164 +1,115 @@
 [
     {
-        "id": "e1",
-        "title": "Reserva de Habitación Hotel",
-        "organizer": "hotelejemplo",
-        "details": {
-            "date": "",
-            "type": "priv",
-            "location": {
-                "country": "Colombia",
-                "region": "Atlántico",
-                "city": "Barranquilla",
-                "address": "Cra. 12 # 67 - 33",
-                "place": "Hotel Ejemplo"
+        "id": 0,
+        "user": "vergaradl",
+        "name": "Sábado 28",
+        "bookings": [
+            {
+                "id": 0,
+                "eventID": 11,
+                "name": "Encuentro Anual de Escritores",
+                "place": "Plaza de la Aduana",
+                "date": "01/12/2022",
+                "option": {
+                    "name": "Opción única",
+                    "description": "Opción estándar para el evento."
+                }
             },
-            "payment": {
-                "currency": "cop",
-                "methods": [
-                    {
-                        "id": "nequi",
-                        "title": "Nequi"
-                    },
-                    {
-                        "id": "bancolombia",
-                        "title": "Bancolombia"
-                    }
-                ]
+            {
+                "id": 1,
+                "eventID": 5,
+                "name": "Lectura Autor José Luis Pinto",
+                "place": "Biblioteca de la Santa Cruz",
+                "date": "01/12/2022",
+                "option": {
+                    "name": "Sala estándar",
+                    "price": 100000,
+                    "description": "Ubicación estándar."
+                }
             },
-            "options": [
-                {
-                    "title": "5 estrellas",
-                    "cost": "paid",
+            {
+                "id": 2,
+                "eventID": 11,
+                "name": "Conferencia con María Álvarez",
+                "place": "Plaza de la Aduana",
+                "date": "01/12/2022",
+                "option": {
+                    "name": "Primera fila",
+                    "description": "Ubicación más próxima a la tarima."
+                }
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "user": "vergaradl",
+        "name": "Planes para Junio",
+        "bookings": [
+            {
+                "id": 0,
+                "eventID": 0,
+                "name": "Reserva de Habitación Hotel",
+                "place": "Gran Hotel Argentino",
+                "date": "01/12/2022",
+                "option": {
+                    "name": "5 estrellas",
                     "price": 800000,
                     "description": "Mejor opción 5 estrellas. Beneficios de 4 estrellas más gimnasio incluido."
-                },
-                {
-                    "title": "4 estrellas",
-                    "cost": "paid",
-                    "price": 750000,
-                    "description": "Opción 4 estrellas. Tres comidas diarias."
-                },
-                {
-                    "title": "3 estrellas",
-                    "cost": "paid",
-                    "price": 650000,
-                    "description": "Opción 3 estrellas. Dos comidas diarias."
-                },
-                {
-                    "title": "2 estrellas",
-                    "cost": "paid",
-                    "price": 600000,
-                    "description": "Opción 2 estrellas. Una comida diaria."
-                },
-                {
-                    "title": "1 estrella",
-                    "cost": "paid",
-                    "price": 550000,
-                    "description": "Opción básica 1 estrella."
                 }
-            ],
-            "description": "Reserva de hotel de 1 a 5 estrellas con duración de hasta 5 noches y todos los servicios garantizados."
-        }
+            },
+            {
+                "id": 1,
+                "eventID": 12,
+                "name": "Concierto de Soda Stereo",
+                "place": "Estadio El Monumental",
+                "date": "01/12/2022",
+                "option": {
+                    "name": "Primera fila",
+                    "price": 100000,
+                    "description": "Ubicación más próxima a la tarima."
+                }
+            }
+        ]
     },
     {
-        "id": "e2",
-        "title": "Boleto para Junior Bucaramanga Primera Clase",
-        "organizer": "juniorfc",
-        "details": {
-            "date": "",
-            "type": "priv",
-            "location": {
-                "country": "Colombia",
-                "region": "Atlántico",
-                "city": "Barranquilla",
-                "address": "Cra. 12 # 67 - 33",
-                "place": "Estadio Metropolitano Roberto Meléndez"
-            },
-            "payment": {
-                "currency": "cop",
-                "methods": [
-                    {
-                        "id": "nequi",
-                        "title": "Nequi"
-                    },
-                    {
-                        "id": "bancolombia",
-                        "title": "Bancolombia"
-                    }
-                ]
-            },
-            "options": [
-                {
-                    "title": "Ubicación Occidental Alta",
-                    "cost": "paid",
-                    "price": 100000,
-                    "description": "Ubicación en gradería occidental alta del estadio."
-                },
-                {
-                    "title": "Ubicación Oriental Baja",
-                    "cost": "paid",
-                    "price": 50000,
-                    "description": "Ubicación en gradería oriental baja del estadio."
-                },
-                {
-                    "title": "Ubicación Tribuna Sur",
-                    "cost": "paid",
-                    "price": 30000,
-                    "description": "Ubicación en tribuna sur del estadio."
+        "id": 2,
+        "user": "breynnerh",
+        "name": "Plan de Vacaciones",
+        "bookings": [
+            {
+                "id": 0,
+                "eventID": 11,
+                "name": "Encuentro Anual de Escritores",
+                "place": "Plaza de la Aduana",
+                "date": "01/12/2022",
+                "option": {
+                    "name": "Opción única",
+                    "description": "Opción estándar para el evento."
                 }
-            ],
-            "description": "Entrada al encuentro Junior vs Bucaramanga en Estadio Metropolitano por el Torneo de Apertura."
-        }
-    },
-    {
-        "id": "e3",
-        "title": "Boleto para Concierto del cuarteto",
-        "organizer": " tu boleta ",
-        "details": {
-            "date": "",
-            "type": "priv",
-            "location": {
-                "country": "Colombia",
-                "region": "Atlántico",
-                "city": "Barranquilla",
-                "address": " Cl. 58 #54-59 ",
-                "place": " Teatro José Consuegra Higgins "
             },
-            "payment": {
-                "currency": "cop",
-                "methods": [
-                    {
-                        "id": "nequi",
-                        "title": "Nequi"
-                    },
-                    {
-                        "id": "bancolombia",
-                        "title": "Bancolombia"
-                    }
-                ]
-            },
-            "options": [
-                {
-                    "title": "primera fila",
-                    "cost": "paid",
+            {
+                "id": 1,
+                "eventID": 5,
+                "name": "Lectura Autor José Luis Pinto",
+                "place": "Biblioteca de la Santa Cruz",
+                "date": "01/12/2022",
+                "option": {
+                    "name": "Sala estándar",
                     "price": 100000,
-                    "description": "ubicación más próxima a la tarima."
-                },
-                {
-                    "title": " Sección principal del reciento ",
-                    "cost": "paid",
-                    "price": 50000,
-                    "description": "Parte ubicada entre las 5 primeras filas"
-                },
-                {
-                    "title": "Parte posterior",
-                    "cost": "paid",
-                    "price": 30000,
-                    "description": "Ubicación en las filas que van desde la 6 a la 9"
+                    "description": "Ubicación estándar."
                 }
-            ],
-            "description": "Entrada Concierto del Cuarteto de nos en su gira por Colombia ."
-        }
+            },
+            {
+                "id": 2,
+                "eventID": 11,
+                "name": "Conferencia con María Álvarez",
+                "place": "Plaza de la Aduana",
+                "date": "01/12/2022",
+                "option": {
+                    "name": "Primera fila",
+                    "description": "Ubicación más próxima a la tarima."
+                }
+            }
+        ]
     }
 ]

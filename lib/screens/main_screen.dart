@@ -1,4 +1,5 @@
 import 'package:my_planbook/screens/home.dart';
+import 'package:my_planbook/screens/planbooks.dart';
 import 'package:my_planbook/screens/search.dart';
 import 'package:my_planbook/screens/profile.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class _MainScreenState extends State<MainScreen> {
     screens = [
       Search(consumer),
       Home(consumer),
+      // Planbooks(consumer),
       Profile(consumer),
     ];
   }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:my_planbook/providers/json_provider.dart';
-import 'package:my_planbook/screens/event_preview.dart';
+import 'package:my_planbook/screens/event_view.dart';
 import 'package:my_planbook/screens/login.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:my_planbook/screens/profile.dart';
 import 'package:my_planbook/widgets/change_theme_button.dart';
 import 'package:my_planbook/widgets/drawer_custom.dart';
+import 'package:my_planbook/widgets/planbooks_preview.dart';
 import 'package:my_planbook/widgets/recomendation.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,17 +23,30 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  static const int NUM_RECOM = 3;
+
   late PageController pageViewController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   dynamic consumer;
-  late List<dynamic> recom = [];
+  late List<dynamic> recom;
+  late dynamic planbook;
 
   _HomeState(this.consumer) {
+    recom = [];
+    planbook = {};
+
     JsonProvider.loadData(JsonProvider.EVENT, (data) => (
       setState(() => (
-        recom = [...(data as List<dynamic>)].sublist(0, 3)
+        recom = (data as List<dynamic>).sublist(0, NUM_RECOM)
       ))
     ));
+
+    JsonProvider.loadData(JsonProvider.PLANBOOK, (data) {
+      setState(() {
+        planbook = (data as List<dynamic>)
+          .firstWhere((p) => p['user'] == consumer['username'], orElse: () => null);
+      });
+    });
   }
 
   @override
@@ -69,8 +84,7 @@ class _HomeState extends State<Home> {
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text('Recomendaciones', style: GoogleFonts.poppins(fontSize: 20),
-                          ),
+                          Text('Recomendaciones', style: GoogleFonts.poppins(fontSize: 20),),
                         ],
                       ),
                       Padding(
@@ -88,183 +102,16 @@ class _HomeState extends State<Home> {
                                   child: PageView(
                                     controller: pageViewController = PageController(initialPage: 0),
                                     scrollDirection: Axis.horizontal,
-                                    children:
-                                    // [...recom.map((r) => Recomendation(r))]
-                                    [
-                                      InkWell(
-                                        onTap: () async {
-                                          await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  EventPreview(null),
-                                            ),
-                                          );
-                                        },
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Image.network(
-                                              'https://picsum.photos/seed/70/600',
-                                              width: double.infinity,
-                                              height: 100,
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                            Text(
-                                              'Nombre Evento',
-                                              style: TextStyle(),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Text(
-                                                  'Lugar',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  'Fecha',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '\$100.000',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      InkWell(
-                                        onTap: () async {
-                                          await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  EventPreview(null),
-                                            ),
-                                          );
-                                        },
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Image.network(
-                                              'https://picsum.photos/seed/70/600',
-                                              width: double.infinity,
-                                              height: 100,
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                            Text(
-                                              'Nombre Evento',
-                                              style: TextStyle(),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Text(
-                                                  'Lugar',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  'Fecha',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '\$100.000',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      InkWell(
-                                        onTap: () async {
-                                          await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  EventPreview(null),
-                                            ),
-                                          );
-                                        },
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Image.network(
-                                              'https://picsum.photos/seed/70/600',
-                                              width: double.infinity,
-                                              height: 100,
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                            Text(
-                                              'Nombre Evento',
-                                              style: TextStyle(),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Text(
-                                                  'Lugar',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  'Fecha',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '\$100.000',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Color(0xFF818181),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
+                                    children: recom.map((r) => Recomendation(r)).toList(),
                                   ),
                                 ),
                                 Align(
                                   alignment: AlignmentDirectional(0, 1),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 10),
+                                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                                     child: SmoothPageIndicator(
-                                      controller: pageViewController =
-                                          PageController(initialPage: 0),
-                                      count: 3,
+                                      controller: pageViewController,
+                                      count: NUM_RECOM,
                                       axisDirection: Axis.horizontal,
                                       onDotClicked: (i) {
                                         pageViewController.animateToPage(
@@ -296,213 +143,11 @@ class _HomeState extends State<Home> {
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text('My Planbook', style: GoogleFonts.poppins(fontSize: 20))
-                        ],
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 200,
-                        child: ListView(
-                          padding: EdgeInsets.zero,
-                          scrollDirection: Axis.vertical,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                              child: InkWell(
-                                onTap: () async {
-                                  // await Navigator.push(
-                                  //   context,
-                                  //   PageTransition(
-                                  //     type: PageTransitionType.rightToLeft,
-                                  //     duration: Duration(milliseconds: 500),
-                                  //     reverseDuration:
-                                  //         Duration(milliseconds: 500),
-                                  //     child: EventPreview(),
-                                  //   ),
-                                  // );
-                                },
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(4),
-                                      child: Image.network(
-                                        'https://picsum.photos/seed/799/600',
-                                        width: 140,
-                                        height: 100,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20, 0, 0, 0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Nombre Evento',
-                                            style: TextStyle(),
-                                          ),
-                                          Text(
-                                            'Fecha',
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF818181),
-                                            ),
-                                          ),
-                                          Text(
-                                            'Lugar',
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF818181),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                              child: InkWell(
-                                onTap: () async {
-                                  // await Navigator.push(
-                                  //   context,
-                                  //   PageTransition(
-                                  //     type: PageTransitionType.rightToLeft,
-                                  //     duration: Duration(milliseconds: 500),
-                                  //     reverseDuration:
-                                  //         Duration(milliseconds: 500),
-                                  //     child: EventPreview(),
-                                  //   ),
-                                  // );
-                                },
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(4),
-                                      child: Image.network(
-                                        'https://picsum.photos/seed/799/600',
-                                        width: 140,
-                                        height: 100,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20, 0, 0, 0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Nombre Evento',
-                                            style: TextStyle(),
-                                          ),
-                                          Text(
-                                            'Fecha',
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF818181),
-                                            ),
-                                          ),
-                                          Text(
-                                            'Lugar',
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF818181),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                              child: InkWell(
-                                onTap: () async {
-                                  // await Navigator.push(
-                                  //   context,
-                                  //   PageTransition(
-                                  //     type: PageTransitionType.rightToLeft,
-                                  //     duration: Duration(milliseconds: 500),
-                                  //     reverseDuration:
-                                  //         Duration(milliseconds: 500),
-                                  //     child: EventPreview(),
-                                  //   ),
-                                  // );
-                                },
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(4),
-                                      child: Image.network(
-                                        'https://picsum.photos/seed/799/600',
-                                        width: 140,
-                                        height: 100,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20, 0, 0, 0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Nombre Evento',
-                                            style: TextStyle(),
-                                          ),
-                                          Text(
-                                            'Fecha',
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF818181),
-                                            ),
-                                          ),
-                                          Text(
-                                            'Lugar',
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF818181),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                  child: planbook != null ? 
+                    planbook.isNotEmpty ? 
+                      PlanbooksPreview(planbook)
+                      : null
+                    : null,
                 ),
               ],
             ),

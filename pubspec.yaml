@@ -79,6 +79,7 @@ flutter:
     - assets/json/provider.json
     - assets/json/event.json
     - assets/json/paymentMethod.json
+    - assets/json/planbook.json
     - assets/img/logo.png
     - assets/img/logo_mp.png
 

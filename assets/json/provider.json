@@ -1,5 +1,13 @@
 [
     {
+        "username": "tuboleta",
+        "name": "Tu Boleta"
+    },
+    {
+        "username": "granhotelargentino",
+        "name": "Gran Hotel Argentino"
+    },
+    {
         "username": "hotelejemplo",
         "name": "Hotel Ejemplo"
     },
@@ -9,6 +17,18 @@
     },
     {
         "username": "juniorfc",
-        "name": "Club Deportivo Popular Junior Fútbol Club S.A."
+        "name": "Club Deportivo Junior"
+    },
+    {
+        "username": "bibsantacruz",
+        "name": "Biblioteca de la Santa Cruz"
+    },
+    {
+        "username": "gobatlantico",
+        "name": "Gobernación del Atlántico"
+    },
+    {
+        "username": "coldeportes",
+        "name": "Coldeportes"
     }
 ]

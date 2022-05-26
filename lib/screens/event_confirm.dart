@@ -89,7 +89,7 @@ class _EventConfirmState extends State<EventConfirm> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            event['title'],
+                            event['name'],
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 24,
@@ -118,7 +118,7 @@ class _EventConfirmState extends State<EventConfirm> {
                                   ),
                                 ),
                                 Text(
-                                  event['organizer'],
+                                  event['provider']['name'],
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     color: Color(0xFF818181),
@@ -249,45 +249,12 @@ class _EventConfirmState extends State<EventConfirm> {
                               Icons.chevron_left,
                               size: 18,
                             ),
-                            // options: FFButtonOptions(
-                            //   width: 120,
-                            //   height: 30,
-                            //   color: Color(0xFF874C9E),
-                            //   textStyle: FlutterFlowTheme.of(context)
-                            //       .subtitle2
-                            //       .override(
-                            //         fontFamily: 'Poppins',
-                            //         color: Colors.white,
-                            //         fontSize: 14,
-                            //       ),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.transparent,
-                            //     width: 1,
-                            //   ),
-                            //   borderRadius: 10,
-                            // ),
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              print('Button pressed ...');
+                              Navigator.pop(context, 'confirmed');
                             },
                             child: Text('Confirmar Pago'),
-                            // options: FFButtonOptions(
-                            //   width: 180,
-                            //   height: 40,
-                            //   color: Color(0xFF874C9E),
-                            //   textStyle: FlutterFlowTheme.of(context)
-                            //       .subtitle2
-                            //       .override(
-                            //         fontFamily: 'Poppins',
-                            //         color: Colors.white,
-                            //       ),
-                            //   borderSide: BorderSide(
-                            //     color: Colors.transparent,
-                            //     width: 1,
-                            //   ),
-                            //   borderRadius: 10,
-                            // ),
                           ),
                         ],
                       ),
