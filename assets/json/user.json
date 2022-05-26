@@ -1,6 +1,7 @@
 [
     {
         "username": "vergaradl",
+        "email": "vergaradl@uninorte.edu.co",
         "password": "123",
         "firstname": "Leonardo",
         "lastname": "Vergara",
@@ -8,6 +9,7 @@
     },
     {
         "username": "breynnerh",
+        "email": "breynnerh@uninorte.edu.co",
         "password": "123",
         "firstname": "Breynner",
         "lastname": "Hurtado",
@@ -15,6 +17,7 @@
     },
     {
         "username": "caleones",
+        "email": "caleones@uninorte.edu.co",
         "password": "123",
         "firstname": "Carlos",
         "lastname": "Leones",

@@ -34,16 +34,12 @@ class _WelcomeState extends State<Welcome> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Container(
-                  width: 100,
-                  height: 100,
-                  child: ChangeThemeButton(),
-                ),
+                Container(),
                 Container(
                   width: 100,
                   height: 100,
                   child: Image.asset(
-                    'assets/img/logo.png',
+                    'assets/img/logo_mp.png',
                     width: 100,
                     height: 100,
                     fit: BoxFit.contain,
@@ -86,11 +82,13 @@ class _WelcomeState extends State<Welcome> {
                             onPressed: () {},
                             icon: Icon(
                               FontAwesomeIcons.google,
+                              color: AppColors.greyDark,
                             ),
                             label: Text('Continuar con Google',
-                                style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w600,
-                                )),
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.greyDark,
+                              )),
                           ),
                         ],
                       ),

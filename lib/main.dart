@@ -4,11 +4,11 @@ import 'package:my_planbook/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  return runApp(MyWidget());
+  return runApp(App());
 }
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
@@ -22,10 +22,6 @@ class MyWidget extends StatelessWidget {
         themeMode: themeProvider.themeMode,
         theme: AppThemes.lightTheme,
         darkTheme: AppThemes.darkTheme,
-        // home: Container(
-        //   width: 200,
-        //   height: 300,
-        // ),
         home: Welcome(),
       );
     }

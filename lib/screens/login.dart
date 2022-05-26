@@ -1,3 +1,4 @@
+import 'package:my_planbook/providers/theme_provider.dart';
 import 'package:my_planbook/screens/main_screen.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,32 @@ class _LogInState extends State<LogIn> {
     passwordVisibility = false;
   }
 
+  void login() {
+    JsonProvider.loadData(JsonProvider.USER, (data) async {
+      List<dynamic> users = data as List<dynamic>;
+      final user = users.firstWhere(
+          (u) => ((u['username'] == textController1.text || u['email'] == textController1.text) &&
+              u['password'] == textController2.text),
+          orElse: () => null);
+
+      if (user == null) return;
+      JsonProvider.loadData(JsonProvider.CONSUMER, (data) async {
+        List<dynamic> consumers = data as List<dynamic>;
+        final cons = consumers.firstWhere((c) => (c['username'] == user['username']));
+        await Navigator.push(
+          context,
+          PageTransition(
+            type: PageTransitionType.fade,
+            duration: Duration(milliseconds: 500),
+            reverseDuration: Duration(milliseconds: 500),
+            child: MainScreen(cons),
+            // child: NavBarPage(initialPage: 'Home'),
+          ),
+        );
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,12 +66,9 @@ class _LogInState extends State<LogIn> {
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 40),
             child: ListView(
-              // mainAxisSize: MainAxisSize.max,
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset(
-                  'assets/img/logo.png',
+                  'assets/img/logo_mp.png',
                   width: 100,
                   height: 100,
                   fit: BoxFit.contain,
@@ -74,7 +98,7 @@ class _LogInState extends State<LogIn> {
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'Email',
+                                  labelText: 'Usuario o email',
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
@@ -132,8 +156,7 @@ class _LogInState extends State<LogIn> {
                                   ),
                                   suffixIcon: InkWell(
                                     onTap: () => setState(
-                                      () => passwordVisibility =
-                                          !passwordVisibility,
+                                      () => passwordVisibility = !passwordVisibility,
                                     ),
                                     child: Icon(
                                       passwordVisibility
@@ -151,7 +174,8 @@ class _LogInState extends State<LogIn> {
                                 onPressed: () {},
                                 child: Text('Restablecer Contraseña',
                                     style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.greyDark
                                     )),
                               ),
                             ],
@@ -160,42 +184,11 @@ class _LogInState extends State<LogIn> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               ElevatedButton(
-                                onPressed: () {
-                                  JsonProvider.loadData(JsonProvider.USER,
-                                      (data) async {
-                                    List<dynamic> users = data as List<dynamic>;
-                                    final user = users.firstWhere(
-                                        (u) => (u['username'] ==
-                                                textController1.text &&
-                                            u['password'] ==
-                                                textController2.text),
-                                        orElse: () => null);
-
-                                    if (user == null) return;
-                                    JsonProvider.loadData(JsonProvider.CONSUMER,
-                                        (data) async {
-                                      List<dynamic> consumers =
-                                          data as List<dynamic>;
-                                      final cons = consumers.firstWhere((c) =>
-                                          (c['username'] == user['username']));
-                                      await Navigator.push(
-                                        context,
-                                        PageTransition(
-                                          type: PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 500),
-                                          reverseDuration:
-                                              Duration(milliseconds: 500),
-                                          child: MainScreen(cons),
-                                          // child: NavBarPage(initialPage: 'Home'),
-                                        ),
-                                      );
-                                    });
-                                  });
-                                },
+                                onPressed: login,
                                 child: Text('Iniciar Sesión',
-                                    style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w600,
-                                    )),
+                                  style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w600,
+                                  )),
                               ),
                               TextButton(
                                 onPressed: () {},

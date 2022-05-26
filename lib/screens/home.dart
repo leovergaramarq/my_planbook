@@ -5,6 +5,7 @@ import 'package:my_planbook/screens/login.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:my_planbook/widgets/change_theme_button.dart';
 import 'package:my_planbook/widgets/drawer_custom.dart';
+import 'package:my_planbook/widgets/recomendation.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -87,15 +88,16 @@ class _HomeState extends State<Home> {
                                   child: PageView(
                                     controller: pageViewController = PageController(initialPage: 0),
                                     scrollDirection: Axis.horizontal,
-                                    children: [...recom.map((r) => InkWell(
+                                    children:
+                                    // [...recom.map((r) => Recomendation(r))]
+                                    [
+                                      InkWell(
                                         onTap: () async {
                                           await Navigator.push(
                                             context,
-                                            PageTransition(
-                                              type: PageTransitionType.rightToLeft,
-                                              duration: Duration(milliseconds: 500),
-                                              reverseDuration: Duration(milliseconds: 500),
-                                              child: EventPreview(r),
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EventPreview(null),
                                             ),
                                           );
                                         },
@@ -109,25 +111,23 @@ class _HomeState extends State<Home> {
                                               fit: BoxFit.fitWidth,
                                             ),
                                             Text(
-                                              r['title'],
+                                              'Nombre Evento',
                                               style: TextStyle(),
                                             ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
                                               children: [
-                                                Flexible(
-                                                  child: ConstrainedBox(
-                                                    constraints: BoxConstraints(maxWidth: 160),
-                                                    child: Text(
-                                                      r['details']['location']['place'],
-                                                      style: GoogleFonts.poppins(color: Color(0xFF818181)),
-                                                      overflow: TextOverflow.ellipsis,
-                                                    ),
+                                                Text(
+                                                  'Lugar',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Poppins',
+                                                    color: Color(0xFF818181),
                                                   ),
                                                 ),
                                                 Text(
-                                                  r['details']['date'],
+                                                  'Fecha',
                                                   style: TextStyle(
                                                     fontFamily: 'Poppins',
                                                     color: Color(0xFF818181),
@@ -144,172 +144,116 @@ class _HomeState extends State<Home> {
                                             ),
                                           ],
                                         ),
-                                      ))
-                                    ]
-                                    // [
-                                    //   InkWell(
-                                    //     onTap: () async {
-                                    //       await Navigator.push(
-                                    //         context,
-                                    //         MaterialPageRoute(
-                                    //           builder: (context) =>
-                                    //               EventPreview(),
-                                    //         ),
-                                    //       );
-                                    //     },
-                                    //     child: Column(
-                                    //       mainAxisSize: MainAxisSize.max,
-                                    //       children: [
-                                    //         Image.network(
-                                    //           'https://picsum.photos/seed/70/600',
-                                    //           width: double.infinity,
-                                    //           height: 100,
-                                    //           fit: BoxFit.fitWidth,
-                                    //         ),
-                                    //         Text(
-                                    //           'Nombre Evento',
-                                    //           style: TextStyle(),
-                                    //         ),
-                                    //         Row(
-                                    //           mainAxisSize: MainAxisSize.max,
-                                    //           mainAxisAlignment:
-                                    //               MainAxisAlignment.spaceEvenly,
-                                    //           children: [
-                                    //             Text(
-                                    //               'Lugar',
-                                    //               style: TextStyle(
-                                    //                 fontFamily: 'Poppins',
-                                    //                 color: Color(0xFF818181),
-                                    //               ),
-                                    //             ),
-                                    //             Text(
-                                    //               'Fecha',
-                                    //               style: TextStyle(
-                                    //                 fontFamily: 'Poppins',
-                                    //                 color: Color(0xFF818181),
-                                    //               ),
-                                    //             ),
-                                    //             Text(
-                                    //               '\$100.000',
-                                    //               style: TextStyle(
-                                    //                 fontFamily: 'Poppins',
-                                    //                 color: Color(0xFF818181),
-                                    //               ),
-                                    //             ),
-                                    //           ],
-                                    //         ),
-                                    //       ],
-                                    //     ),
-                                    //   ),
-                                    //   InkWell(
-                                    //     onTap: () async {
-                                    //       await Navigator.push(
-                                    //         context,
-                                    //         MaterialPageRoute(
-                                    //           builder: (context) =>
-                                    //               EventPreview(),
-                                    //         ),
-                                    //       );
-                                    //     },
-                                    //     child: Column(
-                                    //       mainAxisSize: MainAxisSize.max,
-                                    //       children: [
-                                    //         Image.network(
-                                    //           'https://picsum.photos/seed/70/600',
-                                    //           width: double.infinity,
-                                    //           height: 100,
-                                    //           fit: BoxFit.fitWidth,
-                                    //         ),
-                                    //         Text(
-                                    //           'Nombre Evento',
-                                    //           style: TextStyle(),
-                                    //         ),
-                                    //         Row(
-                                    //           mainAxisSize: MainAxisSize.max,
-                                    //           mainAxisAlignment:
-                                    //               MainAxisAlignment.spaceEvenly,
-                                    //           children: [
-                                    //             Text(
-                                    //               'Lugar',
-                                    //               style: TextStyle(
-                                    //                 fontFamily: 'Poppins',
-                                    //                 color: Color(0xFF818181),
-                                    //               ),
-                                    //             ),
-                                    //             Text(
-                                    //               'Fecha',
-                                    //               style: TextStyle(
-                                    //                 fontFamily: 'Poppins',
-                                    //                 color: Color(0xFF818181),
-                                    //               ),
-                                    //             ),
-                                    //             Text(
-                                    //               '\$100.000',
-                                    //               style: TextStyle(
-                                    //                 fontFamily: 'Poppins',
-                                    //                 color: Color(0xFF818181),
-                                    //               ),
-                                    //             ),
-                                    //           ],
-                                    //         ),
-                                    //       ],
-                                    //     ),
-                                    //   ),
-                                    //   InkWell(
-                                    //     onTap: () async {
-                                    //       await Navigator.push(
-                                    //         context,
-                                    //         MaterialPageRoute(
-                                    //           builder: (context) =>
-                                    //               EventPreview(),
-                                    //         ),
-                                    //       );
-                                    //     },
-                                    //     child: Column(
-                                    //       mainAxisSize: MainAxisSize.max,
-                                    //       children: [
-                                    //         Image.network(
-                                    //           'https://picsum.photos/seed/70/600',
-                                    //           width: double.infinity,
-                                    //           height: 100,
-                                    //           fit: BoxFit.fitWidth,
-                                    //         ),
-                                    //         Text(
-                                    //           'Nombre Evento',
-                                    //           style: TextStyle(),
-                                    //         ),
-                                    //         Row(
-                                    //           mainAxisSize: MainAxisSize.max,
-                                    //           mainAxisAlignment:
-                                    //               MainAxisAlignment.spaceEvenly,
-                                    //           children: [
-                                    //             Text(
-                                    //               'Lugar',
-                                    //               style: TextStyle(
-                                    //                 fontFamily: 'Poppins',
-                                    //                 color: Color(0xFF818181),
-                                    //               ),
-                                    //             ),
-                                    //             Text(
-                                    //               'Fecha',
-                                    //               style: TextStyle(
-                                    //                 fontFamily: 'Poppins',
-                                    //                 color: Color(0xFF818181),
-                                    //               ),
-                                    //             ),
-                                    //             Text(
-                                    //               '\$100.000',
-                                    //               style: TextStyle(
-                                    //                 fontFamily: 'Poppins',
-                                    //                 color: Color(0xFF818181),
-                                    //               ),
-                                    //             ),
-                                    //           ],
-                                    //         ),
-                                    //       ],
-                                    //     ),
-                                    //   ),
-                                    // ],
+                                      ),
+                                      InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EventPreview(null),
+                                            ),
+                                          );
+                                        },
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Image.network(
+                                              'https://picsum.photos/seed/70/600',
+                                              width: double.infinity,
+                                              height: 100,
+                                              fit: BoxFit.fitWidth,
+                                            ),
+                                            Text(
+                                              'Nombre Evento',
+                                              style: TextStyle(),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                Text(
+                                                  'Lugar',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Poppins',
+                                                    color: Color(0xFF818181),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Fecha',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Poppins',
+                                                    color: Color(0xFF818181),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  '\$100.000',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Poppins',
+                                                    color: Color(0xFF818181),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EventPreview(null),
+                                            ),
+                                          );
+                                        },
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Image.network(
+                                              'https://picsum.photos/seed/70/600',
+                                              width: double.infinity,
+                                              height: 100,
+                                              fit: BoxFit.fitWidth,
+                                            ),
+                                            Text(
+                                              'Nombre Evento',
+                                              style: TextStyle(),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                Text(
+                                                  'Lugar',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Poppins',
+                                                    color: Color(0xFF818181),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Fecha',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Poppins',
+                                                    color: Color(0xFF818181),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  '\$100.000',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Poppins',
+                                                    color: Color(0xFF818181),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 Align(

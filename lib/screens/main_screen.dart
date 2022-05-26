@@ -33,16 +33,11 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   title: Text("Pagina 0"),
-      //   elevation: 0,
-      // ),
       key: scaffoldKey,
       body: screens[ind],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: IconThemeData(color: AppColors.white),
         ),
         child: CurvedNavigationBar(
           key: NavigationKey,
