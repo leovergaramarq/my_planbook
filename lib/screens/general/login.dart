@@ -1,6 +1,7 @@
 import 'package:my_planbook/providers/theme_provider.dart';
 import 'package:my_planbook/screens/cons/main_screen.dart';
 import 'package:easy_debounce/easy_debounce.dart';
+import 'package:my_planbook/screens/prov/home_prov.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
@@ -16,8 +17,8 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-  late TextEditingController textController1;
-  late TextEditingController textController2;
+  late TextEditingController userController;
+  late TextEditingController passwordController;
   late bool passwordVisibility;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -25,34 +26,56 @@ class _LogInState extends State<LogIn> {
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
+    userController = TextEditingController();
+    passwordController = TextEditingController();
     passwordVisibility = false;
   }
 
   void login() {
-    JsonProvider.loadData(JsonProvider.USER, (data) async {
+    JsonProvider.loadData(JsonProvider.USER, (data) {
       List<dynamic> users = data as List<dynamic>;
       final user = users.firstWhere(
-          (u) => ((u['username'] == textController1.text || u['email'] == textController1.text) &&
-              u['password'] == textController2.text),
+          (u) => ((u['username'] == userController.text ||
+                  u['email'] == userController.text) &&
+              u['password'] == passwordController.text),
           orElse: () => null);
 
       if (user == null) return;
-      JsonProvider.loadData(JsonProvider.CONSUMER, (data) async {
-        List<dynamic> consumers = data as List<dynamic>;
-        final cons = consumers.firstWhere((c) => (c['username'] == user['username']));
-        await Navigator.push(
-          context,
-          PageTransition(
-            type: PageTransitionType.fade,
-            duration: Duration(milliseconds: 500),
-            reverseDuration: Duration(milliseconds: 500),
-            child: MainScreen(cons),
-            // child: NavBarPage(initialPage: 'Home'),
-          ),
-        );
-      });
+
+      if(user['role'] == 'cons') {
+        JsonProvider.loadData(JsonProvider.CONSUMER, (data) {
+          List<dynamic> consumers = data as List<dynamic>;
+          final cons =
+              consumers.firstWhere((c) => (c['username'] == user['username']));
+          
+          Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.fade,
+              duration: Duration(milliseconds: 500),
+              reverseDuration: Duration(milliseconds: 500),
+              child: MainScreen(cons),
+            ),
+          );
+        });
+        
+      }else if(user['role'] == 'prov') {
+        JsonProvider.loadData(JsonProvider.PROVIDER, (data) {
+          List<dynamic> providers = data as List<dynamic>;
+          final prov =
+              providers.firstWhere((c) => (c['username'] == user['username']));
+          
+          Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.fade,
+              duration: Duration(milliseconds: 500),
+              reverseDuration: Duration(milliseconds: 500),
+              child: HomeProv(prov),
+            ),
+          );
+        });
+      }
     });
   }
 
@@ -89,9 +112,9 @@ class _LogInState extends State<LogIn> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               TextFormField(
-                                controller: textController1,
+                                controller: userController,
                                 onChanged: (_) => EasyDebounce.debounce(
-                                  'textController1',
+                                  'userController',
                                   Duration(milliseconds: 2000),
                                   () => setState(() {}),
                                 ),
@@ -124,9 +147,9 @@ class _LogInState extends State<LogIn> {
                                 keyboardType: TextInputType.emailAddress,
                               ),
                               TextFormField(
-                                controller: textController2,
+                                controller: passwordController,
                                 onChanged: (_) => EasyDebounce.debounce(
-                                  'textController2',
+                                  'passwordController',
                                   Duration(milliseconds: 2000),
                                   () => setState(() {}),
                                 ),
@@ -156,7 +179,8 @@ class _LogInState extends State<LogIn> {
                                   ),
                                   suffixIcon: InkWell(
                                     onTap: () => setState(
-                                      () => passwordVisibility = !passwordVisibility,
+                                      () => passwordVisibility =
+                                          !passwordVisibility,
                                     ),
                                     child: Icon(
                                       passwordVisibility
@@ -174,9 +198,8 @@ class _LogInState extends State<LogIn> {
                                 onPressed: () {},
                                 child: Text('Restablecer Contraseña',
                                     style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColors.greyDark
-                                    )),
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColors.greyDark)),
                               ),
                             ],
                           ),
@@ -186,9 +209,9 @@ class _LogInState extends State<LogIn> {
                               ElevatedButton(
                                 onPressed: login,
                                 child: Text('Iniciar Sesión',
-                                  style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w600,
-                                  )),
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w600,
+                                    )),
                               ),
                               TextButton(
                                 onPressed: () {},

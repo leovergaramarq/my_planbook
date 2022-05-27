@@ -1,104 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:my_planbook/screens/general/login.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_planbook/screens/prov/NewEve.dart';
 import 'package:my_planbook/providers/theme_provider.dart';
 import 'package:my_planbook/screens/general/login.dart';
+import 'package:my_planbook/widgets/drawer_custom.dart';
 import 'package:page_transition/page_transition.dart';
 
-class Proveedor extends StatefulWidget {
-  const Proveedor({Key? key}) : super(key: key);
+class HomeProv extends StatefulWidget {
+  dynamic prov;
+  
+  HomeProv(this.prov, {Key? key}) : super(key: key);
 
   @override
-  _ProveedorWidgetState createState() => _ProveedorWidgetState();
+  _HomeProvState createState() => _HomeProvState(prov);
 }
 
-class _ProveedorWidgetState extends State<Proveedor> {
+class _HomeProvState extends State<HomeProv> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  
+  dynamic prov;
+  _HomeProvState(this.prov);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF874C9E),
+        backgroundColor: AppColors.purple,
         automaticallyImplyLeading: false,
         title: Text(
           'Inicio',
           style: TextStyle(
             fontFamily: 'Poppins',
-            color: AppColors
-                .purple, //Un color*************************************************************************************
+            color: AppColors.purple
           ),
         ),
         actions: [],
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: Colors.blue,
-      drawer: Drawer(
-        elevation: 16,
-        child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(10, 30, 10, 30),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(200, 0, 0, 0),
-                    child: Text(
-                      'Hola, Nombre Usuario',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  ElevatedButton.icon(
-                    onPressed: () async {
-                      await Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.fade,
-                          duration: Duration(milliseconds: 500),
-                          reverseDuration: Duration(milliseconds: 500),
-                          child: LogIn(),
-                        ),
-                      );
-                    },
-                    label: Text('Cerrar Sesión'),
-                    icon: Icon(
-                      Icons.logout,
-                      size: 15,
-                    ),
-                    // options: FFButtonOptions(
-                    //   width: 170,
-                    //   height: 40,
-                    //   color: Color(0xFFEFEFEF),
-                    //   textStyle: TextStyle(
-                    //     fontFamily: 'Poppins',
-                    //     color: AppColors.purpleDark,
-                    //   ),
-                    //   borderSide: BorderSide(
-                    //     color: Colors.transparent,
-                    //     width: 1,
-                    //   ),
-                    //   borderRadius: 12,
-                    // ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: DrawerCustom(prov, 'prov'),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -137,7 +79,7 @@ class _ProveedorWidgetState extends State<Proveedor> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       20, 0, 0, 0),
                                   child: Text(
-                                    'Nombre proveedor ',
+                                    'Nombre HomeProv ',
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
                                       fontSize: 20,
@@ -186,13 +128,13 @@ class _ProveedorWidgetState extends State<Proveedor> {
                                     await Navigator.push(
                                       context,
                                       PageTransition(
-                                        type: PageTransitionType.scale,
+                                        type: PageTransitionType.fade,
                                         duration: Duration(milliseconds: 500),
                                         reverseDuration:
                                             Duration(milliseconds: 500),
                                         /*child: NavBarPage(
                                             initialPage: 'EventPreview'),*/
-                                        child: LogIn(),
+                                        child: Eve(),
                                       ),
                                     );
                                   },
@@ -375,8 +317,18 @@ class _ProveedorWidgetState extends State<Proveedor> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      print('NuevoEventos pressed ...');
+                    onPressed: () async {
+                      await Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 500),
+                          reverseDuration: Duration(milliseconds: 500),
+                          /*child: NavBarPage(
+                                            initialPage: 'EventPreview'),*/
+                          child: Eve(),
+                        ),
+                      );
                     },
                     child: Text('Nuevo Eventos'),
                     // options: FFButtonOptions(

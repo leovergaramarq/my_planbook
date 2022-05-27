@@ -67,7 +67,7 @@ class _SearchState extends State<Search> {
         centerTitle: false,
         elevation: 2,
       ),
-      drawer: DrawerCustom(consumer),
+      drawer: DrawerCustom(consumer, 'cons'),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),

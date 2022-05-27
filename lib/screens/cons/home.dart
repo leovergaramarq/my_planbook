@@ -51,6 +51,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    print(consumer);
 
     return Scaffold(
       appBar: AppBar(
@@ -66,7 +67,7 @@ class _HomeState extends State<Home> {
         centerTitle: false,
         elevation: 2,
       ),
-      drawer: DrawerCustom(consumer),
+      drawer: DrawerCustom(consumer, 'cons'),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
