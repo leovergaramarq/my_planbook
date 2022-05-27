@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_planbook/screens/general/login.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_planbook/screens/prov/NewEve.dart';
 import 'package:my_planbook/providers/theme_provider.dart';
 import 'package:my_planbook/screens/general/login.dart';
 import 'package:page_transition/page_transition.dart';
@@ -33,7 +35,7 @@ class _ProveedorWidgetState extends State<Proveedor> {
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: Colors.blue,
+      //backgroundColor: Ap,
       drawer: Drawer(
         elevation: 16,
         child: Padding(
@@ -69,7 +71,7 @@ class _ProveedorWidgetState extends State<Proveedor> {
                           type: PageTransitionType.fade,
                           duration: Duration(milliseconds: 500),
                           reverseDuration: Duration(milliseconds: 500),
-                          child: LogIn(),
+                          child: Eve(),
                         ),
                       );
                     },
@@ -186,13 +188,13 @@ class _ProveedorWidgetState extends State<Proveedor> {
                                     await Navigator.push(
                                       context,
                                       PageTransition(
-                                        type: PageTransitionType.scale,
+                                        type: PageTransitionType.fade,
                                         duration: Duration(milliseconds: 500),
                                         reverseDuration:
                                             Duration(milliseconds: 500),
                                         /*child: NavBarPage(
                                             initialPage: 'EventPreview'),*/
-                                        child: LogIn(),
+                                        child: Eve(),
                                       ),
                                     );
                                   },
@@ -375,8 +377,18 @@ class _ProveedorWidgetState extends State<Proveedor> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      print('NuevoEventos pressed ...');
+                    onPressed: () async {
+                      await Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 500),
+                          reverseDuration: Duration(milliseconds: 500),
+                          /*child: NavBarPage(
+                                            initialPage: 'EventPreview'),*/
+                          child: Eve(),
+                        ),
+                      );
                     },
                     child: Text('Nuevo Eventos'),
                     // options: FFButtonOptions(

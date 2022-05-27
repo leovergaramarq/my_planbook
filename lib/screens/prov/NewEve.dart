@@ -1,16 +1,15 @@
-import 'package:my_planbook/providers/theme_provider.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class NuevoEvento extends StatefulWidget {
-  const NuevoEvento({Key? key}) : super(key: key);
+class Eve extends StatefulWidget {
+  const Eve({Key? key}) : super(key: key);
 
   @override
   _NuevoEventoWidgetState createState() => _NuevoEventoWidgetState();
 }
 
-class _NuevoEventoWidgetState extends State<NuevoEvento> {
+class _NuevoEventoWidgetState extends State<Eve> {
   late TextEditingController textController10;
   late TextEditingController textController1;
   late TextEditingController textController2;
@@ -27,7 +26,7 @@ class _NuevoEventoWidgetState extends State<NuevoEvento> {
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController(text: 'Nombre  Evento');
+    textController1 = TextEditingController();
     textController2 = TextEditingController();
     textController3 = TextEditingController();
     textController4 = TextEditingController();
@@ -43,26 +42,25 @@ class _NuevoEventoWidgetState extends State<NuevoEvento> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: AppColors.white,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 40),
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset(
-                  'assets/images/logo.png',
+                  'assets/img/logo_mp.png',
                   width: 100,
                   height: 100,
                   fit: BoxFit.contain,
                 ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 200),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 50),
                     child: ListView(
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.vertical,
@@ -95,6 +93,7 @@ class _NuevoEventoWidgetState extends State<NuevoEvento> {
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
+                                        labelText: 'Nombre Proyecto',
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),

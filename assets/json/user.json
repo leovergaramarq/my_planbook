@@ -25,8 +25,10 @@
     },
     {
         "username": "tuboleta",
-        "password": "321",
-        "name": "Tu Boleta",
+        "email": "tuboleta@Gmail.edu.co",
+        "password": "123",
+        "firstname": "Tu boleta",
+        "lastname": "a",
         "role": "prov"
     },
     {
