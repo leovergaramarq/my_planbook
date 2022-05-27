@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_planbook/providers/theme_provider.dart';
 import 'package:my_planbook/widgets/event_option.dart';
-import './event_confirm.dart';
+import 'package:my_planbook/screens/cons/event_confirm.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EventView extends StatefulWidget {

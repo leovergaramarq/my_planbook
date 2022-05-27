@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_planbook/providers/theme_provider.dart';
-import 'package:my_planbook/screens/login.dart';
+import 'package:my_planbook/screens/general/login.dart';
 import 'package:my_planbook/widgets/change_theme_button.dart';
 import 'package:page_transition/page_transition.dart';
 

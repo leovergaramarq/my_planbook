@@ -1,7 +1,7 @@
-import 'package:my_planbook/screens/consumer/home.dart';
-import 'package:my_planbook/screens/consumer/planbooks.dart';
-import 'package:my_planbook/screens/consumer/search.dart';
-import 'package:my_planbook/screens/consumer/profile.dart';
+import 'package:my_planbook/screens/cons/home.dart';
+import 'package:my_planbook/screens/cons/planbooks.dart';
+import 'package:my_planbook/screens/cons/search.dart';
+import 'package:my_planbook/screens/cons/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:my_planbook/providers/theme_provider.dart';

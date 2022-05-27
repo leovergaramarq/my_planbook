@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_planbook/screens/welcome.dart';
+import 'package:my_planbook/screens/general/welcome.dart';
 import 'package:my_planbook/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 

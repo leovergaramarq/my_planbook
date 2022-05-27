@@ -1,5 +1,5 @@
 import 'package:my_planbook/providers/theme_provider.dart';
-import 'package:my_planbook/screens/consumer/main_screen.dart';
+import 'package:my_planbook/screens/cons/main_screen.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
