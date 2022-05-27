@@ -1,7 +1,7 @@
 import 'package:my_planbook/providers/theme_provider.dart';
 
-import '../main.dart';
-import './search.dart';
+import 'package:my_planbook/main.dart';
+import 'package:my_planbook/screens/consumer/search.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -242,7 +242,7 @@ class _EventConfirmState extends State<EventConfirm> {
                         children: [
                           ElevatedButton.icon(
                             onPressed: () async {
-                              Navigator.pop(context);
+                              Navigator.pop(context, false);
                             },
                             label: Text('Regresar'),
                             icon: Icon(

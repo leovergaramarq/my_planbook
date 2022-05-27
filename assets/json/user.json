@@ -22,5 +22,53 @@
         "firstname": "Carlos",
         "lastname": "Leones",
         "role": "cons"
+    },
+    {
+        "username": "tuboleta",
+        "password": "321",
+        "name": "Tu Boleta",
+        "role": "prov"
+    },
+    {
+        "username": "granhotelargentino",
+        "password": "321",
+        "name": "Gran Hotel Argentino",
+        "role": "prov"
+    },
+    {
+        "username": "hotelejemplo",
+        "password": "321",
+        "name": "Hotel Ejemplo",
+        "role": "prov"
+    },
+    {
+        "username": "cineejemplo",
+        "password": "321",
+        "name": "Cine Cuevana",
+        "role": "prov"
+    },
+    {
+        "username": "juniorfc",
+        "password": "321",
+        "name": "Club Deportivo Junior",
+        "role": "prov"
+    },
+    {
+        "username": "bibsantacruz",
+        "password": "321",
+        "name": "Biblioteca de la Santa Cruz",
+        "role": "prov"
+    },
+    {
+        "username": "gobatlantico",
+        "password": "321",
+        "name": "Gobernación del Atlántico",
+        "role": "prov"
+    },
+    {
+        "username": "coldeportes",
+        "password": "321",
+        "name": "Coldeportes",
+        "role": "prov"
     }
 ]

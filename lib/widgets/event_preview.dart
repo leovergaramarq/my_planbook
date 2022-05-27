@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_planbook/providers/theme_provider.dart';
-import 'package:my_planbook/screens/event_view.dart';
+import 'package:my_planbook/screens/consumer/event_view.dart';
 import 'package:page_transition/page_transition.dart';
 
 class EventPreview extends StatelessWidget {

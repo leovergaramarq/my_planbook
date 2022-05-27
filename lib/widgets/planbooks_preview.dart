@@ -22,7 +22,7 @@ class PlanbooksPreview extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.zero,
             scrollDirection: Axis.vertical,
-            children: [...planbook['bookings'].map((b) => PlanbooksPreviewElem(b))]
+            children: planbook['bookings'].map<Widget>((b) => PlanbooksPreviewElem(b)).toList()
           ),
         ),
       ],

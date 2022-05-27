@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_planbook/providers/json_provider.dart';
-import 'package:my_planbook/screens/event_view.dart';
+import 'package:my_planbook/screens/consumer/event_view.dart';
 import 'package:my_planbook/screens/login.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:my_planbook/screens/profile.dart';
+import 'package:my_planbook/screens/consumer/profile.dart';
 import 'package:my_planbook/widgets/change_theme_button.dart';
 import 'package:my_planbook/widgets/drawer_custom.dart';
 import 'package:my_planbook/widgets/planbooks_preview.dart';
