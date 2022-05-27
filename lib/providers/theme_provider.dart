@@ -64,6 +64,7 @@ class AppColors {
   static const purpleDark = Color(0xff763B8D);
   static final red = Colors.red.shade600;
   static final grey = Colors.grey.shade500;
+  static final greyLight = Colors.grey.shade200;
   static final greyDark = Colors.grey.shade700;
   static const black = Color.fromARGB(255, 27, 27, 27);
   static const white = Colors.white;

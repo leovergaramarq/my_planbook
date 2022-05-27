@@ -57,7 +57,7 @@ class EventOption extends StatelessWidget {
             RichText(
               text: TextSpan(
                 children: [
-                  TextSpan(text: 'Descripción: ', style: TextStyle(color: AppColors.black)),
+                  TextSpan(text: 'Descripción: ', style: Theme.of(context).textTheme.bodyText2),
                   TextSpan(
                     text: option['description'],
                     style: TextStyle(
@@ -73,10 +73,13 @@ class EventOption extends StatelessWidget {
       )
     );
 
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: info,
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(12, 8, 12, 8),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: info,
+      ),
     );
   }
 }

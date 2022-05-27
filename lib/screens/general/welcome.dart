@@ -86,7 +86,7 @@ class _WelcomeState extends State<Welcome> {
                             ),
                             label: Text('Continuar con Google',
                               style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w500,
                                 color: AppColors.greyDark,
                               )),
                           ),

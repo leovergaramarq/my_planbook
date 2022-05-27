@@ -15,8 +15,11 @@ class EventView extends StatefulWidget {
 class _EventViewState extends State<EventView> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   dynamic event;
+  late int selectedOption;
 
-  _EventViewState(this.event);
+  _EventViewState(this.event) {
+    selectedOption = -1;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +101,7 @@ class _EventViewState extends State<EventView> {
             RichText(
               text: TextSpan(
                 children: [
-                  TextSpan(text: 'Descripción: ', style: TextStyle(color: AppColors.black)),
+                  TextSpan(text: 'Descripción: ', style: Theme.of(context).textTheme.bodyText2),
                   TextSpan(
                     text: event['details']['description'],
                     style: TextStyle(
@@ -114,12 +117,22 @@ class _EventViewState extends State<EventView> {
       )
     );
 
-    // Map<int, dynamic> options = event['details']['options'].toList().asMap();
     List<dynamic> eventOp = event['details']['options'].toList();
     int n = eventOp.length;
 
     List<Widget> options = [];
     for(int i = 0; i < n; i++) options.add(EventOption(eventOp[i], i + 1));
+
+    Widget ListOptions = Card(
+      child: ListView.builder(
+          itemCount: options.length,
+          itemBuilder: (context, index) => ListTile(
+            title: options[index],
+            tileColor: selectedOption == index ? AppColors.greyLight : null,
+            onTap: () => setState(() => (selectedOption = index)),
+          ),
+        ),
+    );
 
     return Scaffold(
       key: scaffoldKey,
@@ -206,21 +219,11 @@ class _EventViewState extends State<EventView> {
                             width: 100,
                             height: 260,
                             decoration: BoxDecoration(
-                              color: AppColors.white,
+                              // color: AppColors.white,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(14, 12, 14, 12),
-                              child: ListView(
-                                scrollDirection: Axis.vertical,
-                                children: options.map((o) => (
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 14),
-                                    child: o
-                                  )
-                                )).toList(),
-                              ),
-                            ),
+                            // child: ListView(children: options),
+                            child: ListOptions
                           ),
                         ],
                       ),
