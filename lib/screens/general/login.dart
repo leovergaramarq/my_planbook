@@ -63,7 +63,7 @@ class _LogInState extends State<LogIn> {
         JsonProvider.loadData(JsonProvider.PROVIDER, (data) {
           List<dynamic> providers = data as List<dynamic>;
           final prov =
-              providers.firstWhere((c) => (c['username'] == user['username']));
+              providers.firstWhere((p) => (p['username'] == user['username']));
           
           Navigator.push(
             context,
@@ -87,7 +87,7 @@ class _LogInState extends State<LogIn> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 40),
+            padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
             child: ListView(
               children: [
                 Image.asset(
@@ -97,7 +97,7 @@ class _LogInState extends State<LogIn> {
                   fit: BoxFit.contain,
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(40, 0, 40, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
                   child: Form(
                     key: formKey,
                     autovalidateMode: AutovalidateMode.disabled,

@@ -42,7 +42,7 @@
     },
     {
         "id": 1,
-        "user": "vergaradl",
+        "user": "caleones",
         "name": "Planes para Junio",
         "bookings": [
             {
@@ -107,6 +107,37 @@
                 "date": "01/12/2022",
                 "option": {
                     "name": "Primera fila",
+                    "description": "Ubicación más próxima a la tarima."
+                }
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "user": "vergaradl",
+        "name": "Planes para Junio",
+        "bookings": [
+            {
+                "id": 0,
+                "eventID": 0,
+                "name": "Reserva de Habitación Hotel",
+                "place": "Gran Hotel Argentino",
+                "date": "01/12/2022",
+                "option": {
+                    "name": "5 estrellas",
+                    "price": 800000,
+                    "description": "Mejor opción 5 estrellas. Beneficios de 4 estrellas más gimnasio incluido."
+                }
+            },
+            {
+                "id": 1,
+                "eventID": 12,
+                "name": "Concierto de Soda Stereo",
+                "place": "Estadio El Monumental",
+                "date": "01/12/2022",
+                "option": {
+                    "name": "Primera fila",
+                    "price": 100000,
                     "description": "Ubicación más próxima a la tarima."
                 }
             }

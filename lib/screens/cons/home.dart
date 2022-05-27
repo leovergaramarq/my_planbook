@@ -51,7 +51,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    print(consumer);
 
     return Scaffold(
       appBar: AppBar(
@@ -147,8 +146,8 @@ class _HomeState extends State<Home> {
                   child: planbook != null ? 
                     planbook.isNotEmpty ? 
                       PlanbooksPreview(planbook)
-                      : null
-                    : null,
+                      :null
+                    :null,
                 ),
               ],
             ),

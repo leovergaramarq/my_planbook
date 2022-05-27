@@ -69,7 +69,7 @@ class _ProfileState extends State<Profile> {
                             shape: BoxShape.circle,
                           ),
                           child: Image.network(
-                            'https://picsum.photos/seed/777/600',
+                            'https://picsum.photos/id/1025/4951/3301',
                           ),
                         ),
                         Padding(

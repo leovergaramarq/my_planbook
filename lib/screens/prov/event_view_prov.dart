@@ -7,22 +7,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
-class EventView extends StatefulWidget {
+class EventViewProv extends StatefulWidget {
   dynamic event;
-  EventView(this.event, {Key? key}) : super(key: key);
+  EventViewProv(this.event, {Key? key}) : super(key: key);
 
   @override
-  _EventViewState createState() => _EventViewState(event);
+  _EventViewProvState createState() => _EventViewProvState(event);
 }
 
-class _EventViewState extends State<EventView> {
+class _EventViewProvState extends State<EventViewProv> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   dynamic event;
-  late int selOption;
 
-  _EventViewState(this.event) {
-    selOption = -1;
-  }
+  _EventViewProvState(this.event);
 
   @override
   Widget build(BuildContext context) {
@@ -144,20 +141,7 @@ class _EventViewState extends State<EventView> {
     Widget ListOptions = Card(
       child: ListView.builder(
         itemCount: options.length,
-        itemBuilder: (_, index) {
-          final tp = Provider.of<ThemeProvider>(context);
-
-          return ListTile(
-            title: options[index],
-            tileColor: selOption == index ? 
-              tp.isDarkTheme ? AppColors.greyDark : AppColors.greyLight
-              : null,
-            
-            onTap: () => setState(() => (
-              selOption = selOption == index ? -1 : index
-            )),
-          );
-        }
+        itemBuilder: (_, index) => ListTile(title: options[index])
       ),
     );
 
@@ -253,37 +237,6 @@ class _EventViewState extends State<EventView> {
                             ),
                             // child: ListView(children: options),
                             child: ListOptions
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          ElevatedButton(
-                            onPressed: selOption != -1 ? 
-                            () async {
-                              bool confirm = await Navigator.push(
-                                context,
-                                PageTransition(
-                                  type: PageTransitionType.scale,
-                                  alignment: Alignment.bottomCenter,
-                                  duration: Duration(milliseconds: 500),
-                                  reverseDuration: Duration(milliseconds: 500),
-                                  child: EventConfirm(
-                                    event, 
-                                    selOption, 
-                                    currency
-                                  ),
-                                ),
-                              );
-                              if(confirm) Navigator.pop(context);
-                            }
-                            :null,
-                            child: Text('Siguiente'),
                           ),
                         ],
                       ),

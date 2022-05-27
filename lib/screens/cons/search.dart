@@ -19,19 +19,12 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   late String dropDownValue1;
   late String dropDownValue2;
-  late TextEditingController textController;
+  late TextEditingController searchController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   dynamic consumer;
   List<dynamic> events = [];
   List<dynamic> eventsFilt = [];
-
-  void filterEvents(String f) {
-    setState(() {
-      eventsFilt = events.where((e) => e['name'].toLowerCase().trim().contains(f.toLowerCase()))
-        .toList();
-    });
-  }
 
   _SearchState(this.consumer) {
     JsonProvider.loadData(JsonProvider.EVENT, (data) {
@@ -45,8 +38,25 @@ class _SearchState extends State<Search> {
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
+    searchController = TextEditingController();
   }
+
+  void filterEvents(String f) {
+    setState(() {
+      eventsFilt = events.where((e) => e['name'].toLowerCase().trim().contains(f.toLowerCase()))
+        .toList();
+    });
+  }
+
+  void clearSearch() {
+    setState(
+        () {
+          searchController.clear();
+          // filterEvents('');
+          eventsFilt = [...events];
+        },
+    );
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +82,7 @@ class _SearchState extends State<Search> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
+            padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -95,11 +105,11 @@ class _SearchState extends State<Search> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10, 0, 10, 0),
                                   child: TextFormField(
-                                    controller: textController,
+                                    controller: searchController,
                                     onChanged: (_) {
                                       filterEvents(_);
                                       return EasyDebounce.debounce(
-                                        'textController',
+                                        'searchController',
                                         Duration(milliseconds: 2000),
                                         () => setState(() {
                                           //print("ajsjhs");
@@ -112,7 +122,7 @@ class _SearchState extends State<Search> {
                                       hintText: 'Introduzca su búsqueda',
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0x00000000),
+                                          color: AppColors.greyLight,
                                           width: 1,
                                         ),
                                         borderRadius: const BorderRadius.only(
@@ -122,7 +132,7 @@ class _SearchState extends State<Search> {
                                       ),
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0x00000000),
+                                          color: AppColors.greyDark,
                                           width: 1,
                                         ),
                                         borderRadius: const BorderRadius.only(
@@ -133,15 +143,12 @@ class _SearchState extends State<Search> {
                                       contentPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               20, 0, 20, 0),
-                                      suffixIcon: textController.text.isNotEmpty
+                                      suffixIcon: searchController.text.isNotEmpty
                                           ? InkWell(
-                                              onTap: () => setState(
-                                                () => textController.clear(),
-                                                // () {},
-                                              ),
+                                              onTap: clearSearch,
                                               child: Icon(
                                                 Icons.clear,
-                                                color: Color(0xFF757575),
+                                                color: AppColors.greyDark,
                                                 size: 22,
                                               ),
                                             )
@@ -157,7 +164,7 @@ class _SearchState extends State<Search> {
                                 iconSize: 40,
                                 icon: Icon(
                                   Icons.search,
-                                  color: Color(0xFFEFEFEF),
+                                  color: AppColors.grey,
                                   size: 20,
                                 ),
                                 onPressed: () {
@@ -177,11 +184,10 @@ class _SearchState extends State<Search> {
                     child: ListView(
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.vertical,
-                      children: [...eventsFilt.map((e) => Padding(
+                      children: eventsFilt.map((e) => Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                          child: EventPreview(e),
-                        ))
-                      ]
+                          child: EventPreview(e, 'cons'),
+                        )).toList()
                     ),
                   ),
                 ),

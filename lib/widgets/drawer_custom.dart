@@ -56,7 +56,10 @@ class DrawerCustom extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 TextButton.icon(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: ()  {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                  },
                   label: Text('Cerrar Sesión',
                       style: GoogleFonts.poppins(
                         fontSize: 16,

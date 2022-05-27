@@ -2,28 +2,199 @@ import 'package:my_planbook/providers/theme_provider.dart';
 
 import 'package:my_planbook/main.dart';
 import 'package:my_planbook/screens/cons/search.dart';
+import 'package:my_planbook/widgets/payment_method.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class EventConfirm extends StatefulWidget {
 
   dynamic event;
-  EventConfirm(this.event, {Key? key}) : super(key: key);
+  final int selOption;
+  final String currency;
+
+  EventConfirm(this.event, this.selOption, this.currency, {Key? key}) : super(key: key);
 
   @override
-  _EventConfirmState createState() => _EventConfirmState(event);
+  _EventConfirmState createState() => _EventConfirmState(event, selOption, currency);
 }
 
 class _EventConfirmState extends State<EventConfirm> {
   late String radioButtonValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   dynamic event;
+  final int selOption;
+  late int selPM;
+  late String currency;
 
-  _EventConfirmState(this.event);
+  _EventConfirmState(this.event, this.selOption, this.currency) {
+    selPM = -1;
+  }
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> info = [];
+
+    info.add(
+      Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Flexible(
+              child: Text(
+                event['name'],
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 24,
+                ),
+              )
+            ),
+          ],
+        ),
+      )
+    );
+
+    info.add(
+      Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Organizador: ',
+                  style: TextStyle(fontSize: 16),
+                ),
+                Text(
+                  event['provider']['name'],
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    color: AppColors.grey,
+                    fontSize: 16
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text('Lugar: ', style: TextStyle(fontSize: 16)),
+                Text(
+                  event['details']['location']['place'],
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    color: AppColors.grey,
+                    fontSize: 16
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      )
+    );
+
+    info.add(
+      Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Opción ${selOption + 1}',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 18,
+              ),
+            ),
+            Text(
+              event['details']['options'][selOption]['name'],
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                color: AppColors.grey,
+                fontSize: 16
+              ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text('Valor: ', style: TextStyle(fontSize: 16)),
+                Text(
+                  event['details']['type'] == 'priv' ?
+                    '${event['details']['options'][selOption]['price']} ${currency}'
+                    :'Gratuito',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    color: AppColors.grey,
+                    fontSize: 16
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+      )
+    );
+
+    if(event['details']['type'] == 'priv') {
+      List<Widget> pms = (event['details']['payment']['methods'] as List<dynamic>)
+      .map((pm) => (PaymentMethod(pm))).toList();
+      
+      Widget ListPM = Card(
+        child: ListView.builder(
+            itemCount: pms.length,
+            itemBuilder: (_, index) {
+              final tp = Provider.of<ThemeProvider>(context);
+
+              return ListTile(
+                title: pms[index],
+                tileColor: selPM == index ? 
+                  tp.isDarkTheme ? AppColors.greyDark : AppColors.greyLight
+                  : null,
+                
+                onTap: () => setState(() => (
+                  selPM = selPM == index ? -1 : index
+                )),
+              );
+            },
+          ),
+      );
+
+      info.add(
+        Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'Métodos de Pago',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 24,
+                ),
+              ),
+              Container(
+                width: 100,
+                height: 140,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: ListPM
+              ),
+            ],
+          ),
+        )
+      );
+    }
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -32,35 +203,24 @@ class _EventConfirmState extends State<EventConfirm> {
         leading: IconButton(
           splashColor: Colors.transparent,
           splashRadius: 30,
-          //borderWidth: 1,//aqui hay una vaina rara con los iconos revisar*********************************************************************************
           iconSize: 60,
           icon: Icon(
             Icons.arrow_back,
-            color: Color(0xFFEFEFEF),
+            color: AppColors.white,
             size: 30,
           ),
           onPressed: () async {
-            Navigator.pop(
-              context,
-              // PageTransition(
-              //   type: PageTransitionType.leftToRight,
-              //   duration: Duration(milliseconds: 500),
-              //   reverseDuration: Duration(milliseconds: 500),
-              //   //child: NavBarPage(initialPage: 'Search'),
-              //   child: Search(null),
-              // ),
-            );
+            Navigator.pop(context);
           },
         ),
         title: Text(
           'Evento',
           style: TextStyle(
             fontFamily: 'Poppins',
-            color: Colors.white,
+            color: AppColors.white,
             fontSize: 22,
           ),
         ),
-        actions: [],
         centerTitle: false,
         elevation: 2,
       ),
@@ -79,189 +239,47 @@ class _EventConfirmState extends State<EventConfirm> {
                 fit: BoxFit.cover,
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
                 child: Column(
-                  mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            event['name'],
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 24,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 10, 0),
-                                  child: Text(
-                                    'Organizador:',
-                                    style: TextStyle(),
-                                  ),
-                                ),
-                                Text(
-                                  event['provider']['name'],
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFF818181),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 10, 0),
-                                  child: Text(
-                                    'Lugar:',
-                                    style: TextStyle(),
-                                  ),
-                                ),
-                                Text(
-                                  event['details']['location']['place'],
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFF818181),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                        children: info,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Opción 1',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 18,
-                            ),
-                          ),
-                          Text(
-                            'Nombre Opción',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              color: Color(0xFF818181),
-                            ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-                                child: Text(
-                                  'Precio:',
-                                  style: TextStyle(),
-                                ),
-                              ),
-                              Text(
-                                '\$10000',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  color: Color(0xFF818181),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    // Padding(
-                    //   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                    //   child: Column(
-                    //     mainAxisSize: MainAxisSize.max,
-                    //     crossAxisAlignment: CrossAxisAlignment.stretch,
-                    //     children: [
-                    //       Text(
-                    //         'Métodos de Pago',
-                    //         style: TextStyle(
-                    //           fontFamily: 'Poppins',
-                    //           fontSize: 18,
-                    //         ),
-                    //       ),
-                    //       Radio(
-                    //         groupValue:
-                    //             ['Nequi', 'Bancolombia', 'Daviplata'].toList(),
-                    //         value: 'Nequi',
-                    //         onChanged: (value) {
-                    //           setState(
-                    //               () => radioButtonValue = value.toString());
-                    //         },
-                    //         splashRadius: 25,
-                    //         // textStyle: TextStyle(
-                    //         //   fontFamily: 'Poppins',//NO se que chingados con los radio button******************************************************************************************************
-                    //         //   color: Colors.black,
-                    //         // ),
-                    //         //buttonPosition: RadioButtonPosition.left,
-                    //         //direction: Axis.vertical,
-                    //         hoverColor: Colors.blue,
-                    //         focusColor: Color(0x8A000000),
-                    //         toggleable: false,
-                    //         //horizontalAlignment: WrapAlignment.start,
-                    //         //verticalAlignment: WrapCrossAlignment.start,
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          ElevatedButton.icon(
-                            onPressed: () async {
-                              Navigator.pop(context, false);
-                            },
-                            label: Text('Regresar'),
-                            icon: Icon(
-                              Icons.chevron_left,
-                              size: 18,
-                            ),
-                          ),
+                          // ElevatedButton.icon(
+                          //   onPressed: () async {
+                          //     Navigator.pop(context, false);
+                          //   },
+                          //   label: Text('Regresar'),
+                          //   icon: Icon(
+                          //     Icons.chevron_left,
+                          //     size: 18,
+                          //   ),
+                          // ),
                           ElevatedButton(
-                            onPressed: () {
-                              Navigator.pop(context, 'confirmed');
-                            },
-                            child: Text('Confirmar Pago'),
+                            onPressed: selPM != -1  || event['details']['type'] == 'com' ?
+                            () {
+                              Navigator.pop(context, true);
+                            }:null,
+                            child: Text(
+                              'Confirmar${event['details']['type'] == 'priv' ? ' Pago' : ''}'
+                            ),
                           ),
                         ],
                       ),
-                    ),
+                    )
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),

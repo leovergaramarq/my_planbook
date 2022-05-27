@@ -5,8 +5,9 @@ class EventOption extends StatelessWidget {
   
   dynamic option;
   int numOp;
+  String currency;
 
-  EventOption(this.option, this.numOp, {Key? key}) : super(key: key);
+  EventOption(this.option, this.numOp, this.currency, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +38,9 @@ class EventOption extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Text('Precio: '),
+            Text('Valor: '),
             Text(
-              '\$${option['price']}',
+              '${option['price']} ${currency}',
               style: TextStyle(
                 fontFamily: 'Poppins',
                 color: AppColors.grey,
@@ -57,12 +58,19 @@ class EventOption extends StatelessWidget {
             RichText(
               text: TextSpan(
                 children: [
-                  TextSpan(text: 'Descripción: ', style: Theme.of(context).textTheme.bodyText2),
+                  TextSpan(
+                    text: 'Descripción: ', 
+                    style: TextStyle(
+                      color: Theme.of(context).textTheme.bodyText2?.color,
+                      fontSize: 16
+                    )
+                  ),
                   TextSpan(
                     text: option['description'],
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: AppColors.grey,
+                      fontSize: 16
                     ),
                   ),
                 ]

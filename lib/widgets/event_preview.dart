@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_planbook/providers/theme_provider.dart';
 import 'package:my_planbook/screens/cons/event_view.dart';
+import 'package:my_planbook/screens/prov/event_view_prov.dart';
 import 'package:page_transition/page_transition.dart';
 
 class EventPreview extends StatelessWidget {
   dynamic event;
-  EventPreview(this.event, {Key? key}) : super(key: key);
+  String role;
+
+  EventPreview(this.event, this.role, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class EventPreview extends StatelessWidget {
             type: PageTransitionType.rightToLeft,
             duration: Duration(milliseconds: 500),
             reverseDuration: Duration(milliseconds: 500),
-            child: EventView(event),
+            child: role == 'cons' ? EventView(event) : EventViewProv(event) ,
           ),
         );
       },

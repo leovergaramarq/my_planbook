@@ -15,7 +15,7 @@
                 "place": "Gran Hotel Argentino"
             },
             "payment": {
-                "currency": "usd",
+                "currency": "USD",
                 "methods": [
                     {
                         "id": 3,
@@ -26,27 +26,27 @@
             "options": [
                 {
                     "name": "5 estrellas",
-                    "price": 800000,
+                    "price": 800,
                     "description": "Mejor opción 5 estrellas. Beneficios de 4 estrellas mas gimnasio incluido."
                 },
                 {
                     "name": "4 estrellas",
-                    "price": 750000,
+                    "price": 750,
                     "description": "Opción 4 estrellas. Tres comidas diarias."
                 },
                 {
                     "name": "3 estrellas",
-                    "price": 650000,
+                    "price": 650,
                     "description": "Opción 3 estrellas. Dos comidas diarias."
                 },
                 {
                     "name": "2 estrellas",
-                    "price": 600000,
+                    "price": 600,
                     "description": "Opción 2 estrellas. Una comida diaria."
                 },
                 {
                     "name": "1 estrella",
-                    "price": 550000,
+                    "price": 550,
                     "description": "Opción básica 1 estrella."
                 }
             ],
@@ -70,7 +70,7 @@
                 "place": "Estadio Metropolitano Roberto Meléndez"
             },
             "payment": {
-                "currency": "cop",
+                "currency": "COP",
                 "methods": [
                     {
                         "id": 0,
@@ -127,7 +127,7 @@
                 "place": "Teatro José Consuegra Higgins"
             },
             "payment": {
-                "currency": "cop",
+                "currency": "COP",
                 "methods": [
                     {
                         "id": 0,
@@ -184,7 +184,7 @@
                 "place": "Hotel Ejemplo"
             },
             "payment": {
-                "currency": "cop",
+                "currency": "COP",
                 "methods": [
                     {
                         "id": 0,
@@ -236,7 +236,7 @@
     },
     {
         "id": 4,
-        "name": "Boleto para Junior Bucaramanga Primera Clase",
+        "name": "Boleto para Junior vs Bucaramanga Primera Clase",
         "provider": {
             "username": "juniorfc",
             "name": "Club Deportivo Junior"
@@ -251,7 +251,7 @@
                 "place": "Estadio Metropolitano Roberto Meléndez"
             },
             "payment": {
-                "currency": "cop",
+                "currency": "COP",
                 "methods": [
                     {
                         "id": 0,
@@ -308,7 +308,7 @@
                 "place": "Biblioteca de la Santa Cruz"
             },
             "payment": {
-                "currency": "cop",
+                "currency": "COP",
                 "methods": [
                     {
                         "id": 0,
@@ -403,7 +403,10 @@
     {
         "id": 8,
         "name": "Carrera contra el Cáncer",
-        "provider": "Gobernación del Atlántico",
+        "provider": {
+            "username": "gobatlantico",
+            "name": "Gobernación del Atlántico"
+        },
         "details": {
             "date": "18/07/2022",
             "type": "com",
@@ -411,7 +414,7 @@
                 "country": "Colombia",
                 "city": "Barranquilla",
                 "address": "Cl. 50 con cordialidad",
-                "place": " Cl. 50 con cordialidad"
+                "place": "Cl. 50 con cordialidad"
             },
             "options": [
                 {
@@ -439,7 +442,7 @@
                 "place": "Estadio Édgar Rentería"
             },
             "payment": {
-                "currency": "cop",
+                "currency": "COP",
                 "methods": [
                     {
                         "id": 0,
@@ -496,7 +499,7 @@
                 "place": "Arena Deportiva Elías Chegwin"
             },
             "payment": {
-                "currency": "cop",
+                "currency": "COP",
                 "methods": [
                     {
                         "id": 0,
@@ -578,7 +581,7 @@
                 "place": "Estadio El Monumental"
             },
             "payment": {
-                "currency": "usd",
+                "currency": "USD",
                 "methods": [
                     {
                         "id": 1,
@@ -589,17 +592,17 @@
             "options": [
                 {
                     "name": "Primera fila",
-                    "price": 100000,
+                    "price": 100,
                     "description": "Ubicación más próxima a la tarima."
                 },
                 {
                     "name": "Sección principal del recinto",
-                    "price": 50000,
+                    "price": 50,
                     "description": "Parte ubicada entre las 5 primeras filas."
                 },
                 {
                     "name": "Parte posterior",
-                    "price": 30000,
+                    "price": 30,
                     "description": "Ubicación en las filas que van de la 6 a la 9."
                 }
             ],

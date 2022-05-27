@@ -39,7 +39,7 @@ class AppThemes {
     scaffoldBackgroundColor: const Color(0xffF1F4F8),
     textTheme: TextTheme(
       bodyText2: TextStyle(
-        color: Colors.grey.shade900,
+        color: AppColors.greySuperDark,
       ),
     ),
     textButtonTheme: TextButtonThemeData(
@@ -66,6 +66,7 @@ class AppColors {
   static final grey = Colors.grey.shade500;
   static final greyLight = Colors.grey.shade200;
   static final greyDark = Colors.grey.shade700;
+  static final greySuperDark = Colors.grey.shade900;
   static const black = Color.fromARGB(255, 27, 27, 27);
   static const white = Colors.white;
 }

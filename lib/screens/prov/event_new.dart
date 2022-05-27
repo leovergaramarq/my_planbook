@@ -2,14 +2,14 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Eve extends StatefulWidget {
-  const Eve({Key? key}) : super(key: key);
+class EventNew extends StatefulWidget {
+  const EventNew({Key? key}) : super(key: key);
 
   @override
-  _NuevoEventoWidgetState createState() => _NuevoEventoWidgetState();
+  _EventNewState createState() => _EventNewState();
 }
 
-class _NuevoEventoWidgetState extends State<Eve> {
+class _EventNewState extends State<EventNew> {
   late TextEditingController textController10;
   late TextEditingController textController1;
   late TextEditingController textController2;
@@ -46,9 +46,9 @@ class _NuevoEventoWidgetState extends State<Eve> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+            padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
             child: Column(
-              mainAxisSize: MainAxisSize.max,
+              // mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -93,7 +93,7 @@ class _NuevoEventoWidgetState extends State<Eve> {
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Nombre Proyecto',
+                                        labelText: 'Nombre Evento',
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
@@ -127,8 +127,7 @@ class _NuevoEventoWidgetState extends State<Eve> {
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Pais',
-                                        hintText: '[Some hint text...]',
+                                        labelText: 'País',
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
@@ -162,8 +161,7 @@ class _NuevoEventoWidgetState extends State<Eve> {
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'ciudad',
-                                        hintText: '[Some hint text...]',
+                                        labelText: 'Ciudad',
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
@@ -197,8 +195,7 @@ class _NuevoEventoWidgetState extends State<Eve> {
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Direccion',
-                                        hintText: '[Some hint text...]',
+                                        labelText: 'Dirección',
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
@@ -233,7 +230,6 @@ class _NuevoEventoWidgetState extends State<Eve> {
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Establecimiento',
-                                        hintText: '[Some hint text...]',
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
@@ -267,8 +263,7 @@ class _NuevoEventoWidgetState extends State<Eve> {
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Descripcion',
-                                        hintText: '[Some hint text...]',
+                                        labelText: 'Descripción',
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
@@ -303,7 +298,6 @@ class _NuevoEventoWidgetState extends State<Eve> {
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Fecha',
-                                        hintText: '[Some hint text...]',
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
@@ -344,8 +338,7 @@ class _NuevoEventoWidgetState extends State<Eve> {
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Nombre de Opcion  1',
-                                        hintText: '[Some hint text...]',
+                                        labelText: 'Nombre de Opción  1',
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
@@ -380,7 +373,6 @@ class _NuevoEventoWidgetState extends State<Eve> {
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Precio',
-                                        hintText: '[Some hint text...]',
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
@@ -414,8 +406,7 @@ class _NuevoEventoWidgetState extends State<Eve> {
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'descripción',
-                                        hintText: '[Some hint text...]',
+                                        labelText: 'Descripción',
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
@@ -447,24 +438,6 @@ class _NuevoEventoWidgetState extends State<Eve> {
                                           print('Button pressed ...');
                                         },
                                         child: Text('Añadir Opciones'),
-                                        // options: FFButtonOptions(
-                                        //   width: 130,
-                                        //   height: 40,
-                                        //   color: FlutterFlowTheme.of(context)
-                                        //       .primaryColor,
-                                        //   textStyle:
-                                        //       FlutterFlowTheme.of(context)
-                                        //           .subtitle2
-                                        //           .override(
-                                        //             fontFamily: 'Poppins',
-                                        //             color: Colors.white,
-                                        //           ),
-                                        //   borderSide: BorderSide(
-                                        //     color: Colors.transparent,
-                                        //     width: 1,
-                                        //   ),
-                                        //   borderRadius: 12,
-                                        // ),
                                       ),
                                     ),
                                   ],
@@ -477,26 +450,15 @@ class _NuevoEventoWidgetState extends State<Eve> {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    print('Button pressed ...');
-                  },
-                  child: Text('Agregar Evento'),
-                  // options: FFButtonOptions(
-                  //   width: 130,
-                  //   height: 40,
-                  //   color: FlutterFlowTheme.of(context).primaryColor,
-                  //   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                  //         fontFamily: 'Poppins',
-                  //         color: Colors.white,
-                  //       ),
-                  //   borderSide: BorderSide(
-                  //     color: Colors.transparent,
-                  //     width: 1,
-                  //   ),
-                  //   borderRadius: 12,
-                  // ),
-                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      print('Button pressed ...');
+                    },
+                    child: Text('Agregar Evento'),
+                  ),
+                )
               ],
             ),
           ),
