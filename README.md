@@ -2,8 +2,7 @@
 # My Planbook Prototype
 Flutter-based prototype application for B2C business model. This prototype simulates the visualization, subscription and payment of services provided by small and medium businesses.
 
-<img src="https://raw.githubusercontent.com/LeonardoVergara/my_planbook/main/.github/images/home.png" width="100">
-<img src="https://raw.githubusercontent.com/LeonardoVergara/my_planbook/main/.github/images/event.png" width="100">
+<img src="https://raw.githubusercontent.com/LeonardoVergara/my_planbook/main/.github/images/home.png" width="300">
 
 ### Built With
 
