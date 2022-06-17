@@ -26,7 +26,7 @@ On your CLI, run `flutter doctor` to check for missing dependencies.
  1. Create a virtual device or connect a physical one.
  2. In the project folder, execute `flutter run` in your CLI to run the application.
  3. Try logging in with the credentials "vergaradl" and "123" as the username and password, respectively.
- <img src="https://raw.githubusercontent.com/LeonardoVergara/my_planbook/main/.github/images/welcome.png" width="260">
+ <img src="https://raw.githubusercontent.com/LeonardoVergara/my_planbook/main/.github/images/login.png" width="240">
 
 ## Authors
 
