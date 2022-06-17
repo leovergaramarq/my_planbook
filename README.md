@@ -29,6 +29,7 @@ On your CLI, run `flutter doctor` to check for missing dependencies.
  <img src="https://raw.githubusercontent.com/LeonardoVergara/my_planbook/main/.github/images/login.png" width="240">
 
 ## Deployment
+
 Refer to the [deployment repository](https://github.com/LeonardoVergara/myplanbook.github.io) for this project's web version in [Github Pages](https://pages.github.com).
 
 ## Authors
@@ -39,5 +40,3 @@ Refer to the [deployment repository](https://github.com/LeonardoVergara/myplanbo
 
 ## Further Information
 My Planbook's final goal is to unify other platforms' services in one. These services include but not limit to events, which are organized by **providers** and published for **consumers**. The solution allows consumers to manage their agendas through the use of **planbooks**.
-
-> Written with [StackEdit](https://stackedit.io/).
