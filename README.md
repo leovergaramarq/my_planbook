@@ -28,6 +28,9 @@ On your CLI, run `flutter doctor` to check for missing dependencies.
  3. Try logging in with the credentials "vergaradl" and "123" as the username and password, respectively.
  <img src="https://raw.githubusercontent.com/LeonardoVergara/my_planbook/main/.github/images/login.png" width="240">
 
+## Deployment
+Refer to the [deployment repository](https://github.com/LeonardoVergara/myplanbook.github.io) for the this project's web version in [Github Pages](https://pages.github.com).
+
 ## Authors
 
  - Leonardo Vergara - [LeonardoVergara](https://github.com/LeonardoVergara)
