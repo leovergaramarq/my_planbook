@@ -2,7 +2,7 @@
 # My Planbook Prototype
 Flutter-based prototype application for B2C business model. This prototype simulates the visualization, subscription and payment of services provided by small and medium businesses.
 
-<img src="https://raw.githubusercontent.com/LeonardoVergara/my_planbook/main/.github/images/home.png" width="300">
+<img src="https://user-images.githubusercontent.com/73978713/174461124-cb72b4a9-9685-48f4-889a-666e32871f39.png" width="300">
 
 ### Built With
 
@@ -26,7 +26,7 @@ On your CLI, run `flutter doctor` to check for missing dependencies.
  1. Create a virtual device or connect a physical one.
  2. In the project folder, execute `flutter run` in your CLI to run the application.
  3. Try logging in with the credentials "vergaradl" and "123" as the username and password, respectively.
- <img src="https://raw.githubusercontent.com/LeonardoVergara/my_planbook/main/.github/images/login.png" width="240">
+ <img src="https://user-images.githubusercontent.com/73978713/174461125-839364b3-2e75-4335-8df1-1881faab3114.png" width="240">
 
 ## Deployment
 
