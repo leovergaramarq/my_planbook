@@ -17,7 +17,7 @@ Flutter-based prototype application for B2C business model. This prototype simul
 
 You can clone this repsitory to get the source code
 
-    git clone https://github.com/vergaraldvm/my_planbook.git
+    git clone https://github.com/leovergaramarq/my_planbook.git
 
 On your CLI, run `flutter doctor` to check for missing dependencies.
 
@@ -30,11 +30,11 @@ On your CLI, run `flutter doctor` to check for missing dependencies.
 
 ## Deployment
 
-Refer to the [deployment repository](https://github.com/vergaraldvm/myplanbook.github.io) for this project's web version in [Github Pages](https://pages.github.com).
+Refer to the [deployment repository](https://github.com/leovergaramarq/myplanbook.github.io) for this project's web version in [Github Pages](https://pages.github.com).
 
 ## Authors
 
- - Leonardo Vergara - [vergaraldvm](https://github.com/vergaraldvm)
+ - Leonardo Vergara - [leovergaramarq](https://github.com/leovergaramarq)
  - Breynner Hurtado - [breynner1](https://github.com/breynner1)
  - Carlos Leones - [CatbasterL](https://github.com/CatbasterL)
 
